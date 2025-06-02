@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+    "target": "ES2022", // Your existing setting
+    "lib": ["ES2023"], // Your existing setting
+    "module": "ESNext", // Your existing setting
+    "skipLibCheck": true, // Your existing setting
+    "composite": true, // Necessary for referenced projects
+
+    /* Key changes for the error */
+    "declaration": true, // Referenced composite projects must emit declarations
+    "emitDeclarationOnly": true, // Only emit .d.ts files, not .js
+
+    /* Bundler mode & Module settings */
+    "moduleResolution": "bundler", // Often recommended with Vite, 'node' is also acceptable
+    "allowImportingTsExtensions": true, // Your existing setting
+    "verbatimModuleSyntax": true, // Your existing setting (this implies esModuleInterop: false)
+    "moduleDetection": "force", // Your existing setting
+    // "esModuleInterop": true, // verbatimModuleSyntax: true makes this behave as if false.
+                            // If you have CJS dependencies in vite.config.ts needing interop,
+                            // you might reconsider verbatimModuleSyntax or handle imports carefully.
+                            // For typical Vite configs, this should be fine.
+
+    /* Linting - Kept your existing settings */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    // "erasableSyntaxOnly": true, // This is a very new and strict flag, related to verbatimModuleSyntax.
+                                // It's fine if your code adheres to it.
+    "noFallthroughCasesInSwitch": true,
+    // "noUncheckedSideEffectImports": true // Also a stricter flag.
+  },
+  "include": [
+    "vite.config.ts",
+    "tailwind.config.js", // Add your tailwind config if it's a .ts file
+    "postcss.config.js"   // Add postcss config (note: it's a .js file)
+                          // For TS to check JS files, you'd need allowJs: true.
+                          // Often included for context or if specific type support is added via JSDoc.
+  ]
+}

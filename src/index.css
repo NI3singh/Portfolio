@@ -1,0 +1,265 @@
+/* 1. Correct Tailwind CSS Directives */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #0a0a0a;
+  --color-secondary: #007bff;
+  --color-accent: #61dafb;
+  --color-text-primary: #e0e0e0;
+  --color-text-secondary: #b0b0b0;
+  --color-light-gray: #f3f4f6;
+  
+  --font-family-sans: Inter, sans-serif; /* Ensure "Inter" is wrapped in quotes if it contains spaces, though Inter does not */
+  --font-family-mono: "Roboto Mono", monospace;
+}
+
+/* Global styles */
+body {
+  background-color: var(--color-primary); /* Uses CSS var from @theme */
+  color: var(--color-text-primary);     /* Uses CSS var from @theme */
+  font-family: var(--font-family-sans); /* Uses CSS var from @theme */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--color-primary); /* Uses CSS var from @theme */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-secondary); /* Uses CSS var from @theme */
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-accent); /* Uses CSS var from @theme */
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-secondary) var(--color-primary); /* Uses CSS vars from @theme */
+}
+
+/* Global heading styles */
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    color: inherit; /* This will now be part of the base layer */
+  }
+  /* Add other custom base styles here */
+}
+
+/* Smooth scrolling behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 3. Basic link styling - MODIFIED */
+a {
+  transition: color 0.3s ease, background-color 0.3s ease, opacity 0.3s ease;;
+}
+
+@keyframes rotate-border {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Profile image container with hover effects */
+.profile-image-container {
+    position: relative;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    padding: 4px;
+    border-radius: 50%;
+    background: var(--color-secondary);
+}
+
+/* Hover state - enlarge the container only */
+.profile-image-container:hover {
+    transform: scale(1.1);
+}
+
+/* Rotating border background - separate from container */
+.profile-image-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    background: conic-gradient(
+        from 0deg,
+        #2196f3 0deg,
+        #2196f3 119deg,
+        #1b5e20 120deg,
+        #1b5e20 239deg,
+        #f57f17 240deg,
+        #f57f17 359deg,
+        #2196f3 360deg
+    );
+    opacity: 0;
+    animation: rotate-border 2s linear infinite;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+}
+
+/* Show rotating border on hover */
+.profile-image-container:hover::after {
+    opacity: 1;
+}
+
+/* Inner container to create the border effect */
+.profile-image-container::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    z-index: 1;
+}
+
+/* Image positioning - stays stationary */
+.profile-image-container img {
+    position: relative;
+    z-index: 2;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+            
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+        
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+        
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+  opacity: 0;
+}
+        
+.animate-scroll {
+  animation: scroll 30s linear infinite;
+}
+
+.pause-on-hover:hover .scrolling-wrapper {
+  animation-play-state: paused;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+        
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+.experience-title {
+  color: #9333ea !important;
+}
+
+.education-title {
+  color: #2563eb !important;
+}
+
+.section-main-heading {
+  background: linear-gradient(135deg, #9333ea, #2563eb) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+@keyframes fade-in-up {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        .animate-fade-in-up {
+          animation: fade-in-up 0.6s ease-out forwards;
+        }
+
+:root {
+  /* Ensure these match your tailwind.config.js colors */
+  --color-primary: #0A0A0A;    /* Your 'primary' color */
+  --color-secondary: #007BFF;  /* Your 'secondary' color */
+  --color-accent: #61DAFB;     /* Your 'accent' color */
+  --color-text-primary: #E0E0E0;
+  --color-text-secondary: #B0B0B0;
+}
+
+@keyframes wave {
+  0%, 100% { transform: translateX(0px); }
+  50% { transform: translateX(-50px); }
+}
+        
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px) scale(1);
+    opacity: 0.3;
+  }
+  50% { 
+    transform: translateY(-20px) scale(1.2);
+    opacity: 0.8;
+  }
+}
+

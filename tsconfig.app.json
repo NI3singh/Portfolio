@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    // ... other existing compiler options (like target, module, jsx, etc.)
+    "baseUrl": ".", // Sets the base directory for module resolution.
+    "paths": {
+      "@/*": ["src/*"] // Defines the @ alias to point to the src directory.
+    },
+    // Ensure these are present and configured for React/Vite
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "allowJs": false,
+    "skipLibCheck": true,
+    "esModuleInterop": true, // Enables emit interoperability between CommonJS and ES Modules
+    "allowSyntheticDefaultImports": true, // Allows default imports from modules with no default export
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler", // Or "node" - "bundler" is often preferred with Vite
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true, // Vite handles the emitting of files
+    "jsx": "react-jsx" // Use the new JSX transform
+  },
+  "include": ["src"], // Ensure 'src' is included for compilation
+  "references": [{ "path": "./tsconfig.node.json" }] // If you have specific node configs
+}
