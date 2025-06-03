@@ -2,7 +2,7 @@ import React from 'react';
 import { TrophyIcon, PencilSquareIcon, CodeBracketIcon, LightBulbIcon } from '@heroicons/react/24/outline';
 import SectionSeparator from '@/components/SectionSeparator';
 
-import quizWinnerImage from '@/assets/Win.jpg'; // Replace with your actual filename
+import quizWinnerImage from '@/assets/Win.JPG'; // Replace with your actual filename
 import scriptWritingImage from '@/assets/0Q7A9268.jpg';
 import tattvaHackathonImage from '@/assets/TattvaHackathon.jpg';
 import finnovateImage from '@/assets/Finnovate Hackathon.jpg';
