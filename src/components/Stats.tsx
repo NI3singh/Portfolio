@@ -3,9 +3,9 @@ import { TrophyIcon, PencilSquareIcon, CodeBracketIcon, LightBulbIcon } from '@h
 import SectionSeparator from '@/components/SectionSeparator';
 
 import quizWinnerImage from '@/assets/Win.JPG'; // Replace with your actual filename
-import scriptWritingImage from '@/assets/0Q7A9268.jpg';
-import tattvaHackathonImage from '@/assets/TattvaHackathon.jpg';
-import finnovateImage from '@/assets/Finnovate Hackathon.jpg';
+import scriptWritingImage from '@/assets/0Q7A9268.JPG';
+import tattvaHackathonImage from '@/assets/TattvaHackathon.JPG';
+import finnovateImage from '@/assets/Finnovate Hackathon.JPG';
 
 interface StatCardProps {
   icon: React.ReactNode;
