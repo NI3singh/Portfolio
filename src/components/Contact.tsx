@@ -133,31 +133,31 @@ const Contact = () => {
     {
       icon: <FaGithub className="h-6 w-6" />,
       label: 'GitHub',
-      href: 'https://github.com/nitinsingh',
+      href: 'https://github.com/NI3singh',
       color: 'hover:bg-gray-800 hover:text-white'
     },
     {
       icon: <FaLinkedin className="h-6 w-6" />,
       label: 'LinkedIn',
-      href: 'https://linkedin.com/in/nitin-singh',
+      href: 'https://www.linkedin.com/in/nitinsinghr/',
       color: 'hover:bg-blue-600 hover:text-white'
     },
     {
       icon: <FaXTwitter className="h-6 w-6" />,
       label: 'Twitter',
-      href: 'https://twitter.com/nitinsingh',
+      href: 'https://x.com/NitinSingh333',
       color: 'hover:bg-black hover:text-white'
     },
     {
       icon: <FaInstagram className="h-6 w-6" />,
       label: 'Instagram',
-      href: 'https://instagram.com/nitinsingh',
+      href: 'https://www.instagram.com/ni.3.singh/',
       color: 'hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 hover:text-white'
     },
     {
       icon: <FaYoutube className="h-6 w-6" />,
       label: 'YouTube',
-      href: 'https://youtube.com/@nitinsingh',
+      href: 'https://www.youtube.com/@Nitinsinghcreation',
       color: 'hover:bg-red-600 hover:text-white'
     }
   ];
