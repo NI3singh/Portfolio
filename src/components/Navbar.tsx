@@ -161,8 +161,15 @@ const Navbar: React.FC = () => {
               href="/Nitin_Singh_Resume_AI_Engineer.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white transition-all duration-300 bg-gradient-to-r from-secondary to-accent rounded-xl hover:from-accent hover:to-secondary transform hover:scale-105 hover:shadow-xl"
-            >
+              className="group relative inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white transition-all duration-300 bg-gradient-to-r from-secondary to-accent rounded-xl hover:from-accent hover:to-secondary transform hover:scale-105 hover:shadow-xl">
+              {/* Glowing Border Effect */}
+              <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-secondary via-accent to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-pulse"></div>
+              <div className="absolute inset-0.5 rounded-xl bg-gradient-to-r from-secondary to-accent group-hover:from-accent group-hover:to-secondary transition-all duration-500"></div>
+              
+              {/* Moving Light Effect */}
+              <div className="absolute inset-0 rounded-xl overflow-hidden">
+                <div className="absolute -top-2 -left-full w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent transform rotate-12 group-hover:translate-x-full transition-transform duration-1000"></div>
+              </div>
               <span className="relative z-10 flex items-center">
                 Resume
                 <svg className="w-4 h-4 ml-2 transform group-hover:translate-y-0.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">

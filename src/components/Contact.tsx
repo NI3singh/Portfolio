@@ -410,24 +410,38 @@ const Contact = () => {
                     <button
                       type="submit"
                       disabled={isSubmitting || !isFormValid}
-                      className={`w-full group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white transition-all duration-300 rounded-xl transform hover:scale-105 hover:shadow-xl ${
+                      className={`relative group w-full inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white transition-all duration-300 rounded-xl transform ${
                         isFormValid && !isSubmitting
-                          ? 'bg-gradient-to-r from-blue-500 to-purple-500 hover:from-purple-500 hover:to-blue-500'
+                          ? 'bg-gradient-to-r from-secondary to-accent hover:from-accent hover:to-secondary hover:scale-105 hover:shadow-xl'
                           : 'bg-gray-400 cursor-not-allowed'
-                      }`}
-                    >
-                      {isSubmitting ? (
+                      }`}>
+                      {/* Glowing Effects – only when enabled */}
+                      {isFormValid && !isSubmitting && (
                         <>
-                          <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
-                          <span>Sending...</span>
-                        </>
-                      ) : (
-                        <>
-                          <Send className="h-5 w-5 mr-2" />
-                          <span>Send Message</span>
+                          <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-secondary via-accent to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-pulse z-0"></div>
+                          <div className="absolute inset-0.5 rounded-xl bg-gradient-to-r from-secondary to-accent group-hover:from-accent group-hover:to-secondary transition-all duration-500 z-0"></div>
+                          <div className="absolute inset-0 rounded-xl overflow-hidden">
+                            <div className="absolute -top-2 -left-full w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent transform rotate-12 group-hover:translate-x-full transition-transform duration-1000"></div>
+                          </div>
                         </>
                       )}
+
+                      {/* Content */}
+                      <div className="relative z-10 flex items-center">
+                        {isSubmitting ? (
+                          <>
+                            <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
+                            <span>Sending...</span>
+                          </>
+                        ) : (
+                          <>
+                            <Send className="h-5 w-5 mr-2" />
+                            <span>Send Message</span>
+                          </>
+                        )}
+                      </div>
                     </button>
+
                     
                     <p className="text-xs text-gray-500 text-center">
                       * Required fields. Email will be validated automatically.
