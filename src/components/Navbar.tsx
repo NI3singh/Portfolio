@@ -21,6 +21,7 @@ const Navbar: React.FC = () => {
   ];
 
   // Smooth scroll function
+  // Fixed Smooth scroll function
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     
@@ -31,39 +32,38 @@ const Navbar: React.FC = () => {
       return;
     }
     
-    // For experience section, look for the section with the specific class or content
-    if (href === '#experience') {
-      // Try to find the experience section by its class or content
-      const experienceSection = document.querySelector('section.bg-gray-50') || 
-                               document.querySelector('[class*="py-20"]') ||
-                               document.querySelector('section:has(h2)') ||
-                               Array.from(document.querySelectorAll('section')).find(section => 
-                                 section.textContent?.includes('Professional Experience') || 
-                                 section.textContent?.includes('Educational Background')
-                               );
+    // Standard approach for all sections including experience
+    const element = document.querySelector(href);
+    if (element) {
+      const navHeight = 80;
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - navHeight;
       
-      if (experienceSection) {
-        const navHeight = 80;
-        const elementPosition = experienceSection.getBoundingClientRect().top + window.pageYOffset;
-        const offsetPosition = elementPosition - navHeight;
-        
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
-      }
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
     } else {
-      // For other sections, try standard approach
-      const element = document.querySelector(href);
-      if (element) {
-        const navHeight = 80;
-        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-        const offsetPosition = elementPosition - navHeight;
+      // Fallback: If exact ID not found, try to find experience section by unique characteristics
+      if (href === '#experience') {
+        const experienceSection = document.querySelector('section[id="experience"]') ||
+                                Array.from(document.querySelectorAll('section')).find(section => 
+                                  section.textContent?.includes('Professional Journey') || 
+                                  section.textContent?.includes('Educational Foundation') ||
+                                  section.classList.contains('bg-gradient-to-br') && 
+                                  section.textContent?.includes('Toggle Switch')
+                                );
         
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
+        if (experienceSection) {
+          const navHeight = 80;
+          const elementPosition = experienceSection.getBoundingClientRect().top + window.pageYOffset;
+          const offsetPosition = elementPosition - navHeight;
+          
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
       }
     }
     
