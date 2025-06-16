@@ -266,8 +266,8 @@ const HeroSection: React.FC = () => {
                 
                 {/* Interactive Tooltip */}
                 {showTooltip && (
-                  <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-secondary to-accent px-4 py-2 rounded-lg text-white text-sm font-medium shadow-xl animate-fade-in-up">
-                    <div className="text-center">Neural Network Active</div>
+                  <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-secondary to-accent px-1 py-3 rounded-lg text-white text-sm font-medium shadow-xl animate-fade-in-up min-w-48">
+                    <div className="text-center">Welcome to Nitin's space! explore, discover, connect.</div>
                     <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-accent rotate-45"></div>
                   </div>
                 )}
