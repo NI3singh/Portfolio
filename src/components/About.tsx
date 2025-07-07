@@ -22,11 +22,15 @@ const About: React.FC = () => {
           <div className="flex flex-col md:flex-row items-start gap-8 md:gap-12">
             {/* Optional: Image Section */}
             <div className="md:w-1/3 w-full flex justify-center animate-slide-in-left mb-8 md:mb-0">
-              <div className="profile-image-container rounded-full shadow-md w-48 h-48 overflow-hidden">
+              <div className="profile-image-container relative rounded-full shadow-md w-48 h-48 overflow-hidden group">
+                {/* Gradient border that appears on hover */}
+                <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-1">
+                  <div className="w-full h-full rounded-full bg-gradient-to-r from-green-500 via-orange-500 to-blue-500 animate-spin-slow"></div>
+                </div>
                 <img 
                   src={ProfileImage}
                   alt="Nitin Singh" 
-                  className="w-full h-full object-cover rounded-full" 
+                  className="relative z-10 w-full h-full object-cover rounded-full" 
                 />
               </div>
             </div>

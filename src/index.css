@@ -105,13 +105,10 @@ a {
     border-radius: 50%;
     background: conic-gradient(
         from 0deg,
-        #2196f3 0deg,
-        #2196f3 119deg,
-        #1b5e20 120deg,
-        #1b5e20 239deg,
-        #f57f17 240deg,
-        #f57f17 359deg,
-        #2196f3 360deg
+      #1b5e20,    /* Green - no degree stops = smooth transition */
+      #f57f17,    /* Orange - smooth transition */
+      #2196f3,    /* Blue - smooth transition */
+      #1b5e20
     );
     opacity: 0;
     animation: rotate-border 2s linear infinite;
