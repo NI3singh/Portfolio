@@ -10,29 +10,10 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist', // Specify the output directory for the build
-    rollupOptions: {
-      output: {
-        assetFileNames: (assetInfo) => {
-          if (!assetInfo.name) {
-            return `assets/[name]-[hash][extname]`;
-          }
-          const info = assetInfo.name.split('.');
-          const extType = info[info.length - 1];
-          if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(extType)) {
-            return `assets/images/[name]-[hash][extname]`;
-          }
-          return `assets/[name]-[hash][extname]`;
-        },
-      },
-    },
-    assetsInlineLimit: 0, // Don't inline images, keep them as separate files for better caching
   },
   resolve: {
     alias: {
       '@': '/src', // Example of an alias: now you can import from '@/components/...'
     },
-  },
-  optimizeDeps: {
-    include: ['react', 'react-dom'], // Pre-bundle these dependencies
   },
 })
