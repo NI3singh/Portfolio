@@ -57,3 +57,17 @@ This portfolio is a single-page application built with modern web technologies t
 </p>
 
 
+<p align="center">
+  <strong>"Code is poetry written in logic"</strong>
+  <br />
+  <em>Thank you for visiting my portfolio repository! Feel free to explore, and don't hesitate to reach out.</em>
+  <br />
+  <br />
+  <a href="https://github.com/NI3singh/Portfolio/stargazers">
+    <img src="https://img.shields.io/github/stars/NI3singh/Portfolio?style=social" alt="Stars" />
+  </a>
+  <a href="https://github.com/NI3singh/Portfolio/network/members">
+    <img src="https://img.shields.io/github/forks/NI3singh/Portfolio?style=social" alt="Forks" />
+  </a>
+</p>
+
