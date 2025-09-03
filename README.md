@@ -1,77 +1,20 @@
-<!-- # My Awesome Portfolio Website
-
-This repository contains the source code for my personal portfolio website, showcasing my projects, skills, and experience. It's built with [mention your primary technology, e.g., HTML, CSS, JavaScript, React, Angular, Vue, etc.].
-
-Currently, the project is structured to highlight:
-
-- **Projects:** A collection of my key development work.
-- **Skills:** An overview of my technical competencies.
-- **About Me:** A little bit about my background and passion for development.
-- **Contact:** Ways to get in touch with me.
-- **Education and Experience:** Detail about my education and industry expericence.
-
-## Technologies Used
-
-This project leverages a modern tech stack to deliver a responsive and engaging user experience:
-
-- **Frontend:** [React, Next.js, Vanilla JS, HTML5, CSS3, SASS]
-- **Styling:** [Tailwind CSS, Material UI, Styled Components, custom CSS]
-- **Version Control:** Git & GitHub
-- **Deployment:** Loading....
-- **Other Tools:** Vite
-
-## Getting Started
-
-If you'd like to run this project locally, follow these steps:
-
-1.  **Clone the repository:**
-    ```bash
-    git clone [https://github.com/YourUsername/YourRepositoryName.git](https://github.com/YourUsername/YourRepositoryName.git)
-    cd YourRepositoryName
-    ```
-2.  **Install dependencies (if any):**
-    ```bash
-    # Example for npm
-    npm install
-    # Example for yarn
-    yarn install
-    ```
-3.  **Run the development server (if applicable):**
-    ```bash
-    # Example for npm
-    npm run dev
-    # Example for yarn
-    yarn dev
-    ```
-    Open [http://localhost:3000](http://localhost:3000) (or the port specified) in your browser.
-
-## Future Enhancements (Optional)
-
-I plan to continue developing this portfolio by:
-
-- Adding more project details and case studies.
-- Implementing a blog section.
-- Optimizing for performance and accessibility further.
-
- -->
 
 <!-- LOGO -->
-<div align="center">
-  <!-- Please replace this with the path to your logo file -->
-  <img src="[https://github.com/NI3singh/Portfolio/blob/main/src/assets/Nitin%20Logo.png]" alt="Logo" width="80" height="80">
-</div>
-
-<h1 align="center">Nitin Singh - Personal Portfolio</h1>
-
 <p align="center">
-  Welcome to the repository for my personal portfolio website! This project showcases my skills, projects, and journey as a software developer.
+  <img src="src/assets/Nitin_Logo.png" alt="Logo" width="120" height="120" />
+</p>
+<h1 align="center">Nitin Singh - Personal Portfolio</h1>
+<p align="center">
+  A modern, responsive portfolio website showcasing my journey as a AI developer through interactive design and seamless user experiences.
   <br />
-  <a href="[https://portfolio-nitinsingh.vercel.app/]"><strong>View Live Demo »</strong></a>
+  <a href="https://portfolio-nitinsingh.vercel.app/"><strong>🌐 View Live Portfolio »</strong></a>
   <br />
   <br />
-  <a href="https://github.com/[YOUR_GITHUB_USERNAME]/[YOUR_REPO_NAME]/issues">Report Bug</a>
+  <a href="https://www.linkedin.com/in/nitinsinghr/">LinkedIn</a>
   ·
-  <a href="https://github.com/[YOUR_GITHUB_USERNAME]/[YOUR_REPO_NAME]/issues">Request Feature</a>
+  <a href="mailto:ni3.singh.r@gmail.com">Email</a>
+  ·
+  <a href="https://github.com/NI3singh/Portfolio/issues">Report Bug</a>
 </p>
 
 <!-- ABOUT THE PROJECT -->
@@ -88,32 +31,43 @@ This portfolio is a single-page application built with modern web technologies t
 
 ### 🛠️ Built With
 
-This project is built with a modern and robust tech stack:
-
-*   ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
-*   ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
-*   ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
-*   ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white) <!-- Or replace with CSS3/Sass if you used that -->
-*   ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
-
-<!-- GETTING STARTED -->
-## 🏁 Getting Started
-
-To get a local copy up and running, follow these simple steps.
-
-### Prerequisites
-
-Make sure you have Node.js and npm installed on your machine.
-*   npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
+<p align="center">
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" />
+  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5" />
+</p>
 
 <!-- CONTACT -->
 ## 📬 Connect with me
 
-Nitin Singh - @your_linkedin_profile - your-email@example.com
+### I'm always excited to connect with fellow developers, potential collaborators, or anyone passionate about technology!
 
-Project Link: [https://github.com/[YOUR_GITHUB_USERNAME]/[YOUR_REPO_NAME]](https://github.com/[YOUR_GITHUB_USERNAME]/[YOUR_REPO_NAME])
+<p align="center">
+  <a href="https://portfolio-nitinsingh.vercel.app/">
+    <img src="https://img.shields.io/badge/🌐_Portfolio-Visit_Now-FF6B6B?style=for-the-badge" alt="Portfolio" />
+  </a>
+  <a href="https://www.linkedin.com/in/nitinsinghr/">
+    <img src="https://img.shields.io/badge/LinkedIn-nitinsinghr-0077B5?style=for-the-badge&logo=linkedin" alt="LinkedIn" />
+  </a>
+  <a href="mailto:ni3.singh.r@gmail.com">
+    <img src="https://img.shields.io/badge/Email-ni3.singh.r@gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" />
+  </a>
+</p>
+
+
+<p align="center">
+  <strong>"Code is poetry written in logic"</strong>
+  <br />
+  <em>Thank you for visiting my portfolio repository! Feel free to explore, and don't hesitate to reach out.</em>
+  <br />
+  <br />
+  <a href="https://github.com/NI3singh/Portfolio/stargazers">
+    <img src="https://img.shields.io/github/stars/NI3singh/Portfolio?style=social" alt="Stars" />
+  </a>
+  <a href="https://github.com/NI3singh/Portfolio/network/members">
+    <img src="https://img.shields.io/github/forks/NI3singh/Portfolio?style=social" alt="Forks" />
+  </a>
+</p>
 
