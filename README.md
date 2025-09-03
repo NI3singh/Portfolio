@@ -42,6 +42,18 @@ This portfolio is a single-page application built with modern web technologies t
 <!-- CONTACT -->
 ## 📬 Connect with me
 
-Nitin Singh - @[your_linkedin_profile](https://www.linkedin.com/in/nitinsinghr/) - ni3.singh.r@gmail.com
+### I'm always excited to connect with fellow developers, potential collaborators, or anyone passionate about technology!
+
+<p align="center">
+  <a href="https://portfolio-nitinsingh.vercel.app/">
+    <img src="https://img.shields.io/badge/🌐_Portfolio-Visit_Now-FF6B6B?style=for-the-badge" alt="Portfolio" />
+  </a>
+  <a href="https://www.linkedin.com/in/nitinsinghr/">
+    <img src="https://img.shields.io/badge/LinkedIn-nitinsinghr-0077B5?style=for-the-badge&logo=linkedin" alt="LinkedIn" />
+  </a>
+  <a href="mailto:ni3.singh.r@gmail.com">
+    <img src="https://img.shields.io/badge/Email-ni3.singh.r@gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" />
+  </a>
+</p>
 
 
