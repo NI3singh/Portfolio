@@ -8,6 +8,7 @@ import Experience from '@/components/Experience';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Stats />
         <Contact />
         <Analytics />
+        <SpeedInsights />
       </main>
       <Footer />
     </div>
