@@ -56,8 +56,9 @@ I plan to continue developing this portfolio by:
  -->
 
 <!-- LOGO -->
-<img width="363" height="254" alt="image" src="https://github.com/user-attachments/assets/d2cac93c-3cda-47b5-8631-c21e8a3e98b7" />
-
+<p align="center">
+  <img src="src/assets/Nitin_Logo.png" alt="Logo" width="80" height="80" />
+</p>
 
 <h1 align="center">Nitin Singh - Personal Portfolio</h1>
 
