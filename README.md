@@ -95,24 +95,9 @@ This project is built with a modern and robust tech stack:
 *   ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white) <!-- Or replace with CSS3/Sass if you used that -->
 *   ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 
-<!-- GETTING STARTED -->
-## 🏁 Getting Started
-
-To get a local copy up and running, follow these simple steps.
-
-### Prerequisites
-
-Make sure you have Node.js and npm installed on your machine.
-*   npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
-
 <!-- CONTACT -->
 ## 📬 Connect with me
 
-Nitin Singh - @your_linkedin_profile - your-email@example.com
+Nitin Singh - @[your_linkedin_profile](https://www.linkedin.com/in/nitinsinghr/) - ni3.singh.r@gmail.com
 
-Project Link: [https://github.com/[YOUR_GITHUB_USERNAME]/[YOUR_REPO_NAME]](https://github.com/[YOUR_GITHUB_USERNAME]/[YOUR_REPO_NAME])
 
