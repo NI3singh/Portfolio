@@ -5,7 +5,7 @@
 </p>
 <h1 align="center">Nitin Singh - Personal Portfolio</h1>
 <p align="center">
-  A modern, responsive portfolio website showcasing my journey as a software developer through interactive design and seamless user experiences.
+  A modern, responsive portfolio website showcasing my journey as a AI developer through interactive design and seamless user experiences.
   <br />
   <a href="https://portfolio-nitinsingh.vercel.app/"><strong>🌐 View Live Portfolio »</strong></a>
   <br />
