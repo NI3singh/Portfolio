@@ -57,6 +57,24 @@ I plan to continue developing this portfolio by:
 
 <!-- LOGO -->
 <p align="center">
+  <img src="src/assets/Nitin_Logo.png" alt="Logo" width="120" height="120" />
+</p>
+<h1 align="center">Nitin Singh - Personal Portfolio</h1>
+<p align="center">
+  A modern, responsive portfolio website showcasing my journey as a software developer through interactive design and seamless user experiences.
+  <br />
+  <a href="https://portfolio-nitinsingh.vercel.app/"><strong>🌐 View Live Portfolio »</strong></a>
+  <br />
+  <br />
+  <a href="https://www.linkedin.com/in/nitinsinghr/">LinkedIn</a>
+  ·
+  <a href="mailto:ni3.singh.r@gmail.com">Email</a>
+  ·
+  <a href="https://github.com/NI3singh/Portfolio/issues">Report Bug</a>
+</p>
+<!--
+<!-- LOGO -->
+<p align="center">
   <img src="src/assets/Nitin_Logo.png" alt="Logo" width="80" height="80" />
 </p>
 
