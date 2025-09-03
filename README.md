@@ -58,7 +58,7 @@ I plan to continue developing this portfolio by:
 <!-- LOGO -->
 <div align="center">
   <!-- Please replace this with the path to your logo file -->
-  <img src="[https://github.com/NI3singh/Portfolio/blob/main/src/assets/Nitin%20Logo.png]" alt="Logo" width="80" height="80">
+  <img src="(./src/assets/Nitin_Logo.png)" alt="Logo" width="80" height="80">
 </div>
 
 <h1 align="center">Nitin Singh - Personal Portfolio</h1>
@@ -69,9 +69,9 @@ I plan to continue developing this portfolio by:
   <a href="[https://portfolio-nitinsingh.vercel.app/]"><strong>View Live Demo »</strong></a>
   <br />
   <br />
-  <a href="https://github.com/[YOUR_GITHUB_USERNAME]/[YOUR_REPO_NAME]/issues">Report Bug</a>
+  <a href="https://github.com/NI3singh/Portfolio/issues">Report Bug</a>
   ·
-  <a href="https://github.com/[YOUR_GITHUB_USERNAME]/[YOUR_REPO_NAME]/issues">Request Feature</a>
+  <a href="https://github.com/NI3singh/Portfolio/issues">Request Feature</a>
 </p>
 
 <!-- ABOUT THE PROJECT -->
