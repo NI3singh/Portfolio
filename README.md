@@ -1,15 +1,8 @@
 
 <!-- LOGO -->
-<p align="center">
-  <svg width="120" height="120">
-    <defs>
-      <clipPath id="circle">
-        <circle cx="60" cy="60" r="60"/>
-      </clipPath>
-    </defs>
-    <image href="src/assets/Nitin_Logo.png" width="120" height="120" clip-path="url(#circle)"/>
-  </svg>
-</p>
+<div align="center">
+  <img src="src/assets/Nitin_Logo.png" alt="Logo" width="120" height="120" style="border-radius:50%"/>
+</div>
 <h1 align="center">Nitin Singh - Personal Portfolio</h1>
 <p align="center">
   A modern, responsive portfolio website showcasing my journey as a AI developer through interactive design and seamless user experiences.
