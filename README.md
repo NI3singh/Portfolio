@@ -1,8 +1,8 @@
 
 <!-- LOGO -->
-<div align="center">
-  <img src="src/assets/Nitin_Logo.png" alt="Logo" width="120" height="120" style="border-radius:50%"/>
-</div>
+<p align="center">
+  <img src="src/assets/Nitin_Logo.png" alt="Logo" width="120" height="120" />
+</p>
 <h1 align="center">Nitin Singh - Personal Portfolio</h1>
 <p align="center">
   A modern, responsive portfolio website showcasing my journey as a AI developer through interactive design and seamless user experiences.
