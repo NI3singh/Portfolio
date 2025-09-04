@@ -1,7 +1,7 @@
 
 <!-- LOGO -->
 <p align="center">
-  <img src="src/assets/Nitin_Logo.png" alt="Logo" width="120" height="120" style="border-radius: 50%;" />
+  <img src="src/assets/Nitin_Logo.png" alt="Logo" width="120" height="120" style="border-radius: 50%; border: 3px solid #ddd; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
 </p>
 <h1 align="center">Nitin Singh - Personal Portfolio</h1>
 <p align="center">
