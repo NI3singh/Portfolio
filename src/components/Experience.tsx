@@ -53,7 +53,7 @@ const ExperienceEducationSection: React.FC = () => {
       company: 'JBcodeapp',
       location: 'Surat, Gujarat',
       duration: 'May 2024 - June 2024',
-      description: 'Project: Student Performance Analysis | Python, Numpy',
+      description: 'Student Performance Analysis | Python, Numpy',
       responsibilities: [
         'Applied MLOps concepts to create a robust machine learning pipeline.',
         'Developed Python backend processing 5,000+ student records with 98.5% data integrity through efficient ETL processes.'
@@ -67,7 +67,7 @@ const ExperienceEducationSection: React.FC = () => {
       company: 'AlgoBrain AI',
       location: 'Surat, Gujarat',
       duration: 'Sep 2023 - Jan 2024',
-      description: 'Project: Movie-Ticket Booking Chatbot | DialogFlow CX',
+      description: 'Movie-Ticket Booking Chatbot | DialogFlow CX',
       responsibilities: [
         'Developed an intelligent chatbot for movie ticket booking using DialogFlow CX.',
         'Implemented natural language processing to handle user queries and booking workflows.',
