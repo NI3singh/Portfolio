@@ -49,7 +49,7 @@ const ExperienceEducationSection: React.FC = () => {
     },
     {
       id: 2,
-      title: 'AI/ML Engineer Intern',
+      title: 'Data Analyst Intern',
       company: 'JBcodeapp',
       location: 'Surat, Gujarat',
       duration: 'May 2024 - June 2024',
