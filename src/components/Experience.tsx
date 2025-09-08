@@ -34,7 +34,7 @@ const ExperienceEducationSection: React.FC = () => {
   const experienceData: ExperienceItem[] = [
     {
       id: 1,
-      title: 'Junior AI/ML Engineer',
+      title: 'AI/ML Engineer',
       company: 'ELaunch Solution Pvt. Ltd.',
       location: 'Surat, Gujarat',
       duration: 'Dec 2024 - Present',
