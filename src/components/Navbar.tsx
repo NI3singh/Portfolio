@@ -158,7 +158,7 @@ const Navbar: React.FC = () => {
             
             {/* Desktop Resume Button */}
             <a
-              href="/Nitin_Singh_Resume_AI_Engineer.pdf"
+              href="/Nitin_Singh_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="group relative inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white transition-all duration-300 bg-gradient-to-r from-secondary to-accent rounded-xl hover:from-accent hover:to-secondary transform hover:scale-105 hover:shadow-xl">
@@ -239,7 +239,7 @@ const Navbar: React.FC = () => {
             
             {/* Mobile Resume Button */}
             <a
-              href="/Nitin_Singh_Resume_AI_Engineer.pdf"
+              href="/Nitin_Singh_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setIsOpen(false)}
