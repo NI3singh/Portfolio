@@ -87,19 +87,18 @@ const Projects: React.FC = () => {
   const projectData: Project[] = [
     {
       id: 1,
-      title: 'Vaccine Uptake Prediction Model',
+      title: 'Solana Price Data Analysis',
       description: [
-        'Developed a dual-prediction model to forecast individual likelihood of receiving XYZ and seasonal flu vaccines.',
-        'Achieved 87% accuracy in predicting XYZ vaccine uptake, 23% above baseline.',
-        'The goal of this project is to predict the likelihood of individuals receiving two types of vaccines.'
+        'Constructed a comprehensive analysis pipeline processing 1,300+ days of Solana price data (01-01-2021 to 29-09-2024) in OHLCV format.',
+        'Engineered 25+ technical indicators and executed advanced data cleaning techniques.',
+        'Synthesized an enhanced dataset with 44 columns improving ML model predictive performance by 28%.'
       ],
-      technologies: ['Numpy', 'Sklearn', 'Random Forest Algorithm'],
+      technologies: ['Data Engineering', 'Data Science', 'Data Analysis', 'Data Visualisation', 'Pandas', 'Numpy', 'Matplotlib'],
       achievements: [
-        'Accuracy:- 87% ',
-        'Recieved Excellence Award for this project in GFG Hackathon.',
+        'Achieved 28% accuracy gain with 44-column dataset from 1,300 days of OHLCV data.',
       ],
-      githubLink: 'https://github.com/NI3singh/GFG-Hackathon', // Placeholder
-      animationDelay: '0.1s'
+      githubLink: 'https://github.com/NI3singh/Solana-Data-Analysis', // Placeholder for link from [cite: 23]
+      animationDelay: '0.6s'
     },
     {
       id: 2,
@@ -166,18 +165,19 @@ const Projects: React.FC = () => {
     },
     {
       id: 6,
-      title: 'Solana Price Data Analysis',
+      title: 'Vaccine Uptake Prediction Model',
       description: [
-        'Constructed a comprehensive analysis pipeline processing 1,300+ days of Solana price data (01-01-2021 to 29-09-2024) in OHLCV format.',
-        'Engineered 25+ technical indicators and executed advanced data cleaning techniques.',
-        'Synthesized an enhanced dataset with 44 columns improving ML model predictive performance by 28%.'
+        'Developed a dual-prediction model to forecast individual likelihood of receiving XYZ and seasonal flu vaccines.',
+        'Achieved 87% accuracy in predicting XYZ vaccine uptake, 23% above baseline.',
+        'The goal of this project is to predict the likelihood of individuals receiving two types of vaccines.'
       ],
-      technologies: ['Data Engineering', 'Data Science', 'Data Analysis', 'Data Visualisation', 'Pandas', 'Numpy', 'Matplotlib'],
+      technologies: ['Numpy', 'Sklearn', 'Random Forest Algorithm'],
       achievements: [
-        'Achieved 28% accuracy gain with 44-column dataset from 1,300 days of OHLCV data.',
+        'Accuracy:- 87% ',
+        'Recieved Excellence Award for this project in GFG Hackathon.',
       ],
-      githubLink: 'https://github.com/NI3singh/Solana-Data-Analysis', // Placeholder for link from [cite: 23]
-      animationDelay: '0.6s'
+      githubLink: 'https://github.com/NI3singh/GFG-Hackathon', // Placeholder
+      animationDelay: '0.1s'
     },
   ];
 
