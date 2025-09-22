@@ -6,6 +6,7 @@ import quizWinnerImage from '@/assets/Win.JPG'; // Replace with your actual file
 import scriptWritingImage from '@/assets/0Q7A9268.JPG';
 import tattvaHackathonImage from '@/assets/TattvaHackathon.jpg';
 import finnovateImage from '@/assets/Finnovate Hackathon.jpg';
+import iitgcertificateImage from '@/assets/IITG_Certificate.png';
 
 interface StatCardProps {
   icon: React.ReactNode;
@@ -82,6 +83,15 @@ const Stats: React.FC = () => {
       imageAlt: 'TattvaHackathon Runner Up Certificate'
     },
     {
+      icon: <TrophyIcon className="h-6 w-6" />,
+      title: 'Summer Analytics (IIT Guwahati)',
+      value: 'Top 10',
+      description: 'Certificate of Excellence for finishing in top 10 of all participants',
+      animationDelay: '0.3s',
+      imageUrl: iitgcertificateImage, // Add image path when you have it
+      imageAlt: 'Summer Analytics IIT Guwahati Certificate'
+    },
+    {
       icon: <PencilSquareIcon className="h-6 w-6" />,
       title: 'Script Writing Competition-2023',
       value: '3rd Rank',
@@ -102,9 +112,9 @@ const Stats: React.FC = () => {
   ];
 
   const skills = [
-    'Python', 'JavaScript', 'Machine Learning', 'Deep Learning', 'Computer Vision', 
-    'NLP', 'GenAI', 'Pandas', 'Numpy', 'Scikit-Learn', 'PyTorch', 'FastAPI', 
-    'Power BI', 'MLOps', 'DialogFlow CX', 'TensorFlow', 'React', 'Node.js'
+    'Python', 'JavaScript', 'Machine Learning', 'Data Analytics', 'Deep Learning', 'Computer Vision', 'Exploratory Data Analysis (EDA)', 
+    'NLP', 'GenAI', 'Time Series Analysis', 'Pandas', 'Numpy', 'Scikit-Learn', 'PyTorch', 'FastAPI', 'SQL', 
+    'Power BI', 'MLOps', 'DialogFlow CX', 'TensorFlow', 'React', 'Node.js', 'Amazon Web Services (AWS)', 'Git', 'Google Cloud Platform (GCP)'
   ];
 
   // Duplicate skills for seamless loop
