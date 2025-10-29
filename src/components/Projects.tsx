@@ -637,9 +637,9 @@ const Projects: React.FC = () => {
       id: 8,
       title: 'Stock News Summarizer',
       description: [
-        'Engineered an automated financial news aggregation system that collects data from multiple sources (TradingView, Finviz, Polygon API) and leverages AI to deliver actionable market insights.',
-        'Integrated Google Gemini Pro to intelligently analyze and summarize top financial stories, generating concise reports with "What Changed Today" analysis comparing current news against 7-day historical context.',
-        'Built a production-ready Flask application with scheduled daily updates, persistent storage, and responsive UI featuring real-time ticker management and historical data access.'
+        'Engineered an automated financial news aggregation system collecting data from multiple sources (TradingView, Finviz, Polygon API) with AI-powered insights.',
+        'Integrated Google Gemini Pro to analyze and summarize top stories, generating "What Changed Today" reports with 7-day historical context.',
+        'Built production-ready Flask application with scheduled daily updates, persistent storage, and responsive UI for real-time ticker management.'
       ],
       technologies: ['Flask', 'SQLite', 'Google Gemini Pro', 'Data Aggregation', 'REST API', 'Polygon API', 'Natural Language Processing'],
       achievements: [
@@ -651,12 +651,12 @@ const Projects: React.FC = () => {
 
     {
       id: 9,
-      title: 'Retail Sales Analysis on Snowflake',
+      title: 'Auto-Doc - VS Code Extension',
       description: [
-        'Developed a zero-configuration VS Code extension that automatically tracks and documents code changes in real-time, eliminating manual documentation effort for developers.',
-        'Implemented intelligent diff detection algorithm that triggers on every file save, generating timestamped Markdown logs with precise line-by-line changes (additions/removals with line numbers).',
-        'Built intuitive user experience with status bar integration for instant on/off toggling, command palette support, and PDF export functionality for seamless workflow integration.',
-        'Designed for individual developers and teams to maintain comprehensive project history, facilitate code reviews, and enable efficient debugging sessions without workflow disruption.'
+        'Developed a zero-configuration VS Code extension that automatically tracks and documents code changes in real-time with intelligent diff detection.',
+        'Implemented line-by-line change logging with timestamps on every file save, generating clean Markdown documentation without manual effort.',
+        'Built intuitive UI with status bar controls, command palette integration, and PDF export for seamless developer workflow.',
+        'Designed for individual developers and teams to maintain project history, facilitate code reviews, and enable efficient debugging.'
       ],
       technologies: ['JavaScript', 'VS Code API', 'Git Diff Algorithm '],
       achievements: [
