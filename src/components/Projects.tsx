@@ -631,6 +631,39 @@ const Projects: React.FC = () => {
         'Discovered promotional periods boost average daily sales by 67.7% (EUR 4,406 to EUR 7,391)',
       ],
       githubLink: 'https://github.com/NI3singh/Snowflake-Project'
+    },
+
+    {
+      id: 8,
+      title: 'Stock News Summarizer',
+      description: [
+        'Engineered an automated financial news aggregation system that collects data from multiple sources (TradingView, Finviz, Polygon API) and leverages AI to deliver actionable market insights.',
+        'Integrated Google Gemini Pro to intelligently analyze and summarize top financial stories, generating concise reports with "What Changed Today" analysis comparing current news against 7-day historical context.',
+        'Built a production-ready Flask application with scheduled daily updates, persistent storage, and responsive UI featuring real-time ticker management and historical data access.'
+      ],
+      technologies: ['Flask', 'SQLite', 'Google Gemini Pro', 'Data Aggregation', 'REST API', 'Polygon API', 'Natural Language Processing'],
+      achievements: [
+        'Reduced manual news research time by 80% through automated multi-source aggregation',
+        'Processes 15+ articles per ticker into <500 word AI-generated summaries with 7-day historical tracking'
+      ],
+      githubLink: 'https://github.com/NI3singh/stock-news-summarizer'
+    },
+
+    {
+      id: 9,
+      title: 'Retail Sales Analysis on Snowflake',
+      description: [
+        'Developed a zero-configuration VS Code extension that automatically tracks and documents code changes in real-time, eliminating manual documentation effort for developers.',
+        'Implemented intelligent diff detection algorithm that triggers on every file save, generating timestamped Markdown logs with precise line-by-line changes (additions/removals with line numbers).',
+        'Built intuitive user experience with status bar integration for instant on/off toggling, command palette support, and PDF export functionality for seamless workflow integration.',
+        'Designed for individual developers and teams to maintain comprehensive project history, facilitate code reviews, and enable efficient debugging sessions without workflow disruption.'
+      ],
+      technologies: ['JavaScript', 'VS Code API', 'Git Diff Algorithm '],
+      achievements: [
+        'Achieved 100% automated documentation with zero-configuration setup',
+        'Detection accuracy within 10 meters range: ~92.7% (line-level precision for all code changes)'
+      ],
+      githubLink: 'https://github.com/NI3singh/Auto-Doc'
     }
   ];
 
