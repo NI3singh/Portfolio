@@ -656,7 +656,6 @@ const Projects: React.FC = () => {
         'Developed a zero-configuration VS Code extension that automatically tracks and documents code changes in real-time with intelligent diff detection.',
         'Implemented line-by-line change logging with timestamps on every file save, generating clean Markdown documentation without manual effort.',
         'Built intuitive UI with status bar controls, command palette integration, and PDF export for seamless developer workflow.',
-        'Designed for individual developers and teams to maintain project history, facilitate code reviews, and enable efficient debugging.'
       ],
       technologies: ['JavaScript', 'VS Code API', 'Git Diff Algorithm '],
       achievements: [
