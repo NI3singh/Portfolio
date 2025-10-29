@@ -646,7 +646,8 @@ const Projects: React.FC = () => {
         'Reduced manual news research time by 80% through automated multi-source aggregation',
         'Processes 15+ articles per ticker into <500 word AI-generated summaries with 7-day historical tracking'
       ],
-      githubLink: 'https://github.com/NI3singh/stock-news-summarizer'
+      githubLink: 'https://github.com/NI3singh/stock-news-summarizer',
+      liveLink: 'https://stock-news-summarizer.onrender.com/'
     },
 
     {
