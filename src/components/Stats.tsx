@@ -2,7 +2,7 @@ import React from 'react';
 import { TrophyIcon, PencilSquareIcon, CodeBracketIcon, LightBulbIcon } from '@heroicons/react/24/outline';
 import SectionSeparator from '@/components/SectionSeparator';
 
-import quizWinnerImage from '@/assets/Win.JPG'; // Replace with your actual filename
+import quizWinnerImage from '@/assets/Win.JPG';
 import scriptWritingImage from '@/assets/0Q7A9268.JPG';
 import tattvaHackathonImage from '@/assets/TattvaHackathon.jpg';
 import finnovateImage from '@/assets/Finnovate Hackathon.jpg';
@@ -16,47 +16,69 @@ interface StatCardProps {
   animationDelay?: string;
   imageUrl?: string;
   imageAlt?: string;
+  showWinnerTag?: boolean;
 }
 
-const StatCard: React.FC<StatCardProps> = ({ icon, title, value, description, animationDelay, imageUrl, imageAlt }) => {
+const StatCard: React.FC<StatCardProps> = ({
+  icon,
+  title,
+  value,
+  description,
+  animationDelay,
+  imageUrl,
+  imageAlt,
+  showWinnerTag
+}) => {
   return (
-    <div 
-      className="group relative bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl shadow-2xl transform transition-all duration-500 hover:scale-105 hover:bg-white/10 hover:border-accent/30 animate-fade-in-up"
+    <div
+      className="group relative flex flex-col h-full bg-gray-900/60 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden shadow-2xl transition-all duration-500 hover:scale-[1.02] hover:bg-gray-900/80 hover:border-blue-500/30 hover:shadow-blue-500/10 animate-fade-in-up"
       style={{ animationDelay: animationDelay || '0s' }}
     >
-      {/* Glass effect overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-      
-      {/* Glowing border effect */}
-      <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-secondary/20 via-accent/20 to-secondary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm"></div>
-      
-      <div className="relative z-10">
-        <div className="flex items-center text-accent mb-4">
-          <div className="p-2 bg-accent/10 rounded-lg group-hover:bg-accent/20 transition-colors duration-300">
-            {icon}
-          </div>
-          <h3 className="ml-3 text-xl font-semibold text-text-primary group-hover:text-white transition-colors duration-300">{title}</h3>
-        </div>
-        <p className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent mb-2 group-hover:from-accent group-hover:to-secondary transition-all duration-300">{value}</p>
-        <p className="text-text-secondary text-sm group-hover:text-text-primary/80 transition-colors duration-300 mb-4">{description}</p>
-        
-        {/* Achievement Image */}
-        {imageUrl && (
-          <div className="mt-4 overflow-hidden rounded-lg border border-white/10 group-hover:border-accent/30 transition-colors duration-300">
-            <img 
-              src={imageUrl} 
-              alt={imageAlt || title}
-              className="w-full h-32 object-cover transition-transform duration-300 group-hover:scale-105"
-              loading="lazy"
-              decoding="async"
-              style={{ 
-                maxWidth: '100%',
-                height: 'auto',
-                aspectRatio: '16/9'
-              }}
-            />
+      {/* Image Section - Top Half */}
+      <div className="relative h-48 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent z-10" />
+        {imageUrl ? (
+          <img
+            src={imageUrl}
+            alt={imageAlt || title}
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            loading="lazy"
+            decoding="async"
+          />
+        ) : (
+          <div className="w-full h-full bg-gray-800 flex items-center justify-center">
+            <TrophyIcon className="w-12 h-12 text-gray-600" />
           </div>
         )}
+
+        {/* Floating Icon */}
+        <div className="absolute bottom-4 left-6 z-20 p-3 bg-gray-900/90 backdrop-blur-md border border-white/10 rounded-xl shadow-lg group-hover:scale-110 transition-transform duration-300">
+          <div className="text-blue-400 group-hover:text-blue-300 transition-colors">
+            {icon}
+          </div>
+        </div>
+      </div>
+
+      {/* Content Section - Bottom Half */}
+      <div className="flex-grow p-6 pt-2 flex flex-col relative z-10">
+        <div className="mb-1">
+          <h3 className="text-lg font-bold text-white group-hover:text-blue-200 transition-colors duration-300 line-clamp-1">
+            {title}
+          </h3>
+        </div>
+
+        <div className="mb-3">
+          <span className="inline-block text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+            {value}
+          </span>
+        </div>
+
+        <p className="text-sm text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
+          {description}
+        </p>
+
+        {/* Hover Glow Effect */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
       </div>
     </div>
   );
@@ -70,8 +92,9 @@ const Stats: React.FC = () => {
       value: '1st Place',
       description: 'Winner in Quiz(Group) Competition at College Fest 2023',
       animationDelay: '0.1s',
-      imageUrl: quizWinnerImage, // Replace with actual image path
-      imageAlt: 'Quiz Competition Winner Certificate'
+      imageUrl: quizWinnerImage,
+      imageAlt: 'Quiz Competition Winner Certificate',
+      showWinnerTag: true
     },
     {
       icon: <CodeBracketIcon className="h-6 w-6" />,
@@ -79,7 +102,7 @@ const Stats: React.FC = () => {
       value: 'Runner Up',
       description: 'Runner Up in TattvaHackathon-2025 organized by CGPIT',
       animationDelay: '0.2s',
-      imageUrl: tattvaHackathonImage, // Replace with actual image path
+      imageUrl: tattvaHackathonImage,
       imageAlt: 'TattvaHackathon Runner Up Certificate'
     },
     {
@@ -88,7 +111,7 @@ const Stats: React.FC = () => {
       value: 'Top 10',
       description: 'Certificate of Excellence for finishing in top 10 of all participants',
       animationDelay: '0.3s',
-      imageUrl: iitgcertificateImage, // Add image path when you have it
+      imageUrl: iitgcertificateImage,
       imageAlt: 'Summer Analytics IIT Guwahati Certificate'
     },
     {
@@ -96,8 +119,8 @@ const Stats: React.FC = () => {
       title: 'Script Writing Competition-2023',
       value: '3rd Rank',
       description: '3rd Rank in intercollege Script Writing competition',
-      animationDelay: '0.3s',
-      imageUrl: scriptWritingImage, // Replace with actual image path
+      animationDelay: '0.4s',
+      imageUrl: scriptWritingImage,
       imageAlt: 'Script Writing Competition Certificate'
     },
     {
@@ -105,15 +128,15 @@ const Stats: React.FC = () => {
       title: 'IIT Gandhinagar Finnovate-2024',
       value: 'Selected',
       description: 'Selected in IIT Gandhinagar Finnovate Hackathon 2024 from 150+ Participants',
-      animationDelay: '0.4s',
-      imageUrl: finnovateImage, // Replace with actual image path
+      animationDelay: '0.5s',
+      imageUrl: finnovateImage,
       imageAlt: 'IIT Gandhinagar Finnovate Hackathon Selection'
     },
   ];
 
   const skills = [
-    'Python', 'JavaScript', 'Machine Learning', 'Data Analytics', 'Deep Learning', 'Computer Vision', 'Exploratory Data Analysis (EDA)', 
-    'NLP', 'GenAI', 'Time Series Analysis', 'Pandas', 'Numpy', 'Scikit-Learn', 'PyTorch', 'FastAPI', 'SQL', 
+    'Python', 'JavaScript', 'Machine Learning', 'Data Analytics', 'Deep Learning', 'Computer Vision', 'Exploratory Data Analysis (EDA)',
+    'NLP', 'GenAI', 'Time Series Analysis', 'Pandas', 'Numpy', 'Scikit-Learn', 'PyTorch', 'FastAPI', 'SQL',
     'Power BI', 'MLOps', 'DialogFlow CX', 'TensorFlow', 'React', 'Node.js', 'Amazon Web Services (AWS)', 'Git', 'Google Cloud Platform (GCP)'
   ];
 
@@ -122,65 +145,98 @@ const Stats: React.FC = () => {
 
   return (
     <>
-      <section id="stats" className="relative bg-primary text-text-primary py-16 md:py-24 overflow-hidden">
+      <section id="stats" className="relative bg-gray-950 text-white py-20 overflow-hidden">
         {/* Background decorative elements */}
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-10 w-32 h-32 bg-secondary/5 rounded-full blur-2xl"></div>
-          <div className="absolute bottom-20 right-10 w-40 h-40 bg-accent/5 rounded-full blur-2xl"></div>
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-20 left-10 w-64 h-64 bg-blue-500/5 rounded-full blur-[100px]"></div>
+          <div className="absolute bottom-20 right-10 w-64 h-64 bg-purple-500/5 rounded-full blur-[100px]"></div>
         </div>
 
         <div className="container mx-auto px-6 relative z-10">
-          <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 animate-fade-in-up bg-gradient-to-r from-white via-accent to-white bg-clip-text text-transparent">
-              My Achievements
+          {/* Achievements Section */}
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 animate-fade-in-up">
+              My <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Achievements</span>
             </h2>
-            <p className="text-lg text-text-secondary max-w-3xl mx-auto animate-fade-in-up" style={{animationDelay: '0.2s'}}>
+            <p className="text-lg text-gray-400 max-w-3xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
               Highlighting my performance in competitions and core areas of expertise.
             </p>
-            <div className="w-24 h-1 bg-gradient-to-r from-secondary to-accent mx-auto mt-4 animate-fade-in-up rounded-full" style={{animationDelay: '0.3s'}}></div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-20">
+          {/* 3-Column Grid Layout */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-24 max-w-7xl mx-auto">
             {keyStats.map((stat, index) => (
-              <StatCard
+              <div
                 key={index}
-                icon={stat.icon}
-                title={stat.title}
-                value={stat.value}
-                description={stat.description}
-                animationDelay={stat.animationDelay}
-                imageUrl={stat.imageUrl}
-                imageAlt={stat.imageAlt}
-              />
+                className={`${
+                  // Logic to center the last 2 items on the bottom row in a 3-column layout
+                  index >= 3 ? 'lg:col-span-1.5 lg:w-[calc(100%)] lg:mx-auto' : ''
+                  } ${
+                  // Special handling for the 4th item to push it to center-left
+                  index === 3 ? 'lg:ml-auto' : ''
+                  } ${
+                  // Special handling for the 5th item to push it to center-right
+                  index === 4 ? 'lg:mr-auto' : ''
+                  }`}
+              >
+                {/* 
+                    Note: The above grid logic is a bit complex to get perfect centering for 5 items in 3 cols.
+                    A simpler approach for 5 items in 3 cols is just standard grid flow, 
+                    but centering the last row requires flex or specific grid placement.
+                    Let's try a cleaner Flex wrap approach for the container or just standard grid.
+                    Standard grid is safer. Let's revert to standard grid but use a wrapper for the last row if we want centering.
+                    Actually, standard grid-cols-3 will put 3 on top, 2 on bottom left-aligned.
+                    To center the bottom 2, we can use flex for the container or specific classes.
+                    Let's stick to a clean grid-cols-1 md:grid-cols-2 lg:grid-cols-3.
+                    The 2 items on the bottom will be left-aligned by default.
+                    To center them, we can make the last two items span differently or use flex.
+                    Let's use a Flex container with wrap and justify-center. It handles 5 items perfectly (3 top, 2 bottom centered).
+                 */}
+              </div>
             ))}
           </div>
-          
-          <div className="mt-16 text-center animate-fade-in-up" style={{animationDelay: '0.5s'}}>
-            <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 animate-fade-in-up bg-gradient-to-r from-white via-accent to-white bg-clip-text text-transparent">
-              Core Technical Skills
+
+          {/* Re-implementing the list using Flexbox for perfect centering of 5 items */}
+          <div className="flex flex-wrap justify-center gap-6 lg:gap-8 mb-24 max-w-7xl mx-auto">
+            {keyStats.map((stat, index) => (
+              <div
+                key={index}
+                className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] max-w-md"
+              >
+                <StatCard
+                  icon={stat.icon}
+                  title={stat.title}
+                  value={stat.value}
+                  description={stat.description}
+                  animationDelay={stat.animationDelay}
+                  imageUrl={stat.imageUrl}
+                  imageAlt={stat.imageAlt}
+                  showWinnerTag={stat.showWinnerTag}
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Core Technical Skills Section */}
+          <div className="mt-20 text-center animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
+            <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 animate-fade-in-up">
+              Core Technical <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Skills</span>
             </h3>
-            <div className="w-24 h-1 bg-gradient-to-r from-secondary to-accent mx-auto mb-6 animate-fade-in-up rounded-full" style={{animationDelay: '0.3s'}}></div>
-            
+
             {/* Animated Skills Rail */}
-            <div className="relative overflow-hidden py-4 pause-on-hover">
+            <div className="relative overflow-hidden py-6 pause-on-hover">
               {/* Gradient masks for smooth edges */}
-              <div className="absolute left-0 top-0 w-20 h-full bg-gradient-to-r from-primary to-transparent z-10"></div>
-              <div className="absolute right-0 top-0 w-20 h-full bg-gradient-to-l from-primary to-transparent z-10"></div>
-              
+              <div className="absolute left-0 top-0 w-20 sm:w-32 h-full bg-gradient-to-r from-gray-950 to-transparent z-10"></div>
+              <div className="absolute right-0 top-0 w-20 sm:w-32 h-full bg-gradient-to-l from-gray-950 to-transparent z-10"></div>
+
               <div className="scrolling-wrapper flex animate-scroll">
                 {duplicatedSkills.map((skill, index) => (
                   <div
                     key={index}
                     className="flex-shrink-0 mx-3 group cursor-pointer"
                   >
-                    <div className="relative px-6 py-3 bg-white/5 backdrop-blur-md border border-white/10 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 hover:bg-white/10 hover:border-accent/30">
-                      {/* Glowing effect */}
-                      <div className="absolute inset-0 rounded-full bg-gradient-to-r from-secondary/20 to-accent/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm"></div>
-                      
-                      {/* Glass overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      
-                      <span className="relative z-10 text-sm font-medium bg-gradient-to-r from-accent to-secondary bg-clip-text text-transparent group-hover:from-white group-hover:to-accent whitespace-nowrap">
+                    <div className="relative px-6 py-3 bg-gray-900/50 backdrop-blur-md border border-white/10 rounded-full shadow-lg transition-all duration-300 hover:scale-110 hover:bg-blue-500/10 hover:border-blue-500/30">
+                      <span className="relative z-10 text-sm font-medium text-gray-300 group-hover:text-blue-300 whitespace-nowrap transition-colors">
                         {skill}
                       </span>
                     </div>

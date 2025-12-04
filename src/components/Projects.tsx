@@ -1,433 +1,6 @@
-// import React, { useState, useEffect, useCallback } from 'react';
-// import { CodeBracketIcon, ArrowTopRightOnSquareIcon, CheckCircleIcon } from '@heroicons/react/24/outline';
-
-// interface Project {
-//   id: number;
-//   title: string;
-//   description: string[];
-//   technologies: string[];
-//   achievements?: string[];
-//   githubLink: string;
-//   liveLink?: string;
-// }
-
-// const ProjectCard: React.FC<Project & { liveLink?: string }> = ({
-//   title,
-//   description,
-//   technologies,
-//   achievements,
-//   githubLink,
-//   liveLink
-// }) => {
-//   return (
-//     <div className="bg-gray-900/90 backdrop-blur-sm p-8 rounded-2xl shadow-2xl border border-blue-500/20 flex flex-col h-full hover:border-blue-400/40 transition-all duration-500 hover:shadow-blue-500/10 hover:-translate-y-1">
-//       <h3 className="text-xl font-bold text-white mb-4 flex items-center">
-//         <CodeBracketIcon className="w-6 h-6 mr-3 text-blue-400" />
-//         {title}
-//       </h3>
-      
-//       <div className="text-gray-300 text-base mb-6 space-y-3 leading-relaxed flex-grow">
-//         {description.map((desc, index) => (
-//           <p key={index} className="text-sm leading-6" dangerouslySetInnerHTML={{ __html: desc }}></p>
-//         ))}
-//       </div>
-
-//       {achievements && achievements.length > 0 && (
-//         <div className="mb-6 bg-green-950/30 p-4 rounded-lg border border-green-500/20">
-//           <h4 className="text-base font-semibold text-green-400 mb-3 flex items-center">
-//             <CheckCircleIcon className="w-5 h-5 mr-2" />
-//             Key Achievements
-//           </h4>
-//           <ul className="list-none space-y-2">
-//             {achievements.map((ach, index) => (
-//               <li key={index} className="flex items-start text-sm text-green-300">
-//                 <CheckCircleIcon className="w-4 h-4 mr-3 flex-shrink-0 mt-0.5 text-green-400" />
-//                 <span dangerouslySetInnerHTML={{ __html: ach }}></span>
-//               </li>
-//             ))}
-//           </ul>
-//         </div>
-//       )}
-
-//       <div className="mb-6">
-//         <h4 className="text-base font-semibold text-gray-200 mb-3">Technologies Used</h4>
-//         <div className="flex flex-wrap gap-2">
-//           {technologies.map((tech) => (
-//             <span
-//               key={tech}
-//               className="bg-blue-600/20 text-blue-300 text-sm px-4 py-2 rounded-full border border-blue-500/30 hover:bg-blue-600/30 transition-colors duration-300"
-//             >
-//               {tech}
-//             </span>
-//           ))}
-//         </div>
-//       </div>
-
-//       <div className="mt-auto pt-4 border-t border-gray-700/50 flex items-center justify-between flex-wrap gap-3">
-//         <a
-//           href={githubLink}
-//           target="_blank"
-//           rel="noopener noreferrer"
-//           className="inline-flex items-center text-blue-400 hover:text-blue-300 font-medium transition-all duration-300 hover:underline group"
-//         >
-//           View on GitHub
-//           <ArrowTopRightOnSquareIcon className="w-5 h-5 ml-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
-//         </a>
-//         {liveLink && (
-//           <a
-//             href={liveLink}
-//             target="_blank"
-//             rel="noopener noreferrer"
-//             className="inline-flex items-center text-green-400 hover:text-green-300 font-medium transition-all duration-300 hover:underline group"
-//           >
-//             View Live
-//             <ArrowTopRightOnSquareIcon className="w-5 h-5 ml-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
-//           </a>
-//         )}
-//       </div>
-//     </div>
-//   );
-// };
-
-// const Projects: React.FC = () => {
-//   const [currentIndex, setCurrentIndex] = useState(0);
-//   const [isTransitioning, setIsTransitioning] = useState(false);
-//   const [dotsBlinking, setDotsBlinking] = useState(false);
-
-//   const projectData: Project[] = [
-//     {
-//       id: 1,
-//       title: 'Youtopia - YouTube Learning Libraryl',
-//       description: [
-//         'Developed a full-stack web application that transforms YouTube into a structured and trackable personal learning library.',
-//         'Built automatic viewing progress tracking system for YouTube videos and playlists with real-time data persistence.',
-//         'Created polished, mobile-responsive interface with real-time search, batch operations, and custom UI components.'
-//       ],
-//       technologies: ['Full-Stack Development', 'JavaScript', 'React', 'Node.js', 'python-backend'],
-//       achievements: [
-//         'Built complete progress tracking system with automatic save functionality',
-//       ],
-//       githubLink: 'https://github.com/NI3singh/YouTopia',
-//       liveLink: 'https://ni3-youtopia.vercel.app/'
-//     },
-//     {
-//       id: 2,
-//       title: 'Solana Price Data Analysis',
-//       description: [
-//         'Analyzed 1,300+ days of historical Solana market data in OHLCV format to identify price volatility drivers.',
-//         'Engineered robust data pipeline enriching raw dataset with 25+ technical indicators including RSI, MACD, and Bollinger Bands.',
-//         'Synthesized enhanced 44-column dataset improving baseline ML model predictive performance for price forecasting.'
-//       ],
-//       technologies: ['Data Engineering', 'Data Analysis', 'Data Visualisation', 'Matplotlib', 'Technical Analysis'],
-//       achievements: [
-//         'Built scalable pipeline for cryptocurrency market data analysis and trading insights'
-//       ],
-//       githubLink: 'https://github.com/NI3singh/Solana-Data-Analysis',
-//     },
-//     {
-//       id: 3,
-//       title: 'Text Extraction from Image',
-//       description: [
-//         'Developed a robust text extraction system capable of accurately processing a wide range of image types and text styles.',
-//         'Developed a versatile system combining GOT OCR2.0 and EasyOCR LLM models for accurate text.',
-//         'Used HuggingFace and Gradio for Deploying the project.',
-//         'Achieved 94.8% text recognition accuracy in english language and font styles.'
-//       ],
-//       technologies: ['GOT OCR2.0', 'EasyOCR', 'Gradio', 'HuggingFace'],
-//       achievements: [
-//         'Text recognition accuracy in english language:- 94.8%',
-//       ],
-//       githubLink: 'https://github.com/NI3singh/Image-to-text',
-//       liveLink: 'https://huggingface.co/spaces/Ni3SinghR/IMAGE-TO_TEXT-GOT-OCR2.0'
-//     },
-//     {
-//       id: 4,
-//       title: 'Face Recognition Web Application (Find You)',
-//       description: [
-//         'This is a Flask-based web application for face recognition.',
-//         'Users can upload or capture photos to find matched faces from a dataset.',
-//         'The app also provides options to download all matched photos as a zip file.',
-//         'Ensuring Proper Security implementation by adding feature "Authorized access only by Password-Protected-Link".',
-//         'Achieved 96.3% face recognition accuracy on a diverse dataset of 500+ images'
-//       ],
-//       technologies: ['Retina Face', 'Facenet', 'Flask'],
-//       achievements: [
-//         'Face Recognition Accuracy:- 96.3%',
-//       ],
-//       githubLink: 'https://github.com/NI3singh/Find-You/tree/main',
-//     },
-//     {
-//       id: 5,
-//       title: 'Student Performance Analysis',
-//       description: [
-//         'Analyzed a comprehensive dataset of 5,000+ student records to identify key predictors of academic success.',
-//         'Engineered automated ETL pipeline using Python achieving 98.5% data integrity through robust validation processes.',
-//         'Developed full-stack web application with React frontend and Python backend for interactive data visualization.'
-//       ],
-//       technologies: ['Python', 'Pandas', 'Scikit-learn', 'React', 'Data Pipeline Engineering'],
-//       achievements: [
-//         'Achieved 98.5% data integrity through automated ETL pipeline',
-//         'Discovered 67.7% correlation between engagement metrics and final grades'
-//       ],
-//       githubLink: 'https://github.com/NI3singh/Student-Performance-Analysis',
-//       liveLink: 'https://student-performance-analysis-1-omrb.onrender.com/'
-//     },
-//     {
-//       id: 6,
-//       title: 'Object Detection and Distance Measurement',
-//       description: [
-//         'Developed a real-time object detection system using YOLOv5x model to detect multiple objects in dynamic environments.',
-//         'Implemented custom distance measurement algorithm.',
-//         'Integrated the system with speech output for real-time feedback, enhancing usability in practical applications like autonomous navigation.',
-//         'Achieved 92.7% accuracy in distance measurements within 10 meters range.'
-//       ],
-//       technologies: ['Computer Vision', 'YOLOv5', 'pyttsx3', 'OpenCV'],
-//       achievements: [
-//         'Detection Accuracy within 10 meters range :- 92.7%'
-//       ],
-//       githubLink: 'https://github.com/NI3singh/FINAL_YEAR_PROJECT-1',
-//     },
-    
-//     {
-//       id: 7,
-//       title: 'Retail Sales Analysis on Snowflake',
-//       description: [
-//         'Managed end-to-end data analysis pipeline processing 1M+ rows of Rossmann retail sales data for demand forecasting.',
-//         'Executed comprehensive data cleaning and feature engineering entirely with SQL, creating custom time-based features.',
-//         'Conducted extensive EDA using complex SQL queries to analyze relationships between promotions and sales performance.'
-//       ],
-//       technologies: ['Snowflake', 'SQL', 'Data Engineering', 'Feature Engineering', 'Cloud Data Platform'],
-//       achievements: [
-//         'Discovered promotional periods boost average daily sales by 67.7% (EUR 4,406 to EUR 7,391)',
-//       ],
-//       githubLink: 'https://github.com/NI3singh/Snowflake-Project'
-//     }
-//   ];
-
-//   // Create extended array for infinite scroll
-//   const extendedProjects = [...projectData, ...projectData, ...projectData];
-//   const totalProjects = projectData.length;
-
-//   // Initialize at middle set for smooth infinite scrolling
-//   useEffect(() => {
-//     setCurrentIndex(totalProjects);
-//   }, [totalProjects]);
-
-//   // Navigation with infinite smooth scrolling
-//   const navigate = useCallback((direction: 'next' | 'prev') => {
-//     if (!isTransitioning) {
-//       setIsTransitioning(true);
-//       setDotsBlinking(true);
-      
-//       setCurrentIndex(prev => {
-//         const newIndex = direction === 'next' ? prev + 1 : prev - 1;
-        
-//         // Handle infinite loop transitions
-//         if (newIndex >= totalProjects * 2) {
-//           setTimeout(() => {
-//             setIsTransitioning(false);
-//             setCurrentIndex(totalProjects);
-//           }, 600);
-//           return newIndex;
-//         } else if (newIndex < totalProjects) {
-//           setTimeout(() => {
-//             setIsTransitioning(false);
-//             setCurrentIndex(totalProjects * 2 - 1);
-//           }, 600);
-//           return newIndex;
-//         }
-        
-//         return newIndex;
-//       });
-      
-//       setTimeout(() => {
-//         setIsTransitioning(false);
-//         setDotsBlinking(false);
-//       }, 600);
-//     }
-//   }, [isTransitioning, totalProjects]);
-
-//   const goToNext = useCallback(() => navigate('next'), [navigate]);
-//   const goToPrev = useCallback(() => navigate('prev'), [navigate]);
-
-//   // Direct navigation to specific slide
-//   const goToSlide = (index: number) => {
-//     if (!isTransitioning) {
-//       setIsTransitioning(true);
-//       setDotsBlinking(true);
-//       setCurrentIndex(totalProjects + index);
-//       setTimeout(() => {
-//         setIsTransitioning(false);
-//         setDotsBlinking(false);
-//       }, 600);
-//     }
-//   };
-
-//   // Keyboard support
-//   useEffect(() => {
-//     const handleKeyDown = (e: KeyboardEvent) => {
-//       if (e.key === 'ArrowLeft') {
-//         e.preventDefault();
-//         goToPrev();
-//       } else if (e.key === 'ArrowRight') {
-//         e.preventDefault();
-//         goToNext();
-//       }
-//     };
-
-//     window.addEventListener('keydown', handleKeyDown);
-//     return () => window.removeEventListener('keydown', handleKeyDown);
-//   }, [goToPrev, goToNext]);
-
-//   // Touch support
-//   const [touchStart, setTouchStart] = useState<number | null>(null);
-//   const [touchEnd, setTouchEnd] = useState<number | null>(null);
-
-//   const onTouchStart = (e: React.TouchEvent) => {
-//     setTouchEnd(null);
-//     setTouchStart(e.targetTouches[0].clientX);
-//   };
-
-//   const onTouchMove = (e: React.TouchEvent) => {
-//     setTouchEnd(e.targetTouches[0].clientX);
-//   };
-
-//   const onTouchEnd = () => {
-//     if (!touchStart || !touchEnd) return;
-//     const distance = touchStart - touchEnd;
-//     if (distance > 50) goToNext();
-//     else if (distance < -50) goToPrev();
-//   };
-
-//   // Calculate active dot index
-//   const activeDotIndex = currentIndex % totalProjects;
-
-//   return (
-//     <section id="projects" className="bg-gray-950 text-white py-16 md:py-24 overflow-hidden">
-//       <div className="container mx-auto px-6 mb-12 md:mb-16">
-//         <div className="text-center">
-//           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-//             My Projects
-//           </h2>
-//           <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-//             A selection of projects that demonstrate my skills in AI and Data Science.
-//           </p>
-//           <div className="w-24 h-1 bg-blue-500 mx-auto mt-4"></div>
-//         </div>
-//       </div>
-
-//       {/* Full Width Carousel Container */}
-//       <div className="relative w-full">
-//         {/* Gradient Overlays for Edge Fade Effect */}
-//         <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-gray-950 to-transparent z-40 pointer-events-none"></div>
-//         <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-gray-950 to-transparent z-40 pointer-events-none"></div>
-
-        
-//         {/* Navigation Buttons */}
-//         <div className="absolute inset-0 flex items-center justify-between px-4 sm:px-8 z-50 pointer-events-none">
-//           <button
-//             onClick={goToPrev}
-//             className="pointer-events-auto w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-blue-500/10 backdrop-blur-md border border-blue-400/30 flex items-center justify-center transition-all duration-300 hover:bg-blue-500/20 hover:scale-110 hover:border-blue-400/50 group"
-//             aria-label="Previous projects"
-//           >
-//             <svg className="w-6 h-6 text-blue-400 group-hover:text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-//               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-//             </svg>
-//           </button>
-          
-//           <button
-//             onClick={goToNext}
-//             className="pointer-events-auto w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-blue-500/10 backdrop-blur-md border border-blue-400/30 flex items-center justify-center transition-all duration-300 hover:bg-blue-500/20 hover:scale-110 hover:border-blue-400/50 group"
-//             aria-label="Next projects"
-//           >
-//             <svg className="w-6 h-6 text-blue-400 group-hover:text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-//               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-//             </svg>
-//           </button>
-//         </div>
-
-//         {/* Full Width Carousel Track */}
-//         <div className="w-full">
-//           <div 
-//             className="flex gap-6 px-[calc((100vw-1024px)/2)]"
-//             style={{
-//               transform: `translateX(calc(-${currentIndex * (100/3)}% - ${currentIndex * 1.5}rem))`,
-//               transition: isTransitioning ? 'transform 600ms cubic-bezier(0.16, 1, 0.3, 1)' : 'none',
-//             }}
-//             onTouchStart={onTouchStart}
-//             onTouchMove={onTouchMove}
-//             onTouchEnd={onTouchEnd}
-//           >
-//             {extendedProjects.map((project, index) => (
-//               <div 
-//                 key={`${project.id}-${index}`}
-//                 className="flex-shrink-0"
-//                 style={{ width: 'min(400px, calc(33.333vw - 1rem))' }}
-//               >
-//                 <ProjectCard {...project} />
-//               </div>
-//             ))}
-//           </div>
-//         </div>
-
-//         {/* Decorative Elements */}
-//         <div className="absolute -bottom-20 left-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
-//         <div className="absolute -top-20 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
-//       </div>
-
-//       {/* Controls Section */}
-//       <div className="container mx-auto px-6 mt-12">
-//         {/* Pagination Dots */}
-//         <div className="flex justify-center space-x-3">
-//           {projectData.map((_, index) => (
-//             <button
-//               key={index}
-//               onClick={() => goToSlide(index)}
-//               className={`transition-all ${
-//                 dotsBlinking ? 'duration-150' : 'duration-300'
-//               } ${
-//                 index === activeDotIndex
-//                   ? 'w-8 h-3 bg-blue-500 rounded-full shadow-lg shadow-blue-500/50'
-//                   : 'w-3 h-3 bg-gray-600 rounded-full hover:bg-gray-500'
-//               } ${
-//                 dotsBlinking && index === activeDotIndex ? 'animate-pulse' : ''
-//               }`}
-//               aria-label={`Go to project ${index + 1}`}
-//             />
-//           ))}
-//         </div>
-
-//         {/* Project Counter and GitHub Link */}
-//         <div className="text-center mt-8 space-y-3">
-//           <div className="inline-flex items-center gap-3 px-5 py-2.5 bg-gray-800/50 backdrop-blur-sm rounded-full border border-gray-700/50">
-//             <span className="text-gray-300 font-medium">
-//               Project <span className="text-blue-400 font-bold">{activeDotIndex + 1}</span> of <span className="text-blue-400 font-bold">{totalProjects}</span>
-//             </span>
-//           </div>
-          
-//           <div className="flex items-center justify-center gap-2 text-gray-400">
-//             <span className="text-sm">Want to see more projects?</span>
-//             <a
-//               href="https://github.com/NI3singh"
-//               target="_blank"
-//               rel="noopener noreferrer"
-//               className="inline-flex items-center text-sm text-blue-400 hover:text-blue-300 font-medium transition-all duration-300 hover:underline group"
-//             >
-//               Visit my GitHub
-//               <ArrowTopRightOnSquareIcon className="w-4 h-4 ml-1.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
-//             </a>
-//           </div>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default Projects;
-
-
 import React, { useState, useEffect, useCallback } from 'react';
-import { CodeBracketIcon, ArrowTopRightOnSquareIcon, CheckCircleIcon } from '@heroicons/react/24/outline';
+import { CodeBracketIcon, ArrowTopRightOnSquareIcon, CheckCircleIcon, ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
+import { motion, AnimatePresence, useMotionValue } from 'framer-motion';
 
 interface Project {
   id: number;
@@ -439,91 +12,122 @@ interface Project {
   liveLink?: string;
 }
 
-const ProjectCard: React.FC<Project & { liveLink?: string }> = ({
+const ProjectCard: React.FC<Project & { liveLink?: string; index: number }> = ({
   title,
   description,
   technologies,
   achievements,
   githubLink,
-  liveLink
+  liveLink,
+  index
 }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
-    <div className="bg-gray-900/90 backdrop-blur-sm p-8 rounded-2xl shadow-2xl border border-blue-500/20 flex flex-col h-full hover:border-blue-400/40 transition-all duration-500 hover:shadow-blue-500/10 hover:-translate-y-1">
-      <h3 className="text-xl font-bold text-white mb-4 flex items-center">
-        <CodeBracketIcon className="w-6 h-6 mr-3 text-blue-400" />
-        {title}
-      </h3>
-      
-      <div className="text-gray-300 text-base mb-6 space-y-3 leading-relaxed flex-grow">
-        {description.map((desc, index) => (
-          <p key={index} className="text-sm leading-6" dangerouslySetInnerHTML={{ __html: desc }}></p>
-        ))}
-      </div>
+    <div
+      className="h-full px-3 md:px-4"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <div className={`
+        relative h-full bg-gray-900/80 backdrop-blur-xl rounded-2xl overflow-hidden
+        border border-white/10 transition-all duration-500 group
+        ${isHovered ? 'border-blue-500/50 shadow-[0_0_30px_-5px_rgba(59,130,246,0.3)]' : 'hover:border-white/20'}
+      `}>
+        {/* Gradient Glow Effect */}
+        <div className={`
+          absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/5 to-transparent
+          opacity-0 transition-opacity duration-500
+          ${isHovered ? 'opacity-100' : ''}
+        `} />
 
-      {achievements && achievements.length > 0 && (
-        <div className="mb-6 bg-green-950/30 p-4 rounded-lg border border-green-500/20">
-          <h4 className="text-base font-semibold text-green-400 mb-3 flex items-center">
-            <CheckCircleIcon className="w-5 h-5 mr-2" />
-            Key Achievements
-          </h4>
-          <ul className="list-none space-y-2">
-            {achievements.map((ach, index) => (
-              <li key={index} className="flex items-start text-sm text-green-300">
-                <CheckCircleIcon className="w-4 h-4 mr-3 flex-shrink-0 mt-0.5 text-green-400" />
-                <span dangerouslySetInnerHTML={{ __html: ach }}></span>
-              </li>
+        <div className="relative p-6 sm:p-8 flex flex-col h-full z-10">
+          {/* Header */}
+          <div className="mb-6">
+            <div className="flex items-center gap-3 mb-4">
+              <div className={`
+                p-2 rounded-lg bg-blue-500/10 text-blue-400
+                transition-all duration-300 group-hover:scale-110 group-hover:bg-blue-500/20
+              `}>
+                <CodeBracketIcon className="w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-bold text-white group-hover:text-blue-200 transition-colors">
+                {title}
+              </h3>
+            </div>
+
+            {/* Technologies Tags */}
+            <div className="flex flex-wrap gap-2 mb-4">
+              {technologies.slice(0, 4).map((tech) => (
+                <span
+                  key={tech}
+                  className="text-xs font-medium px-2.5 py-1 rounded-full bg-white/5 text-gray-300 border border-white/5"
+                >
+                  {tech}
+                </span>
+              ))}
+              {technologies.length > 4 && (
+                <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-white/5 text-gray-400 border border-white/5">
+                  +{technologies.length - 4}
+                </span>
+              )}
+            </div>
+          </div>
+
+          {/* Description */}
+          <div className="flex-grow space-y-3 mb-6">
+            {description.slice(0, 2).map((desc, i) => (
+              <p key={i} className="text-sm text-gray-400 leading-relaxed line-clamp-3" dangerouslySetInnerHTML={{ __html: desc }} />
             ))}
-          </ul>
-        </div>
-      )}
+          </div>
 
-      <div className="mb-6">
-        <h4 className="text-base font-semibold text-gray-200 mb-3">Technologies Used</h4>
-        <div className="flex flex-wrap gap-2">
-          {technologies.map((tech) => (
-            <span
-              key={tech}
-              className="bg-blue-600/20 text-blue-300 text-sm px-4 py-2 rounded-full border border-blue-500/30 hover:bg-blue-600/30 transition-colors duration-300"
+          {/* Achievements Preview (Only visible on hover or if space permits) */}
+          {achievements && achievements.length > 0 && (
+            <div className={`
+              mb-6 overflow-hidden transition-all duration-500
+              ${isHovered ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'}
+            `}>
+              <div className="bg-green-500/10 rounded-lg p-3 border border-green-500/20">
+                <div className="flex items-center gap-2 text-green-400 mb-2">
+                  <CheckCircleIcon className="w-4 h-4" />
+                  <span className="text-xs font-bold uppercase tracking-wider">Key Achievement</span>
+                </div>
+                <p className="text-xs text-green-300" dangerouslySetInnerHTML={{ __html: achievements[0] }} />
+              </div>
+            </div>
+          )}
+
+          {/* Footer Actions */}
+          <div className="mt-auto pt-4 border-t border-white/10 flex items-center justify-between gap-4">
+            <a
+              href={githubLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-sm font-medium text-gray-400 hover:text-white transition-colors group/link"
             >
-              {tech}
-            </span>
-          ))}
-        </div>
-      </div>
+              <span>Source Code</span>
+              <ArrowTopRightOnSquareIcon className="w-4 h-4 transition-transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
+            </a>
 
-      <div className="mt-auto pt-4 border-t border-gray-700/50 flex items-center justify-between flex-wrap gap-3">
-        <a
-          href={githubLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="relative z-10 inline-flex items-center text-blue-400 hover:text-blue-300 font-medium transition-all duration-300 hover:underline group"
-          style={{ position: 'relative', zIndex: 10 }}
-        >
-          View on GitHub
-          <ArrowTopRightOnSquareIcon className="w-5 h-5 ml-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
-        </a>
-        {liveLink && (
-          <a
-            href={liveLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="relative z-10 inline-flex items-center text-green-400 hover:text-green-300 font-medium transition-all duration-300 hover:underline group"
-            style={{ position: 'relative', zIndex: 10 }}
-          >
-            View Live
-            <ArrowTopRightOnSquareIcon className="w-5 h-5 ml-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
-          </a>
-        )}
+            {liveLink && (
+              <a
+                href={liveLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors group/link"
+              >
+                <span>Live Demo</span>
+                <ArrowTopRightOnSquareIcon className="w-4 h-4 transition-transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
+              </a>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );
 };
 
 const Projects: React.FC = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const [dotsBlinking, setDotsBlinking] = useState(false);
-
   const projectData: Project[] = [
     {
       id: 1,
@@ -617,7 +221,7 @@ const Projects: React.FC = () => {
       ],
       githubLink: 'https://github.com/NI3singh/FINAL_YEAR_PROJECT-1',
     },
-    
+
     {
       id: 7,
       title: 'Retail Sales Analysis on Snowflake',
@@ -667,217 +271,178 @@ const Projects: React.FC = () => {
     }
   ];
 
-  // Create extended array for infinite scroll
+  // Infinite Carousel Logic
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [cardsToShow, setCardsToShow] = useState(3);
+
+  // Update cards to show based on screen width
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) setCardsToShow(1);
+      else if (window.innerWidth < 1024) setCardsToShow(2);
+      else setCardsToShow(3);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Create extended array for infinite scroll: [Last Few, ...Original, ...Original, ...First Few]
+  // We triple the array to ensure smooth infinite scrolling in both directions
   const extendedProjects = [...projectData, ...projectData, ...projectData];
   const totalProjects = projectData.length;
 
-  // Initialize at middle set for smooth infinite scrolling
+  // Initialize at the middle set
   useEffect(() => {
     setCurrentIndex(totalProjects);
   }, [totalProjects]);
 
-  // Navigation with infinite smooth scrolling
-  const navigate = useCallback((direction: 'next' | 'prev') => {
-    if (!isTransitioning) {
-      setIsTransitioning(true);
-      setDotsBlinking(true);
-      
-      setCurrentIndex(prev => {
-        const newIndex = direction === 'next' ? prev + 1 : prev - 1;
-        
-        // Handle infinite loop transitions
-        if (newIndex >= totalProjects * 2) {
-          setTimeout(() => {
-            setIsTransitioning(false);
-            setCurrentIndex(totalProjects);
-          }, 800);
-          return newIndex;
-        } else if (newIndex < totalProjects) {
-          setTimeout(() => {
-            setIsTransitioning(false);
-            setCurrentIndex(totalProjects * 2 - 1);
-          }, 800);
-          return newIndex;
-        }
-        
-        return newIndex;
-      });
-      
-      setTimeout(() => {
-        setIsTransitioning(false);
-        setDotsBlinking(false);
-      }, 800);
+  const handleNext = useCallback(() => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setCurrentIndex((prev) => prev + 1);
+  }, [isTransitioning]);
+
+  const handlePrev = useCallback(() => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setCurrentIndex((prev) => prev - 1);
+  }, [isTransitioning]);
+
+  // Handle infinite loop reset
+  const handleTransitionEnd = () => {
+    setIsTransitioning(false);
+
+    // If we've scrolled past the second set (to the right)
+    if (currentIndex >= totalProjects * 2) {
+      setCurrentIndex(totalProjects);
     }
-  }, [isTransitioning, totalProjects]);
-
-  const goToNext = useCallback(() => navigate('next'), [navigate]);
-  const goToPrev = useCallback(() => navigate('prev'), [navigate]);
-
-  // Direct navigation to specific slide
-  const goToSlide = (index: number) => {
-    if (!isTransitioning) {
-      setIsTransitioning(true);
-      setDotsBlinking(true);
-      setCurrentIndex(totalProjects + index);
-      setTimeout(() => {
-        setIsTransitioning(false);
-        setDotsBlinking(false);
-      }, 800);
+    // If we've scrolled before the second set (to the left)
+    else if (currentIndex < totalProjects) {
+      setCurrentIndex(totalProjects * 2 - 1);
     }
   };
 
-  // Keyboard support
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowLeft') {
-        e.preventDefault();
-        goToPrev();
-      } else if (e.key === 'ArrowRight') {
-        e.preventDefault();
-        goToNext();
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [goToPrev, goToNext]);
-
-  // Touch support
-  const [touchStart, setTouchStart] = useState<number | null>(null);
-  const [touchEnd, setTouchEnd] = useState<number | null>(null);
-
-  const onTouchStart = (e: React.TouchEvent) => {
-    setTouchEnd(null);
-    setTouchStart(e.targetTouches[0].clientX);
-  };
-
-  const onTouchMove = (e: React.TouchEvent) => {
-    setTouchEnd(e.targetTouches[0].clientX);
-  };
-
-  const onTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
-    const distance = touchStart - touchEnd;
-    if (distance > 50) goToNext();
-    else if (distance < -50) goToPrev();
-  };
-
-  // Calculate active dot index
-  const activeDotIndex = currentIndex % totalProjects;
+  // Auto-play (optional, currently disabled but ready)
+  // useEffect(() => {
+  //   const interval = setInterval(handleNext, 5000);
+  //   return () => clearInterval(interval);
+  // }, [handleNext]);
 
   return (
-    <section id="projects" className="bg-gray-950 text-white py-16 md:py-24 overflow-hidden">
-      <div className="container mx-auto px-6 mb-12 md:mb-16">
-        <div className="text-center">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-            My Projects
+    <section id="projects" className="relative bg-gray-950 py-20 overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[100px]" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[100px]" />
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+            Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Projects</span>
           </h2>
-          <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-            A selection of projects that demonstrate my skills in AI and Data Science.
+          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+            A collection of my work in AI, Data Science, and Full Stack Development.
           </p>
-          <div className="w-24 h-1 bg-blue-500 mx-auto mt-4"></div>
-        </div>
-      </div>
+        </motion.div>
 
-      {/* Full Width Carousel Container */}
-      <div className="relative w-full">
-        {/* Gradient Overlays - Lower z-index and fully non-interactive */}
-        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-gray-950 to-transparent z-20 pointer-events-none"></div>
-        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-gray-950 to-transparent z-20 pointer-events-none"></div>
-        
-        {/* Navigation Buttons - Positioned absolutely but not covering the entire area */}
-        <button
-          onClick={goToPrev}
-          className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-30 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-blue-500/10 backdrop-blur-md border border-blue-400/30 flex items-center justify-center transition-all duration-300 hover:bg-blue-500/20 hover:scale-110 hover:border-blue-400/50 group"
-          aria-label="Previous projects"
-        >
-          <svg className="w-6 h-6 text-blue-400 group-hover:text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-          </svg>
-        </button>
-        
-        <button
-          onClick={goToNext}
-          className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-30 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-blue-500/10 backdrop-blur-md border border-blue-400/30 flex items-center justify-center transition-all duration-300 hover:bg-blue-500/20 hover:scale-110 hover:border-blue-400/50 group"
-          aria-label="Next projects"
-        >
-          <svg className="w-6 h-6 text-blue-400 group-hover:text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
-
-        {/* Full Width Carousel Track - Lower z-index than navigation but interactive */}
-        <div className="w-full relative z-10">
-          <div 
-            className="flex gap-6 px-[calc((100vw-1024px)/2)]"
-            style={{
-              transform: `translateX(calc(-${currentIndex * (100/3)}% - ${currentIndex * 1.5}rem))`,
-              transition: isTransitioning ? 'transform 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94)' : 'none',
-            }}
-            onTouchStart={onTouchStart}
-            onTouchMove={onTouchMove}
-            onTouchEnd={onTouchEnd}
+        {/* Carousel Container */}
+        <div className="relative group">
+          {/* Navigation Buttons */}
+          <button
+            onClick={handlePrev}
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-20 p-3 rounded-full bg-gray-900/80 border border-white/10 text-white hover:bg-blue-500 hover:border-blue-500 transition-all duration-300 opacity-0 group-hover:opacity-100 focus:opacity-100 shadow-lg backdrop-blur-sm"
+            aria-label="Previous Project"
           >
-            {extendedProjects.map((project, index) => (
-              <div 
-                key={`${project.id}-${index}`}
-                className="flex-shrink-0"
-                style={{ width: 'min(400px, calc(33.333vw - 1rem))' }}
-              >
-                <ProjectCard {...project} />
-              </div>
-            ))}
-          </div>
-        </div>
+            <ChevronLeftIcon className="w-6 h-6" />
+          </button>
 
-        {/* Decorative Elements - Lowest z-index */}
-        <div className="absolute -bottom-20 left-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl z-0"></div>
-        <div className="absolute -top-20 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl z-0"></div>
-      </div>
+          <button
+            onClick={handleNext}
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-20 p-3 rounded-full bg-gray-900/80 border border-white/10 text-white hover:bg-blue-500 hover:border-blue-500 transition-all duration-300 opacity-0 group-hover:opacity-100 focus:opacity-100 shadow-lg backdrop-blur-sm"
+            aria-label="Next Project"
+          >
+            <ChevronRightIcon className="w-6 h-6" />
+          </button>
 
-      {/* Controls Section */}
-      <div className="container mx-auto px-6 mt-12">
-        {/* Pagination Dots */}
-        <div className="flex justify-center space-x-3">
-          {projectData.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => goToSlide(index)}
-              className={`transition-all ${
-                dotsBlinking ? 'duration-150' : 'duration-300'
-              } ${
-                index === activeDotIndex
-                  ? 'w-8 h-3 bg-blue-500 rounded-full shadow-lg shadow-blue-500/50'
-                  : 'w-3 h-3 bg-gray-600 rounded-full hover:bg-gray-500'
-              } ${
-                dotsBlinking && index === activeDotIndex ? 'animate-pulse' : ''
-              }`}
-              aria-label={`Go to project ${index + 1}`}
-            />
-          ))}
-        </div>
-
-        {/* Project Counter and GitHub Link */}
-        <div className="text-center mt-8 space-y-3">
-          <div className="inline-flex items-center gap-3 px-5 py-2.5 bg-gray-800/50 backdrop-blur-sm rounded-full border border-gray-700/50">
-            <span className="text-gray-300 font-medium">
-              Project <span className="text-blue-400 font-bold">{activeDotIndex + 1}</span> of <span className="text-blue-400 font-bold">{totalProjects}</span>
-            </span>
-          </div>
-          
-          <div className="flex items-center justify-center gap-2 text-gray-400">
-            <span className="text-sm">Want to see more projects?</span>
-            <a
-              href="https://github.com/NI3singh"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center text-sm text-blue-400 hover:text-blue-300 font-medium transition-all duration-300 hover:underline group"
+          {/* Slider Track */}
+          <div className="overflow-hidden -mx-4 py-10"> {/* Negative margin to allow cards to touch edges if needed, py for hover growth */}
+            <motion.div
+              className="flex"
+              initial={false}
+              animate={{
+                x: `calc(-${currentIndex * (100 / cardsToShow)}%)`
+              }}
+              transition={{
+                duration: isTransitioning ? 0.5 : 0,
+                ease: "easeInOut"
+              }}
+              onAnimationComplete={handleTransitionEnd}
             >
-              Visit my GitHub
-              <ArrowTopRightOnSquareIcon className="w-4 h-4 ml-1.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
-            </a>
+              {extendedProjects.map((project, index) => (
+                <div
+                  key={`${project.id}-${index}`}
+                  className="flex-shrink-0"
+                  style={{ width: `${100 / cardsToShow}%` }}
+                >
+                  <ProjectCard {...project} index={index} />
+                </div>
+              ))}
+            </motion.div>
           </div>
         </div>
+
+        {/* Pagination Dots */}
+        <div className="flex justify-center gap-2 mt-8">
+          {projectData.map((_, index) => {
+            // Calculate active dot based on modulo of currentIndex
+            const isActive = (currentIndex % totalProjects) === index;
+            return (
+              <button
+                key={index}
+                onClick={() => {
+                  setIsTransitioning(true);
+                  // Calculate nearest target index to minimize travel
+                  const currentMod = currentIndex % totalProjects;
+                  const diff = index - currentMod;
+                  setCurrentIndex(currentIndex + diff);
+                }}
+                className={`
+                  h-2 rounded-full transition-all duration-300
+                  ${isActive ? 'w-8 bg-blue-500' : 'w-2 bg-gray-700 hover:bg-gray-600'}
+                `}
+                aria-label={`Go to project ${index + 1}`}
+              />
+            );
+          })}
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5 }}
+          className="text-center mt-12"
+        >
+          <a
+            href="https://github.com/NI3singh"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-white font-medium transition-all duration-300 hover:scale-105"
+          >
+            <span>View More on GitHub</span>
+            <ArrowTopRightOnSquareIcon className="w-5 h-5" />
+          </a>
+        </motion.div>
       </div>
     </section>
   );
