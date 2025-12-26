@@ -157,6 +157,7 @@ const Projects: React.FC = () => {
         'Built scalable pipeline for cryptocurrency market data analysis and trading insights'
       ],
       githubLink: 'https://github.com/NI3singh/Solana-Data-Analysis',
+      liveLink: 'https://solana-live-dashboard.onrender.com/'
     },
     {
       id: 3,
