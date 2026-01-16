@@ -72,6 +72,51 @@ const experienceData: ExperienceItem[] = [
     ],
     technologies: ['DialogFlow CX', 'NLP', 'JavaScript', 'Node.js', 'Testing'],
     thumbnail: '/api/placeholder/300/200'
+  },
+  {
+    id: 4,
+    title: 'Google Student Ambassador',
+    company: 'Google',
+    location: 'Remote',
+    duration: 'Sep 2025 - Dec 2025',
+    description: 'Campus advocacy and technical outreach for Gemini AI.',
+    responsibilities: [
+      'Served as the official campus representative, driving adoption and awareness of Gemini AI tools among the student body.',
+      'Organized and led technical workshops to educate peers on leveraging Google’s AI ecosystem and cloud resources.',
+      'Collaborated with university stakeholders to streamline student engagement with emerging technologies.'
+    ],
+    technologies: ['Gemini AI', 'Google Cloud', 'Community Management', 'Public Speaking'],
+    thumbnail: '/api/placeholder/300/200'
+  },
+  {
+    id: 5,
+    title: 'Gujarat State Lead',
+    company: 'Open Source Connect',
+    location: 'Surat, Gujarat (Remote)',
+    duration: 'Jul 2025 - Sep 2025',
+    description: 'Regional leadership for open-source AI/ML initiatives.',
+    responsibilities: [
+      'Spearheaded state-wide outreach programs focused on AI/ML literacy and open-source contribution.',
+      'Designed and executed marketing strategies that expanded community engagement and program visibility.',
+      'Managed program development and stakeholder coordination to foster regional technical collaboration.'
+    ],
+    technologies: ['AI/ML', 'Marketing Strategy', 'Community Development', 'Open Source'],
+    thumbnail: '/api/placeholder/300/200'
+  },
+  {
+    id: 6,
+    title: 'Perplexity AI Business Fellow',
+    company: 'Perplexity',
+    location: 'Surat, Gujarat (Remote)',
+    duration: 'Feb 2025 - Aug 2025',
+    description: 'Business development and strategic positioning for AI-driven search.',
+    responsibilities: [
+      'Participated in a selective fellowship focusing on the business integration and strategic growth of Perplexity AI.',
+      'Analyzed market trends and user feedback to support product refinement for generative search experiences.',
+      'Developed insights on AI-driven workflows to enhance business efficiency and strategic communication.'
+    ],
+    technologies: ['Perplexity AI', 'Strategic Thinking', 'Market Analysis', 'Business Development'],
+    thumbnail: '/api/placeholder/300/200'
   }
 ];
 
@@ -117,6 +162,34 @@ const educationData: EducationItem[] = [
       'Excelled in Language and History, with a strong grasp of concepts and analytical skills.',
       'Consistently engaged in cultural and academic activities.'
     ]
+  },
+  {
+    id: 4,
+    degree: 'Aspire Leaders Program 2024',
+    institution: 'Aspire Institute (Founded at Harvard University)',
+    location: 'Remote',
+    duration: 'Aug 2024 - Nov 2024',
+    grade: 'Completion Certificate',
+    achievements: [
+      'Engaged in leadership development sessions with Harvard Business School faculties.',
+      'Developed critical thinking and global collaboration skills via real-world case studies.',
+      'Selected for a transformative initiative focused on empowering emerging global leaders.'
+    ],
+    subjects: ['Leadership', 'Problem Solving', 'Communication', 'Critical Thinking']
+  },
+  {
+    id: 5,
+    degree: 'Forward Program - Business Analytics & Strategic Thinking',
+    institution: 'McKinsey & Company',
+    location: 'Remote',
+    duration: 'Apr 2025 - Jun 2025',
+    grade: 'Professional Certificate',
+    achievements: [
+      "Mastered McKinsey's structured problem-solving methodology and strategic communication.",
+      'Completed comprehensive modules on business analytics and leadership management.',
+      'Earned proficiency in core business and analytical skills through rigorous assessment.'
+    ],
+    subjects: ['Business Analytics', 'Strategic Thinking', 'Communication & Presentation', 'Leadership Management']
   }
 ];
 
