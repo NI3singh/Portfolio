@@ -31,7 +31,7 @@ const StatCard: React.FC<StatCardProps> = ({
 }) => {
   return (
     <div
-      className="group relative flex flex-col h-full bg-gray-900/60 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden shadow-2xl transition-all duration-500 hover:scale-[1.02] hover:bg-gray-900/80 hover:border-blue-500/30 hover:shadow-blue-500/10 animate-fade-in-up"
+      className="group relative flex flex-col h-full bg-gray-900/60 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden shadow-2xl transition-all duration-500 hover:scale-[1.02] hover:bg-gray-900/80 hover:border-secondary/30 hover:shadow-secondary/10 animate-fade-in-up"
       style={{ animationDelay: animationDelay || '0s' }}
     >
       {/* Image Section - Top Half */}
@@ -53,7 +53,7 @@ const StatCard: React.FC<StatCardProps> = ({
 
         {/* Floating Icon */}
         <div className="absolute bottom-4 left-6 z-20 p-3 bg-gray-900/90 backdrop-blur-md border border-white/10 rounded-xl shadow-lg group-hover:scale-110 transition-transform duration-300">
-          <div className="text-blue-400 group-hover:text-blue-300 transition-colors">
+          <div className="text-secondary group-hover:text-accent transition-colors">
             {icon}
           </div>
         </div>
@@ -62,13 +62,13 @@ const StatCard: React.FC<StatCardProps> = ({
       {/* Content Section - Bottom Half */}
       <div className="flex-grow p-6 pt-2 flex flex-col relative z-10">
         <div className="mb-1">
-          <h3 className="text-lg font-bold text-white group-hover:text-blue-200 transition-colors duration-300 line-clamp-1">
+          <h3 className="text-lg font-bold text-white group-hover:text-secondary transition-colors duration-300 line-clamp-1">
             {title}
           </h3>
         </div>
 
         <div className="mb-3">
-          <span className="inline-block text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+          <span className="inline-block text-2xl font-bold bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">
             {value}
           </span>
         </div>
@@ -78,7 +78,7 @@ const StatCard: React.FC<StatCardProps> = ({
         </p>
 
         {/* Hover Glow Effect */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 via-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
       </div>
     </div>
   );
@@ -145,18 +145,18 @@ const Stats: React.FC = () => {
 
   return (
     <>
-      <section id="stats" className="relative bg-gray-950 text-white py-20 overflow-hidden">
+      <section id="stats" className="relative bg-transparent text-white py-20 overflow-hidden">
         {/* Background decorative elements */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-20 left-10 w-64 h-64 bg-blue-500/5 rounded-full blur-[100px]"></div>
-          <div className="absolute bottom-20 right-10 w-64 h-64 bg-purple-500/5 rounded-full blur-[100px]"></div>
+          <div className="absolute top-20 left-10 w-64 h-64 bg-secondary/5 rounded-full blur-[100px]"></div>
+          <div className="absolute bottom-20 right-10 w-64 h-64 bg-accent/5 rounded-full blur-[100px]"></div>
         </div>
 
         <div className="container mx-auto px-6 relative z-10">
           {/* Achievements Section */}
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 animate-fade-in-up">
-              My <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Achievements</span>
+              My <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-accent">Achievements</span>
             </h2>
             <p className="text-lg text-gray-400 max-w-3xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
               Highlighting my performance in competitions and core areas of expertise.
@@ -220,23 +220,19 @@ const Stats: React.FC = () => {
           {/* Core Technical Skills Section */}
           <div className="mt-20 text-center animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
             <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 animate-fade-in-up">
-              Core Technical <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Skills</span>
+              Core Technical <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-accent">Skills</span>
             </h3>
 
-            {/* Animated Skills Rail */}
-            <div className="relative overflow-hidden py-6 pause-on-hover">
-              {/* Gradient masks for smooth edges */}
-              <div className="absolute left-0 top-0 w-20 sm:w-32 h-full bg-gradient-to-r from-gray-950 to-transparent z-10"></div>
-              <div className="absolute right-0 top-0 w-20 sm:w-32 h-full bg-gradient-to-l from-gray-950 to-transparent z-10"></div>
-
-              <div className="scrolling-wrapper flex animate-scroll">
+            {/* Animated Skills Rail — full-bleed, edge-faded, seamless loop */}
+            <div className="relative left-1/2 -translate-x-1/2 w-screen overflow-hidden py-6 marquee-mask">
+              <div className="scrolling-wrapper flex w-max animate-scroll">
                 {duplicatedSkills.map((skill, index) => (
                   <div
                     key={index}
                     className="flex-shrink-0 mx-3 group cursor-pointer"
                   >
-                    <div className="relative px-6 py-3 bg-gray-900/50 backdrop-blur-md border border-white/10 rounded-full shadow-lg transition-all duration-300 hover:scale-110 hover:bg-blue-500/10 hover:border-blue-500/30">
-                      <span className="relative z-10 text-sm font-medium text-gray-300 group-hover:text-blue-300 whitespace-nowrap transition-colors">
+                    <div className="relative px-6 py-3 bg-gray-900/50 backdrop-blur-md border border-white/10 rounded-full shadow-lg transition-all duration-300 hover:scale-110 hover:bg-secondary/10 hover:border-secondary/30">
+                      <span className="relative z-10 text-sm font-medium text-gray-300 group-hover:text-secondary whitespace-nowrap transition-colors">
                         {skill}
                       </span>
                     </div>

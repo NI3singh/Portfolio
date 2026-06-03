@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import SectionSeparator from '@/components/SectionSeparator';
+import NitinImage from '@/assets/Nitin-Portfolio-Image.webp';
 
 const titles = [
   'AI Developer',
@@ -52,7 +53,7 @@ const HeroSection: React.FC = () => {
 
   return (
     <>
-      <section id="home" className="relative bg-primary text-text-primary py-20 md:py-32 overflow-hidden">
+      <section id="home" className="relative bg-transparent text-text-primary py-20 md:py-32 overflow-hidden">
         {/* Enhanced Dynamic Background */}
         <div className="absolute inset-0 overflow-hidden">
           {/* Animated Gradient Blobs */}
@@ -143,13 +144,13 @@ const HeroSection: React.FC = () => {
               </div>
 
               <p className="text-lg md:text-xl text-text-primary/90 mb-8 max-w-2xl mx-auto md:mx-0 animate-fade-in-up delay-800 leading-relaxed">
-                A recent B.Tech graduate in AI & Data Science from Uka Tarsadia University, passionate about building intelligent systems and extracting actionable insights from data. I'm eager to apply my skills in AI engineering and data analysis to real-world challenges.
+                AI/ML Engineer with 2+ years building LLM-powered applications, fine-tuning large models, and architecting autonomous agentic systems. I specialize in LoRA fine-tuning, RAG pipelines, multi-agent orchestration, and computer vision, deployed end-to-end with FastAPI, LangChain, and AWS. Co-authored an arXiv preprint on image restoration; placed Top 5 at IIT Bombay & IIT Gandhinagar hackathons.
               </p>
 
               {/* Enhanced Futuristic CTA Buttons */}
               <div className="space-x-0 md:space-x-4 space-y-4 md:space-y-0 flex flex-col sm:flex-row justify-center md:justify-start animate-fade-in-up delay-1000">
                 <div className="text-center md:text-left">
-                  <a href="#projects" className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white transition-all duration-500 bg-gradient-to-r from-secondary to-accent rounded-xl hover:from-accent hover:to-secondary transform hover:scale-105 hover:shadow-2xl overflow-hidden">
+                  <a href="#projects" className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-[#0b0c0a] transition-all duration-500 bg-gradient-to-r from-secondary to-accent rounded-xl hover:from-accent hover:to-secondary transform hover:scale-105 hover:shadow-2xl overflow-hidden">
                     {/* Glowing Border Effect */}
                     <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-secondary via-accent to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-pulse"></div>
                     <div className="absolute inset-0.5 rounded-xl bg-gradient-to-r from-secondary to-accent group-hover:from-accent group-hover:to-secondary transition-all duration-500"></div>
@@ -169,7 +170,7 @@ const HeroSection: React.FC = () => {
                 </div>
                 
                 <div className="text-center md:text-left">
-                  <a href="#contact" className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white transition-all duration-500 bg-gradient-to-r from-accent to-secondary rounded-xl hover:from-secondary hover:to-accent transform hover:scale-105 hover:shadow-2xl overflow-hidden">
+                  <a href="#contact" className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-[#0b0c0a] transition-all duration-500 bg-gradient-to-r from-accent to-secondary rounded-xl hover:from-secondary hover:to-accent transform hover:scale-105 hover:shadow-2xl overflow-hidden">
                     {/* Glowing Border Effect */}
                     <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-accent via-secondary to-accent opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-pulse"></div>
                     <div className="absolute inset-0.5 rounded-xl bg-gradient-to-r from-accent to-secondary group-hover:from-secondary group-hover:to-accent transition-all duration-500"></div>
@@ -193,7 +194,7 @@ const HeroSection: React.FC = () => {
             {/* Enhanced Interactive Central Graphic */}
             <div className="md:w-2/5 lg:w-1/2 flex justify-center items-center animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
               <div 
-                className="relative w-80 h-80 md:w-96 md:h-96 cursor-pointer group"
+                className="relative w-80 h-80 md:w-96 md:h-96 lg:scale-110 xl:scale-125 cursor-pointer group"
                 onMouseEnter={() => {
                   setIsHovered(true);
                   setTimeout(() => setShowTooltip(true), 300);
@@ -203,14 +204,20 @@ const HeroSection: React.FC = () => {
                   setShowTooltip(false);
                 }}
               >
-                {/* Enhanced Central Glowing Orb */}
+                {/* Central Avatar — circular photo with a bright light behind */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className={`w-32 h-32 bg-gradient-to-r from-secondary to-accent rounded-full shadow-2xl transition-all duration-500 ${isHovered ? 'scale-110 shadow-accent/50' : 'animate-pulse'}`}>
-                    <div className="w-full h-full bg-gradient-to-r from-accent to-secondary rounded-full animate-spin" style={{animationDuration: '8s'}}>
-                      {/* Inner Pulsing Core */}
-                      <div className="absolute inset-4 bg-gradient-to-r from-white/20 to-white/10 rounded-full animate-ping"></div>
-                    </div>
-                  </div>
+                  {/* bright light behind the photo */}
+                  <div
+                    className="absolute w-56 h-56 md:w-72 md:h-72 rounded-full"
+                    style={{ background: 'radial-gradient(circle, rgba(198,244,50,0.38) 0%, rgba(94,234,212,0.18) 42%, transparent 70%)', filter: 'blur(30px)' }}
+                  ></div>
+                  {/* photo (already circular) */}
+                  <img
+                    src={NitinImage}
+                    alt="Nitin Singh"
+                    className={`relative z-20 w-40 h-40 md:w-56 md:h-56 rounded-full object-cover transition-transform duration-500 ${isHovered ? 'scale-[1.04]' : ''}`}
+                    style={{ boxShadow: '0 0 24px rgba(198,244,50,0.4)' }}
+                  />
                 </div>
                 
                 {/* Data Flow Connection Lines */}
@@ -241,8 +248,8 @@ const HeroSection: React.FC = () => {
                 </div>
                 
                 {/* Enhanced Counter-rotating rings */}
-                <div className={`absolute inset-8 border-2 border-accent/30 rounded-full transition-all duration-500 ${isHovered ? 'border-accent/60 scale-105' : ''}`} style={{animation: `spin ${isHovered ? '10s' : '15s'} linear infinite reverse`}}></div>
-                <div className={`absolute inset-16 border border-secondary/20 rounded-full transition-all duration-500 ${isHovered ? 'border-secondary/40 scale-95' : ''}`} style={{animation: `spin ${isHovered ? '8s' : '10s'} linear infinite`}}></div>
+                <div className={`absolute inset-8 border-2 border-accent/50 rounded-full transition-all duration-500 ${isHovered ? 'border-accent/70 scale-105' : ''}`} style={{animation: `spin ${isHovered ? '10s' : '15s'} linear infinite reverse`}}></div>
+                <div className={`absolute inset-16 border border-secondary/40 rounded-full transition-all duration-500 ${isHovered ? 'border-secondary/60 scale-95' : ''}`} style={{animation: `spin ${isHovered ? '8s' : '10s'} linear infinite`}}></div>
                 
                 {/* Enhanced Floating Code Elements */}
                 <div className={`absolute top-8 right-8 text-accent/60 font-mono text-sm transition-all duration-300 ${isHovered ? 'text-accent scale-110' : 'animate-bounce'}`} style={{animationDelay: '1s'}}>
@@ -266,7 +273,7 @@ const HeroSection: React.FC = () => {
                 
                 {/* Interactive Tooltip */}
                 {showTooltip && (
-                  <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-secondary to-accent px-1 py-3 rounded-lg text-white text-sm font-medium shadow-xl animate-fade-in-up min-w-48">
+                  <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-secondary to-accent px-1 py-3 rounded-lg text-[#0b0c0a] text-sm font-medium shadow-xl animate-fade-in-up min-w-48">
                     <div className="text-center">Welcome to Nitin's space! explore, discover, connect.</div>
                     <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-accent rotate-45"></div>
                   </div>

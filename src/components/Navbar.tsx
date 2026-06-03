@@ -103,33 +103,19 @@ const Navbar: React.FC = () => {
           isMobile ? '-bottom-1 left-1/2 transform -translate-x-1/2' : '-bottom-1'
         }`}></span>
       </a>
-      
-      {/* Tooltip for desktop */}
-      {!isMobile && (
-        <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 px-3 py-2 bg-primary/95 backdrop-blur-md rounded-lg text-sm text-text-secondary opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap border border-white/10 shadow-lg">
-          <div className="flex items-center space-x-2">
-            <AcademicCapIcon className="w-3 h-3 text-purple-400" />
-            <span>Academic Path</span>
-            <span className="text-xs opacity-60">+</span>
-            <BriefcaseIcon className="w-3 h-3 text-blue-400" />
-            <span>Professional Journey</span>
-          </div>
-          <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-primary/95 rotate-45 border-l border-t border-white/10"></div>
-        </div>
-      )}
     </div>
   );
 
   return (
     <nav className="bg-primary/80 backdrop-blur-md sticky top-0 z-50 shadow-lg border-b border-white/10">
-      <div className="container mx-auto px-6 py-4">
+      <div className="container mx-auto px-6 py-3">
         <div className="flex items-center justify-between">
           {/* Name/Logo with enhanced styling */}
           <a 
             href="#home"
             onClick={(e) => handleNavClick(e, '#home')}
             className="block">
-            <div className="w-21 h-21 rounded-full overflow-hidden border-2 border-accent/30 hover:border-accent transition-all duration-300 transform hover:scale-110 hover:shadow-lg hover:shadow-accent/25">
+            <div className="w-11 h-11 rounded-full overflow-hidden border border-accent/30 hover:border-accent transition-all duration-300 transform hover:scale-110 hover:shadow-lg hover:shadow-accent/25">
               <img 
                 src= {nitinlogo}
                 alt="Ni3 Logo"
@@ -161,7 +147,7 @@ const Navbar: React.FC = () => {
               href="/Nitin_Singh_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white transition-all duration-300 bg-gradient-to-r from-secondary to-accent rounded-xl hover:from-accent hover:to-secondary transform hover:scale-105 hover:shadow-xl">
+              className="group relative inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-[#0b0c0a] transition-all duration-300 bg-gradient-to-r from-secondary to-accent rounded-xl hover:from-accent hover:to-secondary transform hover:scale-105 hover:shadow-xl">
               {/* Glowing Border Effect */}
               <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-secondary via-accent to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-pulse"></div>
               <div className="absolute inset-0.5 rounded-xl bg-gradient-to-r from-secondary to-accent group-hover:from-accent group-hover:to-secondary transition-all duration-500"></div>
@@ -243,7 +229,7 @@ const Navbar: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setIsOpen(false)}
-              className={`group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white transition-all duration-500 bg-gradient-to-r from-secondary to-accent rounded-xl hover:from-accent hover:to-secondary transform hover:scale-105 hover:shadow-xl mt-2 ${
+              className={`group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-[#0b0c0a] transition-all duration-500 bg-gradient-to-r from-secondary to-accent rounded-xl hover:from-accent hover:to-secondary transform hover:scale-105 hover:shadow-xl mt-2 ${
                 isOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
               }`}
               style={{ transitionDelay: `${navLinks.length * 50}ms` }}

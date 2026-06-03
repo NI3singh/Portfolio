@@ -1,3 +1,67 @@
+### 📄 c:\Users\ELaunch\OneDrive\Desktop\Portfolio\src\components\HeroSection.tsx
+*Saved at: 6/3/2026, 12:06:48 PM*
+
+**[REMOVED]**
+```
+(from line ~146)
+                AI/ML Engineer with 2+ years building LLM-powered applications, fine-tuning large models, and architecting autonomous agentic systems. I specialize in LoRA fine-tuning, RAG pipelines, multi-agent orchestration, and computer vision deployed end-to-end with FastAPI, LangChain, and AWS. Co-authored an arXiv preprint on image restoration; placed Top 5 at IIT Bombay & IIT Gandhinagar hackathons.
+
+```
+**[ADDED]**
+```
+146                   AI/ML Engineer with 2+ years building LLM-powered applications, fine-tuning large models, and architecting autonomous agentic systems. I specialize in LoRA fine-tuning, RAG pipelines, multi-agent orchestration, and computer vision, deployed end-to-end with FastAPI, LangChain, and AWS. Co-authored an arXiv preprint on image restoration; placed Top 5 at IIT Bombay & IIT Gandhinagar hackathons.
+```
+
+---
+
+### 📄 c:\Users\ELaunch\OneDrive\Desktop\Portfolio\src\components\HeroSection.tsx
+*Saved at: 6/3/2026, 12:06:41 PM*
+
+**[REMOVED]**
+```
+(from line ~146)
+                A recent B.Tech graduate in AI & Data Science from Uka Tarsadia University, passionate about building intelligent systems and extracting actionable insights from data. I'm eager to apply my skills in AI engineering and data analysis to real-world challenges.
+
+```
+**[ADDED]**
+```
+146                   AI/ML Engineer with 2+ years building LLM-powered applications, fine-tuning large models, and architecting autonomous agentic systems. I specialize in LoRA fine-tuning, RAG pipelines, multi-agent orchestration, and computer vision deployed end-to-end with FastAPI, LangChain, and AWS. Co-authored an arXiv preprint on image restoration; placed Top 5 at IIT Bombay & IIT Gandhinagar hackathons.
+```
+
+---
+
+### 📄 c:\Users\ELaunch\OneDrive\Desktop\Portfolio\src\components\HeroSection.tsx
+*Saved at: 6/3/2026, 12:03:51 PM*
+
+**[REMOVED]**
+```
+(from line ~146)
+                AI/ML Engineer with 2+ years of experience designing LLM-powered applications, fine-tuning large models, and building autonomous agentic systems. B.Tech in Artificial Intelligence & Data Science (CGPA 8.68, perfect 10.0 SGPA in final semester). I specialize in LoRA fine-tuning, 4-bit quantization, RAG pipeline architecture, multi-agent orchestration, and computer vision — deployed end-to-end using FastAPI, LangChain, and AWS. My hands-on work spans fine-tuning Stable Diffusion for AI avatar generation, deploying Agentic RAG chatbots, and training a Temporal Fusion Transformer for real-time financial forecasting. Co-authored an arXiv preprint on image restoration; placed Top 5 at IIT Bombay and IIT Gandhinagar hackathons.
+
+```
+**[ADDED]**
+```
+146                   A recent B.Tech graduate in AI & Data Science from Uka Tarsadia University, passionate about building intelligent systems and extracting actionable insights from data. I'm eager to apply my skills in AI engineering and data analysis to real-world challenges.
+```
+
+---
+
+### 📄 c:\Users\ELaunch\OneDrive\Desktop\Portfolio\src\components\HeroSection.tsx
+*Saved at: 6/3/2026, 12:03:23 PM*
+
+**[REMOVED]**
+```
+(from line ~146)
+                A recent B.Tech graduate in AI & Data Science from Uka Tarsadia University, passionate about building intelligent systems and extracting actionable insights from data. I'm eager to apply my skills in AI engineering and data analysis to real-world challenges.
+
+```
+**[ADDED]**
+```
+146                   AI/ML Engineer with 2+ years of experience designing LLM-powered applications, fine-tuning large models, and building autonomous agentic systems. B.Tech in Artificial Intelligence & Data Science (CGPA 8.68, perfect 10.0 SGPA in final semester). I specialize in LoRA fine-tuning, 4-bit quantization, RAG pipeline architecture, multi-agent orchestration, and computer vision — deployed end-to-end using FastAPI, LangChain, and AWS. My hands-on work spans fine-tuning Stable Diffusion for AI avatar generation, deploying Agentic RAG chatbots, and training a Temporal Fusion Transformer for real-time financial forecasting. Co-authored an arXiv preprint on image restoration; placed Top 5 at IIT Bombay and IIT Gandhinagar hackathons.
+```
+
+---
+
 ### 📄 c:\Users\ELaunch\OneDrive\Desktop\Portfolio\src\components\Experience.tsx
 *Saved at: 1/16/2026, 4:40:26 PM*
 

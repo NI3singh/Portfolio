@@ -32,11 +32,11 @@ const ProjectCard: React.FC<Project & { liveLink?: string; index: number }> = ({
       <div className={`
         relative h-full bg-gray-900/80 backdrop-blur-xl rounded-2xl overflow-hidden
         border border-white/10 transition-all duration-500 group
-        ${isHovered ? 'border-blue-500/50 shadow-[0_0_30px_-5px_rgba(59,130,246,0.3)]' : 'hover:border-white/20'}
+        ${isHovered ? 'border-secondary/50 shadow-[0_0_30px_-5px_rgba(198,244,50,0.3)]' : 'hover:border-white/20'}
       `}>
         {/* Gradient Glow Effect */}
         <div className={`
-          absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/5 to-transparent
+          absolute inset-0 bg-gradient-to-br from-secondary/10 via-accent/5 to-transparent
           opacity-0 transition-opacity duration-500
           ${isHovered ? 'opacity-100' : ''}
         `} />
@@ -46,12 +46,12 @@ const ProjectCard: React.FC<Project & { liveLink?: string; index: number }> = ({
           <div className="mb-6">
             <div className="flex items-center gap-3 mb-4">
               <div className={`
-                p-2 rounded-lg bg-blue-500/10 text-blue-400
-                transition-all duration-300 group-hover:scale-110 group-hover:bg-blue-500/20
+                p-2 rounded-lg bg-secondary/10 text-secondary
+                transition-all duration-300 group-hover:scale-110 group-hover:bg-secondary/20
               `}>
                 <CodeBracketIcon className="w-6 h-6" />
               </div>
-              <h3 className="text-xl font-bold text-white group-hover:text-blue-200 transition-colors">
+              <h3 className="text-xl font-bold text-white group-hover:text-secondary transition-colors">
                 {title}
               </h3>
             </div>
@@ -87,12 +87,12 @@ const ProjectCard: React.FC<Project & { liveLink?: string; index: number }> = ({
               mb-6 overflow-hidden transition-all duration-500
               ${isHovered ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'}
             `}>
-              <div className="bg-green-500/10 rounded-lg p-3 border border-green-500/20">
-                <div className="flex items-center gap-2 text-green-400 mb-2">
+              <div className="bg-accent/10 rounded-lg p-3 border border-accent/20">
+                <div className="flex items-center gap-2 text-accent mb-2">
                   <CheckCircleIcon className="w-4 h-4" />
                   <span className="text-xs font-bold uppercase tracking-wider">Key Achievement</span>
                 </div>
-                <p className="text-xs text-green-300" dangerouslySetInnerHTML={{ __html: achievements[0] }} />
+                <p className="text-xs text-accent" dangerouslySetInnerHTML={{ __html: achievements[0] }} />
               </div>
             </div>
           )}
@@ -114,7 +114,7 @@ const ProjectCard: React.FC<Project & { liveLink?: string; index: number }> = ({
                 href={liveLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors group/link"
+                className="flex items-center gap-2 text-sm font-medium text-secondary hover:text-accent transition-colors group/link"
               >
                 <span>Live Demo</span>
                 <ArrowTopRightOnSquareIcon className="w-4 h-4 transition-transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
@@ -333,11 +333,11 @@ const Projects: React.FC = () => {
   // }, [handleNext]);
 
   return (
-    <section id="projects" className="relative bg-gray-950 py-20 overflow-hidden">
+    <section id="projects" className="relative bg-transparent py-20 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[100px]" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[100px]" />
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-[100px]" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-[100px]" />
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
@@ -349,7 +349,7 @@ const Projects: React.FC = () => {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-            Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Projects</span>
+            Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-accent">Projects</span>
           </h2>
           <p className="text-lg text-gray-400 max-w-2xl mx-auto">
             A collection of my work in AI, Data Science, and Full Stack Development.
@@ -361,7 +361,7 @@ const Projects: React.FC = () => {
           {/* Navigation Buttons */}
           <button
             onClick={handlePrev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-20 p-3 rounded-full bg-gray-900/80 border border-white/10 text-white hover:bg-blue-500 hover:border-blue-500 transition-all duration-300 opacity-0 group-hover:opacity-100 focus:opacity-100 shadow-lg backdrop-blur-sm"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-20 p-3 rounded-full bg-gray-900/80 border border-white/10 text-white hover:bg-secondary hover:border-secondary hover:text-[#0b0c0a] transition-all duration-300 opacity-0 group-hover:opacity-100 focus:opacity-100 shadow-lg backdrop-blur-sm"
             aria-label="Previous Project"
           >
             <ChevronLeftIcon className="w-6 h-6" />
@@ -369,7 +369,7 @@ const Projects: React.FC = () => {
 
           <button
             onClick={handleNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-20 p-3 rounded-full bg-gray-900/80 border border-white/10 text-white hover:bg-blue-500 hover:border-blue-500 transition-all duration-300 opacity-0 group-hover:opacity-100 focus:opacity-100 shadow-lg backdrop-blur-sm"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-20 p-3 rounded-full bg-gray-900/80 border border-white/10 text-white hover:bg-secondary hover:border-secondary hover:text-[#0b0c0a] transition-all duration-300 opacity-0 group-hover:opacity-100 focus:opacity-100 shadow-lg backdrop-blur-sm"
             aria-label="Next Project"
           >
             <ChevronRightIcon className="w-6 h-6" />
@@ -419,7 +419,7 @@ const Projects: React.FC = () => {
                 }}
                 className={`
                   h-2 rounded-full transition-all duration-300
-                  ${isActive ? 'w-8 bg-blue-500' : 'w-2 bg-gray-700 hover:bg-gray-600'}
+                  ${isActive ? 'w-8 bg-secondary' : 'w-2 bg-gray-700 hover:bg-gray-600'}
                 `}
                 aria-label={`Go to project ${index + 1}`}
               />

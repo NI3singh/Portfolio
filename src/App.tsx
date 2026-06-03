@@ -1,5 +1,7 @@
 
 import Navbar from '@/components/Navbar'; // Using the @ alias for cleaner imports
+import InteractiveBackground from '@/components/InteractiveBackground';
+import ScrollProgress from '@/components/ScrollProgress';
 import HeroSection from '@/components/HeroSection';
 import About from '@/components/About';
 import Stats from '@/components/Stats';
@@ -12,9 +14,11 @@ import { SpeedInsights } from '@vercel/speed-insights/react';
 
 function App() {
   return (
-    <div className="flex flex-col min-h-screen bg-primary">
+    <div className="relative flex flex-col min-h-screen bg-primary">
+      <InteractiveBackground />
+      <ScrollProgress />
       <Navbar />
-      <main className="flex-grow">
+      <main className="flex-grow relative z-10">
         <HeroSection />
         <Experience />
         <Projects />
