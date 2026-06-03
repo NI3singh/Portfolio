@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { CodeBracketIcon, ArrowTopRightOnSquareIcon, CheckCircleIcon, ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
+import { StarIcon } from '@heroicons/react/24/solid';
 import { motion, AnimatePresence, useMotionValue } from 'framer-motion';
+import SectionHeading from '@/components/SectionHeading';
 
 interface Project {
   id: number;
@@ -12,14 +14,38 @@ interface Project {
   liveLink?: string;
 }
 
-const ProjectCard: React.FC<Project & { liveLink?: string; index: number }> = ({
+// Current GitHub star counts — instant-render fallback, refreshed live on mount.
+const STAR_FALLBACK: Record<string, number> = {
+  'ai-avtaar': 2,
+  'aron': 1,
+  'stock-news-summarizer': 8,
+  'ai-resume-updater': 1,
+  'image-editing': 2,
+  'amd-ai-premiere-league-hackathon': 1,
+  'qwen3.5-4b-base-blindspots': 1,
+  'solana-data-analysis': 4,
+  'image-to-text': 1,
+  'find-you': 1,
+  'final_year_project-1': 1,
+  'gender-detection': 2,
+  'support-finder-extension': 1,
+  'auto-doc': 1,
+  'notifiq': 0,
+  'snowflake-project': 1,
+};
+
+const repoNameFromUrl = (url: string): string =>
+  (url.split('github.com/NI3singh/')[1] || '').split(/[/?#]/)[0].toLowerCase();
+
+const ProjectCard: React.FC<Project & { liveLink?: string; index: number; stars: number }> = ({
   title,
   description,
   technologies,
   achievements,
   githubLink,
   liveLink,
-  index
+  index,
+  stars,
 }) => {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -44,16 +70,28 @@ const ProjectCard: React.FC<Project & { liveLink?: string; index: number }> = ({
         <div className="relative p-6 sm:p-8 flex flex-col h-full z-10">
           {/* Header */}
           <div className="mb-6">
-            <div className="flex items-center gap-3 mb-4">
-              <div className={`
-                p-2 rounded-lg bg-secondary/10 text-secondary
-                transition-all duration-300 group-hover:scale-110 group-hover:bg-secondary/20
-              `}>
-                <CodeBracketIcon className="w-6 h-6" />
+            <div className="flex items-start justify-between gap-3 mb-4">
+              <div className="flex items-center gap-3">
+                <div className={`
+                  p-2 rounded-lg bg-secondary/10 text-secondary
+                  transition-all duration-300 group-hover:scale-110 group-hover:bg-secondary/20
+                `}>
+                  <CodeBracketIcon className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl font-bold text-white group-hover:text-secondary transition-colors">
+                  {title}
+                </h3>
               </div>
-              <h3 className="text-xl font-bold text-white group-hover:text-secondary transition-colors">
-                {title}
-              </h3>
+              <a
+                href={githubLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${stars} GitHub stars`}
+                className="flex-shrink-0 inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-semibold text-gray-300 hover:border-secondary/40 hover:text-secondary transition-colors"
+              >
+                <StarIcon className="w-3.5 h-3.5 text-secondary" />
+                {stars}
+              </a>
             </div>
 
             {/* Technologies Tags */}
@@ -131,21 +169,109 @@ const Projects: React.FC = () => {
   const projectData: Project[] = [
     {
       id: 1,
-      title: 'Youtopia - YouTube Learning Library',
+      title: 'AI-Avtaar — AI Character & Virtual Try-On Pipeline',
       description: [
-        'Developed a full-stack web application that transforms YouTube into a structured and trackable personal learning library.',
-        'Built automatic viewing progress tracking system for YouTube videos and playlists with real-time data persistence.',
-        'Created polished, mobile-responsive interface with real-time search, batch operations, and custom UI components.'
+        'Built an end-to-end Streamlit pipeline that turns a handful of user photos into a consistent AI character — Train, Generate, then Try-On.',
+        'Fine-tunes a custom LoRA model with Kohya_ss, generates images via Automatic1111 (SDXL), and applies photorealistic virtual clothing with CatVTON.',
+        'Orchestrated three specialized engines in isolated environments for clean dependency management and stability.'
       ],
-      technologies: ['Full-Stack Development', 'JavaScript', 'React', 'Node.js', 'python-backend'],
+      technologies: ['Stable Diffusion (SDXL)', 'LoRA Fine-tuning', 'Kohya_ss', 'Automatic1111', 'CatVTON', 'Streamlit', 'Generative AI'],
       achievements: [
-        'Built complete progress tracking system with automatic save functionality',
+        'Unified LoRA fine-tuning, image generation, and virtual try-on in a single application',
       ],
-      githubLink: 'https://github.com/NI3singh/YouTopia',
-      liveLink: 'https://ni3-youtopia.vercel.app/'
+      githubLink: 'https://github.com/NI3singh/AI-Avtaar'
     },
     {
       id: 2,
+      title: 'ARON — AI Video Creator Pipeline',
+      description: [
+        'Prototyped an end-to-end pipeline that generates short, multi-scene videos from a single text prompt.',
+        'Chains a director LLM (Llama-3.1-8B) that writes the script and storyboard, FLUX.1-dev for concept art, and Wan2.2 to animate each scene into video.',
+        'Wrapped the multi-model workflow in a guided Gradio interface with a modular, swappable architecture.'
+      ],
+      technologies: ['Llama-3.1-8B', 'FLUX.1-dev', 'Wan2.2 (Text-to-Video)', 'Diffusers', 'Transformers', 'Gradio', 'Generative AI'],
+      achievements: [
+        'Automated multimodal pipeline: LLM storyboard → text-to-image → image-to-video',
+      ],
+      githubLink: 'https://github.com/NI3singh/ARON',
+      liveLink: 'https://youtu.be/fK2iA8LlV88'
+    },
+    {
+      id: 3,
+      title: 'Stock News Summarizer',
+      description: [
+        'Engineered an automated financial news aggregation system collecting data from multiple sources (TradingView, Finviz, Polygon API) with AI-powered insights.',
+        'Integrated Google Gemini Pro to analyze and summarize top stories, generating "What Changed Today" reports with 7-day historical context.',
+        'Built production-ready Flask application with scheduled daily updates, persistent storage, and responsive UI for real-time ticker management.'
+      ],
+      technologies: ['Flask', 'SQLite', 'Google Gemini Pro', 'Data Aggregation', 'REST API', 'Polygon API', 'Natural Language Processing'],
+      achievements: [
+        'Reduced manual news research time by 80% through automated multi-source aggregation',
+        'Processes 15+ articles per ticker into <500 word AI-generated summaries with 7-day historical tracking'
+      ],
+      githubLink: 'https://github.com/NI3singh/stock-news-summarizer',
+      liveLink: 'https://stock-news-summarizer.onrender.com/'
+    },
+    {
+      id: 4,
+      title: 'ResumeTeX Builder — AI Résumé Builder',
+      description: [
+        'Full-stack LaTeX résumé builder with AI-powered parsing, cloud storage, and multi-version management.',
+        'Write one master résumé, fork it for every job application, and compile to a pixel-perfect PDF through your own LaTeX template.',
+        'Ships a 9-section editor with live LaTeX preview, drag-to-reorder, 50-step undo, autosave every 2 seconds, and one-click rollback.'
+      ],
+      technologies: ['Next.js 14', 'Supabase', 'TypeScript', 'LaTeX', 'LLM API', 'Tailwind CSS'],
+      achievements: [
+        'Cloud-synced version control for résumés with instant rollback and continuous autosave',
+      ],
+      githubLink: 'https://github.com/NI3singh/AI-Resume-Updater',
+      liveLink: 'https://ai-resume-updater-omega.vercel.app'
+    },
+    {
+      id: 5,
+      title: 'Qwen Image Editor',
+      description: [
+        'Built a browser-based interface for Alibaba\'s Qwen-Image-Edit model enabling advanced, instruction-based image editing.',
+        'Upload an image, describe the edit in natural language, and get real-time semantic and appearance-based results.',
+        'Optimized and tested to run locally on AMD Instinct MI300X GPUs (ROCm 6.4), processing images privately on-device.'
+      ],
+      technologies: ['Qwen-Image-Edit', 'Gradio', 'PyTorch', 'AMD ROCm', 'Generative AI', 'Computer Vision'],
+      achievements: [
+        'Instruction-based image editing tuned for stable inference on AMD MI300X',
+      ],
+      githubLink: 'https://github.com/NI3singh/Image-editing'
+    },
+    {
+      id: 6,
+      title: 'AMD AI Premiere League — IIT Bombay',
+      description: [
+        'Competed in AMD\'s AI Premiere League hackathon at IIT Bombay, building competing LLM agents for a cricket-style knockout tournament.',
+        'Engineered a Question-agent that poses puzzle-based questions on given topics and an Answer-agent that solves the opponent\'s questions.',
+        'Designed both agents to strict input/output schemas for automated 1v1 agent-vs-agent matches.'
+      ],
+      technologies: ['LLMs', 'Multi-Agent Systems', 'Prompt Engineering', 'Python', 'AMD GPUs'],
+      achievements: [
+        'Built dueling question and answer LLM agents for an automated tournament at IIT Bombay',
+      ],
+      githubLink: 'https://github.com/NI3singh/AMD-AI-Premiere-League-Hackathon'
+    },
+    {
+      id: 7,
+      title: 'Qwen3.5-4B Blind-Spot Evaluation',
+      description: [
+        'Fatima Fellowship 2026 technical challenge focused on finding the blind spots of frontier language models.',
+        'Stress-tested the Qwen3.5-4B base model to surface confidently-wrong answers across negation, false premises, character-level tasks, and physics and logic reasoning.',
+        'Ran greedy inference on Modal (A10G GPU) with Hugging Face Transformers and curated a documented failure dataset.'
+      ],
+      technologies: ['LLMs', 'Hugging Face Transformers', 'Modal', 'Model Evaluation', 'Jupyter', 'Python'],
+      achievements: [
+        'Documented 10 diverse model blind spots and published the dataset on Hugging Face',
+      ],
+      githubLink: 'https://github.com/NI3singh/qwen3.5-4b-base-blindspots',
+      liveLink: 'https://huggingface.co/datasets/Ni3SinghR/qwen3.5-4b-base-blindspots'
+    },
+    {
+      id: 8,
       title: 'Solana Price Data Analysis',
       description: [
         'Analyzed 1,300+ days of historical Solana market data in OHLCV format to identify price volatility drivers.',
@@ -160,7 +286,7 @@ const Projects: React.FC = () => {
       liveLink: 'https://solana-live-dashboard.onrender.com/'
     },
     {
-      id: 3,
+      id: 9,
       title: 'Text Extraction from Image',
       description: [
         'Developed a robust text extraction system capable of accurately processing a wide range of image types and text styles.',
@@ -176,7 +302,7 @@ const Projects: React.FC = () => {
       liveLink: 'https://huggingface.co/spaces/Ni3SinghR/IMAGE-TO_TEXT-GOT-OCR2.0'
     },
     {
-      id: 4,
+      id: 10,
       title: 'Face Recognition Web Application (Find You)',
       description: [
         'This is a Flask-based web application for face recognition.',
@@ -192,23 +318,7 @@ const Projects: React.FC = () => {
       githubLink: 'https://github.com/NI3singh/Find-You/tree/main',
     },
     {
-      id: 5,
-      title: 'Student Performance Analysis',
-      description: [
-        'Analyzed a comprehensive dataset of 5,000+ student records to identify key predictors of academic success.',
-        'Engineered automated ETL pipeline using Python achieving 98.5% data integrity through robust validation processes.',
-        'Developed full-stack web application with React frontend and Python backend for interactive data visualization.'
-      ],
-      technologies: ['Python', 'Pandas', 'Scikit-learn', 'React', 'Data Pipeline Engineering'],
-      achievements: [
-        'Achieved 98.5% data integrity through automated ETL pipeline',
-        'Discovered 67.7% correlation between engagement metrics and final grades'
-      ],
-      githubLink: 'https://github.com/NI3singh/Student-Performance-Analysis',
-      liveLink: 'https://student-performance-analysis-1-omrb.onrender.com/'
-    },
-    {
-      id: 6,
+      id: 11,
       title: 'Object Detection and Distance Measurement',
       description: [
         'Developed a real-time object detection system using YOLOv5x model to detect multiple objects in dynamic environments.',
@@ -222,9 +332,65 @@ const Projects: React.FC = () => {
       ],
       githubLink: 'https://github.com/NI3singh/FINAL_YEAR_PROJECT-1',
     },
-
     {
-      id: 7,
+      id: 12,
+      title: 'Gender Detection API',
+      description: [
+        'Built a FastAPI service that detects a person\'s gender from an uploaded image.',
+        'Uses RetinaFace to detect and validate human faces, then OpenAI\'s CLIP model to classify gender.',
+        'Handles edge cases gracefully — no face detected, multiple faces, or non-human and low-quality images.'
+      ],
+      technologies: ['FastAPI', 'RetinaFace', 'CLIP', 'Computer Vision', 'Python'],
+      achievements: [
+        'Face-validated gender classification with robust handling of invalid inputs',
+      ],
+      githubLink: 'https://github.com/NI3singh/Gender-detection'
+    },
+    {
+      id: 13,
+      title: 'Support Finder — Chrome Extension',
+      description: [
+        'Chrome extension that finds the best public support contact for any site you\'re visiting — email, contact form, help center, or live chat.',
+        'A four-layer deterministic pipeline scans the active page, probes conventional support paths on the same domain, and ranks results by confidence.',
+        'Each result includes a confidence score, a short explanation, one-tap Open or Copy actions, and an optional draft message template.'
+      ],
+      technologies: ['TypeScript', 'Chrome Extension (MV3)', 'Service Worker', 'Content Scripts', 'Heuristics'],
+      achievements: [
+        'Confidence-ranked support routes surfaced through deterministic heuristics, with no AI-invented contacts',
+      ],
+      githubLink: 'https://github.com/NI3singh/support-finder-extension'
+    },
+    {
+      id: 14,
+      title: 'Auto-Doc - VS Code Extension',
+      description: [
+        'Developed a zero-configuration VS Code extension that automatically tracks and documents code changes in real-time with intelligent diff detection.',
+        'Implemented line-by-line change logging with timestamps on every file save, generating clean Markdown documentation without manual effort.',
+        'Built intuitive UI with status bar controls, command palette integration, and PDF export for seamless developer workflow.',
+      ],
+      technologies: ['JavaScript', 'VS Code API', 'Git Diff Algorithm '],
+      achievements: [
+        'Achieved 100% automated documentation with zero-configuration setup',
+        'Line-level change logging with timestamps generated automatically on every file save'
+      ],
+      githubLink: 'https://github.com/NI3singh/Auto-Doc'
+    },
+    {
+      id: 15,
+      title: 'NotifIQ — Intelligent Notification Manager',
+      description: [
+        'Native Android app that scores every notification on-device — from Important to Spam — using 6 weighted scorers, surfacing what matters and silencing the noise.',
+        'Includes a suppression mode (always protecting OTPs, banking, and calls), a private local inbox, quiet hours, and daily and weekly analytics.',
+        'Learns from user feedback over time, with zero network requests and zero telemetry, on a strict multi-module Clean Architecture.'
+      ],
+      technologies: ['Kotlin', 'Jetpack Compose', 'Room', 'On-device ML', 'Clean Architecture', 'Android'],
+      achievements: [
+        '100% on-device classification — no cloud, no tracking — that adapts to user feedback',
+      ],
+      githubLink: 'https://github.com/NI3singh/NotifIQ'
+    },
+    {
+      id: 16,
       title: 'Retail Sales Analysis on Snowflake',
       description: [
         'Managed end-to-end data analysis pipeline processing 1M+ rows of Rossmann retail sales data for demand forecasting.',
@@ -236,39 +402,6 @@ const Projects: React.FC = () => {
         'Discovered promotional periods boost average daily sales by 67.7% (EUR 4,406 to EUR 7,391)',
       ],
       githubLink: 'https://github.com/NI3singh/Snowflake-Project'
-    },
-
-    {
-      id: 8,
-      title: 'Stock News Summarizer',
-      description: [
-        'Engineered an automated financial news aggregation system collecting data from multiple sources (TradingView, Finviz, Polygon API) with AI-powered insights.',
-        'Integrated Google Gemini Pro to analyze and summarize top stories, generating "What Changed Today" reports with 7-day historical context.',
-        'Built production-ready Flask application with scheduled daily updates, persistent storage, and responsive UI for real-time ticker management.'
-      ],
-      technologies: ['Flask', 'SQLite', 'Google Gemini Pro', 'Data Aggregation', 'REST API', 'Polygon API', 'Natural Language Processing'],
-      achievements: [
-        'Reduced manual news research time by 80% through automated multi-source aggregation',
-        'Processes 15+ articles per ticker into <500 word AI-generated summaries with 7-day historical tracking'
-      ],
-      githubLink: 'https://github.com/NI3singh/stock-news-summarizer',
-      liveLink: 'https://stock-news-summarizer.onrender.com/'
-    },
-
-    {
-      id: 9,
-      title: 'Auto-Doc - VS Code Extension',
-      description: [
-        'Developed a zero-configuration VS Code extension that automatically tracks and documents code changes in real-time with intelligent diff detection.',
-        'Implemented line-by-line change logging with timestamps on every file save, generating clean Markdown documentation without manual effort.',
-        'Built intuitive UI with status bar controls, command palette integration, and PDF export for seamless developer workflow.',
-      ],
-      technologies: ['JavaScript', 'VS Code API', 'Git Diff Algorithm '],
-      achievements: [
-        'Achieved 100% automated documentation with zero-configuration setup',
-        'Detection accuracy within 10 meters range: ~92.7% (line-level precision for all code changes)'
-      ],
-      githubLink: 'https://github.com/NI3singh/Auto-Doc'
     }
   ];
 
@@ -276,6 +409,23 @@ const Projects: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [cardsToShow, setCardsToShow] = useState(3);
+  const [liveStars, setLiveStars] = useState<Record<string, number>>({});
+  const [isPaused, setIsPaused] = useState(false);
+
+  // Refresh GitHub star counts with a single API call (falls back to STAR_FALLBACK)
+  useEffect(() => {
+    let cancelled = false;
+    fetch('https://api.github.com/users/NI3singh/repos?per_page=100&type=owner')
+      .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
+      .then((repos: Array<{ name: string; stargazers_count: number }>) => {
+        if (cancelled || !Array.isArray(repos)) return;
+        const map: Record<string, number> = {};
+        for (const r of repos) map[r.name.toLowerCase()] = r.stargazers_count;
+        setLiveStars(map);
+      })
+      .catch(() => {});
+    return () => { cancelled = true; };
+  }, []);
 
   // Update cards to show based on screen width
   useEffect(() => {
@@ -326,11 +476,14 @@ const Projects: React.FC = () => {
     }
   };
 
-  // Auto-play (optional, currently disabled but ready)
-  // useEffect(() => {
-  //   const interval = setInterval(handleNext, 5000);
-  //   return () => clearInterval(interval);
-  // }, [handleNext]);
+  // Auto-play: gently advance unless paused (hover) or the user prefers reduced motion.
+  // Including currentIndex in deps restarts the timer after every advance or manual nav.
+  useEffect(() => {
+    if (isPaused) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const interval = setInterval(handleNext, 4500);
+    return () => clearInterval(interval);
+  }, [isPaused, handleNext, currentIndex]);
 
   return (
     <section id="projects" className="relative bg-transparent py-20 overflow-hidden">
@@ -341,23 +494,21 @@ const Projects: React.FC = () => {
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+        <SectionHeading
+          eyebrow="My Work"
+          watermark="WORK"
+          subtitle="A collection of my work in AI, Data Science, and Full Stack Development."
+          className="mb-12 animate-fade-in-up"
         >
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-            Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-accent">Projects</span>
-          </h2>
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-            A collection of my work in AI, Data Science, and Full Stack Development.
-          </p>
-        </motion.div>
+          Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-accent">Projects</span>
+        </SectionHeading>
 
         {/* Carousel Container */}
-        <div className="relative group">
+        <div
+          className="relative group"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
           {/* Navigation Buttons */}
           <button
             onClick={handlePrev}
@@ -389,15 +540,19 @@ const Projects: React.FC = () => {
               }}
               onAnimationComplete={handleTransitionEnd}
             >
-              {extendedProjects.map((project, index) => (
-                <div
-                  key={`${project.id}-${index}`}
-                  className="flex-shrink-0"
-                  style={{ width: `${100 / cardsToShow}%` }}
-                >
-                  <ProjectCard {...project} index={index} />
-                </div>
-              ))}
+              {extendedProjects.map((project, index) => {
+                const repo = repoNameFromUrl(project.githubLink);
+                const stars = liveStars[repo] ?? STAR_FALLBACK[repo] ?? 0;
+                return (
+                  <div
+                    key={`${project.id}-${index}`}
+                    className="flex-shrink-0"
+                    style={{ width: `${100 / cardsToShow}%` }}
+                  >
+                    <ProjectCard {...project} index={index} stars={stars} />
+                  </div>
+                );
+              })}
             </motion.div>
           </div>
         </div>

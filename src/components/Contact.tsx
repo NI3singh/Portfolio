@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Mail, Phone, MapPin, Send, User, MessageSquare, CheckCircle, XCircle } from 'lucide-react';
 import { FaGithub, FaLinkedin, FaInstagram, FaYoutube} from 'react-icons/fa';
 import { FaXTwitter } from "react-icons/fa6";
+import SectionHeading from '@/components/SectionHeading';
 
 interface FormData {
   name: string;
@@ -237,17 +238,14 @@ const Contact = () => {
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-block">
-            <h2 className="text-4xl md:text-5xl font-bold text-text-primary mb-4 relative">
-              Get In Touch
-              <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-secondary to-accent rounded-full"></div>
-            </h2>
-          </div>
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto mt-6 leading-relaxed">
-            I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions. Let's create something amazing together!
-          </p>
-        </div>
+        <SectionHeading
+          eyebrow="Contact"
+          watermark="CONTACT"
+          subtitle="I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions. Let's create something amazing together!"
+          className="mb-16"
+        >
+          Get In <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-accent">Touch</span>
+        </SectionHeading>
 
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">

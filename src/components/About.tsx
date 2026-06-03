@@ -1,141 +1,134 @@
 import React from 'react';
-// Optional: import an image if you want to include one
-import ProfileImage from '@/assets/Nitin_Profile_Image.png'; // Example path
 import SectionSeparator from '@/components/SectionSeparator';
+import SectionHeading from '@/components/SectionHeading';
 
+const skills = [
+  'AI-Assisted Development',
+  'Generative AI (GenAI) Engineering',
+  'LLM Fine-tuning (LoRA, Quantization)',
+  'RAG & Agentic Systems',
+  'Machine Learning & Deep Learning',
+  'Computer Vision (YOLOv5, RetinaFace)',
+  'Natural Language Processing (NLP)',
+  'MLOps & Deployment (FastAPI, LangChain, AWS)',
+  'Data Analysis & Visualization (Power BI)',
+];
+
+const interests = [
+  'Building software solutions (with or without AI)',
+  'Robotics',
+  'Open-Source Contribution',
+  'World Affairs',
+  'Cricket',
+];
 
 const About: React.FC = () => {
   return (
     <>
-      <section id="about" className="bg-transparent text-text-primary py-16 md:py-24">
+      <section id="about" className="relative bg-transparent text-text-primary py-20 md:py-28">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-12 md:mb-16 animate-fade-in-up">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-text-primary">
-              About Me
-            </h2>
-            <p className="text-lg text-gray-400 max-w-3xl mx-auto">
-              A Glimpse into My Journey and Expertise in AI and Data.
-            </p>
-            <div className="w-24 h-1 bg-gradient-to-r from-secondary to-accent mx-auto mt-4 rounded-full"></div>
-          </div>
+          {/* Header */}
+          <SectionHeading
+            eyebrow="Who I Am"
+            watermark="ABOUT"
+            subtitle="A Glimpse into My Journey and Expertise in AI and Data."
+            className="mb-12 md:mb-16 animate-fade-in-up"
+          >
+            About <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-accent">Me</span>
+          </SectionHeading>
 
-          <div className="flex flex-col md:flex-row items-start gap-8 md:gap-12">
-            {/* Optional: Image Section */}
-            <div className="md:w-1/3 w-full flex justify-center animate-slide-in-left mb-8 md:mb-0">
-              <div className="profile-image-container relative rounded-full shadow-md w-48 h-48 overflow-hidden group">
-                {/* Gradient border that appears on hover */}
-                <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-1">
-                  <div className="w-full h-full rounded-full bg-gradient-to-r from-secondary via-accent to-secondary animate-spin-slow"></div>
-                </div>
-                <img
-                  src={ProfileImage}
-                  alt="Nitin Singh"
-                  className="relative z-10 w-full h-full object-cover rounded-full"
-                />
-              </div>
-            </div>
+          {/* Bento grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
 
-            {/* Text Content Section */}
-            <div className="md:w-full text-gray-300 text-left md:text-left animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-              {/* Name and title card */}
-              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 mb-6 shadow-lg border border-white/10 hover:border-white/20 transition-all duration-300">
-                <h3 className="text-2xl md:text-3xl font-bold text-transparent bg-gradient-to-r from-secondary to-accent bg-clip-text mb-2">
+            {/* Bio card */}
+            <div className="relative overflow-hidden md:col-span-2 lg:col-span-2 lg:row-span-2 flex flex-col bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:border-secondary/30 transition-colors duration-300 animate-fade-in-up">
+              {/* decorative glow */}
+              <div className="absolute -top-12 -right-12 w-44 h-44 bg-secondary/10 rounded-full blur-3xl pointer-events-none"></div>
+
+              {/* Identity */}
+              <div className="relative">
+                <h3 className="text-3xl font-bold text-transparent bg-gradient-to-r from-secondary to-accent bg-clip-text inline-block">
                   Nitin Singh
                 </h3>
-                <p className="text-secondary font-semibold text-lg">AI Developer & Data Analyst</p>
-                <div className="flex items-center mt-2 text-gray-400">
-                  <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <p className="text-secondary font-medium mt-1">AI/ML Engineer · Generative AI</p>
+                <div className="flex items-center gap-1.5 mt-2 text-gray-400 text-sm">
+                  <svg className="w-4 h-4 text-secondary" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
                   </svg>
-                  Surat, Gujarat
-                </div>
-              </div>
-              <p className="mb-4 text-lg leading-relaxed">
-                Hello! I'm Nitin Singh, an enthusiastic and detail-oriented AI Developer and Data Analyst based in Surat, Gujarat . I recently completed my B.Tech in Artificial Intelligence & Data Science from Uka Tarsadia University, achieving an aggregate CGPA of (8.68). My academic journey has equipped me with a strong foundation in machine learning, deep learning, computer vision, and natural language processing.
-              </p>
-              <p className="mb-4 text-lg leading-relaxed">
-                I have a keen interest in developing robust machine learning pipelines and have applied MLOps concepts in projects like Student Performance Analysis. My experience extends to building practical applications such as movie-ticket booking chatbots using DialogFlow CX, and exploring time series analysis techniques like ARIMA and SARIMAX. I'm also proficient in Python and familiar with frameworks like Pandas, Numpy, Scikit-Learn, and PyTorch.
-              </p>
-              <p className="mb-6 text-lg leading-relaxed">
-                While my resume highlights my skills as an AI Engineer, I am equally passionate about the entire data lifecycle, from collection and preparation to analysis and visualization for deriving meaningful insights. I'm driven by the challenge of solving complex problems and am always eager to learn and explore new technologies in the ever-evolving field of AI and data.
-              </p>
-
-              {/* Skills and Interests in enhanced cards */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-secondary/30 transition-all duration-300 group">
-                  <div className="flex items-center mb-4">
-                    <div className="w-8 h-8 bg-secondary/20 rounded-lg flex items-center justify-center mr-3 group-hover:bg-secondary/30 transition-colors duration-300">
-                      <svg className="w-5 h-5 text-secondary" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                    </div>
-                    <h4 className="text-xl font-bold text-secondary">Key Skills</h4>
-                  </div>
-                  <ul className="space-y-2">
-                    {[
-                      "Machine Learning & Deep Learning",
-                      "Computer Vision (YOLOv5, RetinaFace)",
-                      "Natural Language Processing (NLP)",
-                      "Data Analysis & Visualization (Power BI)",
-                      "MLOps & Model Deployment (FastAPI, Gradio)"
-                    ].map((skill, index) => (
-                      <li key={index} className="flex items-center text-gray-300 hover:text-white transition-colors duration-200">
-                        <div className="w-2 h-2 bg-secondary rounded-full mr-3 flex-shrink-0"></div>
-                        {skill}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-accent/30 transition-all duration-300 group">
-                  <div className="flex items-center mb-4">
-                    <div className="w-8 h-8 bg-accent/20 rounded-lg flex items-center justify-center mr-3 group-hover:bg-accent/30 transition-colors duration-300">
-                      <svg className="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" />
-                      </svg>
-                    </div>
-                    <h4 className="text-xl font-bold text-accent">Interests</h4>
-                  </div>
-                  <ul className="space-y-2">
-                    {[
-                      "Exploring new AI Architectures",
-                      "Generative AI (GenAI)",
-                      "Robotics",
-                      "World Affairs & Cricket"
-                    ].map((interest, index) => (
-                      <li key={index} className="flex items-center text-gray-300 hover:text-white transition-colors duration-200">
-                        <div className="w-2 h-2 bg-accent rounded-full mr-3 flex-shrink-0"></div>
-                        {interest}
-                      </li>
-                    ))}
-                  </ul>
+                  Surat, India
                 </div>
               </div>
 
-              {/* Connect Button */}
+              <div className="h-px bg-white/10 my-6"></div>
 
-              <div className="text-center md:text-left">
-                <a
-                  href="#contact"
-                  className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-[#0b0c0a] transition-all duration-300 bg-gradient-to-r from-secondary to-accent rounded-xl hover:from-accent hover:to-secondary transform hover:scale-105 hover:shadow-xl">
-                  {/* Glowing Border Effect */}
-                  <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-secondary via-accent to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-pulse"></div>
-                  <div className="absolute inset-0.5 rounded-xl bg-gradient-to-r from-secondary to-accent group-hover:from-accent group-hover:to-secondary transition-all duration-500"></div>
+              {/* Bio */}
+              <div className="relative space-y-4 text-gray-300 leading-relaxed">
+                <p className="text-lg">
+                  I&apos;m Nitin Singh — an AI/ML Engineer based in Surat, India, with 2+ years of experience designing LLM-powered applications, fine-tuning large models, and building autonomous agentic systems. I hold a B.Tech in Artificial Intelligence &amp; Data Science from Uka Tarsadia University, graduating with a CGPA of 8.68 and a perfect 10.0 SGPA in my final semester.
+                </p>
+                <p>
+                  My work spans the full stack of modern AI — from LoRA fine-tuning, 4-bit quantization, and RAG pipeline architecture to multi-agent orchestration and computer vision — shipped end-to-end with FastAPI, LangChain, and AWS. I&apos;ve fine-tuned Stable Diffusion for AI avatar generation, deployed agentic RAG chatbots, trained a Temporal Fusion Transformer for real-time financial forecasting, and co-authored an arXiv preprint on image restoration.
+                </p>
+                <p>
+                  I move fast with AI-assisted development and care about turning research into clean, dependable products people actually use. I&apos;m driven by hard problems and always learning — most recently placing in the Top 5 at the IIT Bombay and IIT Gandhinagar hackathons.
+                </p>
+              </div>
 
-                  {/* Moving Light Effect */}
-                  <div className="absolute inset-0 rounded-xl overflow-hidden">
-                    <div className="absolute -top-2 -left-full w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent transform rotate-12 group-hover:translate-x-full transition-transform duration-1000"></div>
-                  </div>
-                  <span className="relative z-10 flex items-center">
-                    Let's Connect
-                    <svg className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
+              {/* CTA */}
+              <a href="#contact" className="group/btn relative mt-auto pt-8 inline-flex">
+                <span className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-secondary to-accent text-[#0b0c0a] font-semibold transition-transform duration-300 group-hover/btn:scale-[1.03]">
+                  Let&apos;s Connect
+                  <svg className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </span>
+              </a>
+            </div>
+
+            {/* Key Skills card */}
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:border-secondary/30 transition-colors duration-300 animate-fade-in-up" style={{ animationDelay: '0.15s' }}>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-9 h-9 rounded-lg bg-secondary/10 border border-secondary/20 flex items-center justify-center">
+                  <svg className="w-5 h-5 text-secondary" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <h4 className="text-lg font-bold text-secondary">Key Skills</h4>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {skills.map((skill) => (
+                  <span
+                    key={skill}
+                    className="text-xs font-medium px-3 py-1.5 rounded-full bg-secondary/[0.07] border border-secondary/20 text-gray-200 hover:border-secondary/50 hover:text-white transition-colors"
+                  >
+                    {skill}
                   </span>
-                  <div className="absolute inset-0 rounded-xl bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </a>
+                ))}
               </div>
             </div>
+
+            {/* Interests card */}
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:border-accent/30 transition-colors duration-300 animate-fade-in-up" style={{ animationDelay: '0.25s' }}>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-9 h-9 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center">
+                  <svg className="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" />
+                  </svg>
+                </div>
+                <h4 className="text-lg font-bold text-accent">Interests</h4>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {interests.map((interest) => (
+                  <span
+                    key={interest}
+                    className="text-xs font-medium px-3 py-1.5 rounded-full bg-accent/[0.07] border border-accent/20 text-gray-200 hover:border-accent/50 hover:text-white transition-colors"
+                  >
+                    {interest}
+                  </span>
+                ))}
+              </div>
+            </div>
+
           </div>
         </div>
       </section>

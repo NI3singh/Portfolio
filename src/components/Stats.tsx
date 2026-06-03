@@ -1,6 +1,7 @@
 import React from 'react';
 import { TrophyIcon, PencilSquareIcon, CodeBracketIcon, LightBulbIcon } from '@heroicons/react/24/outline';
 import SectionSeparator from '@/components/SectionSeparator';
+import SectionHeading from '@/components/SectionHeading';
 
 import quizWinnerImage from '@/assets/Win.JPG';
 import scriptWritingImage from '@/assets/0Q7A9268.JPG';
@@ -154,14 +155,14 @@ const Stats: React.FC = () => {
 
         <div className="container mx-auto px-6 relative z-10">
           {/* Achievements Section */}
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 animate-fade-in-up">
-              My <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-accent">Achievements</span>
-            </h2>
-            <p className="text-lg text-gray-400 max-w-3xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-              Highlighting my performance in competitions and core areas of expertise.
-            </p>
-          </div>
+          <SectionHeading
+            eyebrow="Recognition"
+            watermark="AWARDS"
+            subtitle="Highlighting my performance in competitions and core areas of expertise."
+            className="mb-16 animate-fade-in-up"
+          >
+            My <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-accent">Achievements</span>
+          </SectionHeading>
 
           {/* 3-Column Grid Layout */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-24 max-w-7xl mx-auto">
@@ -219,9 +220,14 @@ const Stats: React.FC = () => {
 
           {/* Core Technical Skills Section */}
           <div className="mt-20 text-center animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
-            <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 animate-fade-in-up">
+            <SectionHeading
+              as="h3"
+              eyebrow="Tech Stack"
+              watermark="SKILLS"
+              className="mb-8"
+            >
               Core Technical <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-accent">Skills</span>
-            </h3>
+            </SectionHeading>
 
             {/* Animated Skills Rail — full-bleed, edge-faded, seamless loop */}
             <div className="relative left-1/2 -translate-x-1/2 w-screen overflow-hidden py-6 marquee-mask">

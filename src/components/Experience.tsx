@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { BriefcaseIcon, AcademicCapIcon, CalendarIcon, MapPinIcon, TrophyIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
 import SectionSeparator from '@/components/SectionSeparator';
+import SectionHeading from '@/components/SectionHeading';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface ExperienceItem {
@@ -438,17 +439,16 @@ const ExperienceEducationSection: React.FC = () => {
         </div>
 
         <div className="container mx-auto px-6 relative z-10">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 animate-fade-in-up text-text-primary">
-              {activeTab === 'experience' ? 'Professional Journey' : 'Educational Foundation'}
-            </h2>
-            <p className="text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed">
-              {activeTab === 'experience'
-                ? 'Experiences that defined my professional growth and skills.'
-                : 'A timeline of my academic milestones and achievements.'}
-            </p>
-            <div className="w-24 h-1 bg-gradient-to-r from-secondary to-accent mx-auto mt-4 animate-fade-in-up rounded-full" style={{animationDelay: '0.3s'}}></div>
-          </div>
+          <SectionHeading
+            eyebrow={activeTab === 'experience' ? 'Experience' : 'Education'}
+            watermark={activeTab === 'experience' ? 'CAREER' : 'STUDIES'}
+            subtitle={activeTab === 'experience'
+              ? 'Experiences that defined my professional growth and skills.'
+              : 'A timeline of my academic milestones and achievements.'}
+            className="mb-16 animate-fade-in-up"
+          >
+            {activeTab === 'experience' ? 'Professional Journey' : 'Educational Foundation'}
+          </SectionHeading>
 
           {/* Enhanced Toggle Switch */}
           <div className="flex justify-center mb-16">
