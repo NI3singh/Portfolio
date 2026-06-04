@@ -3,11 +3,11 @@ import { TrophyIcon, PencilSquareIcon, CodeBracketIcon, LightBulbIcon } from '@h
 import SectionSeparator from '@/components/SectionSeparator';
 import SectionHeading from '@/components/SectionHeading';
 
-import quizWinnerImage from '@/assets/Win.JPG';
-import scriptWritingImage from '@/assets/0Q7A9268.JPG';
-import tattvaHackathonImage from '@/assets/TattvaHackathon.jpg';
-import finnovateImage from '@/assets/Finnovate Hackathon.jpg';
-import iitgcertificateImage from '@/assets/IITG_Certificate.png';
+import quizWinnerImage from '@/assets/Win.webp';
+import scriptWritingImage from '@/assets/ScriptWriting.webp';
+import tattvaHackathonImage from '@/assets/TattvaHackathon.webp';
+import finnovateImage from '@/assets/Finnovate.webp';
+import iitgcertificateImage from '@/assets/IITG_Certificate.webp';
 
 interface StatCardProps {
   icon: React.ReactNode;
@@ -28,7 +28,6 @@ const StatCard: React.FC<StatCardProps> = ({
   animationDelay,
   imageUrl,
   imageAlt,
-  showWinnerTag
 }) => {
   return (
     <div

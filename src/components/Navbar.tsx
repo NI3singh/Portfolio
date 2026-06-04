@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Bars3Icon, XMarkIcon, AcademicCapIcon, BriefcaseIcon } from '@heroicons/react/24/outline';
-import nitinlogo from '@/assets/Nitin_Logo.png';
+import nitinlogo from '@/assets/Nitin_Logo.webp';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
