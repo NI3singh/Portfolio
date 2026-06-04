@@ -11,6 +11,17 @@
       gtag('config', 'G-45N9L0YSK7');
     </script>
     <meta charset="UTF-8" />
+    <!-- Apply the saved theme before paint to avoid a flash of the wrong theme. -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('theme');
+          document.documentElement.setAttribute('data-theme', t === 'day' ? 'day' : 'night');
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'night');
+        }
+      })();
+    </script>
     <link rel="icon" type="image/svg+xml" href="/Portfolio-icon.svg" /> <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nitin Singh | AI Developer & Data Analyst</title>
 

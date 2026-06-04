@@ -260,7 +260,7 @@ const Contact = () => {
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center p-6 bg-gray-900/60 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 group border border-white/10 hover:border-secondary/30"
+                    className="flex items-center p-6 bg-surface/60 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 group border border-glass/10 hover:border-secondary/30"
                   >
                     <div className="flex items-center justify-center w-14 h-14 rounded-xl bg-secondary/10 border border-secondary/20 text-secondary mr-5 group-hover:scale-110 transition-transform duration-300">
                       {item.icon}
@@ -269,7 +269,7 @@ const Contact = () => {
                       <h3 className="text-lg font-semibold text-text-primary mb-1">
                         {item.label}
                       </h3>
-                      <p className="text-gray-400 group-hover:text-gray-300 break-all">
+                      <p className="text-text-secondary group-hover:text-text-primary break-all">
                         {item.value}
                       </p>
                     </div>
@@ -278,7 +278,7 @@ const Contact = () => {
               </div>
 
               {/* Social Links */}
-              <div className="bg-gray-900/60 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/10">
+              <div className="bg-surface/60 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-glass/10">
                 <h3 className="text-xl font-semibold text-text-primary mb-4 text-center">Connect With Me</h3>
                 <div className="flex justify-center space-x-3">
                   {socialLinks.map((social, index) => (
@@ -287,27 +287,27 @@ const Contact = () => {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`flex items-center justify-center w-12 h-12 rounded-xl bg-white/5 border border-white/10 text-gray-300 ${social.color} transition-all duration-300 transform hover:scale-110`}
+                      className={`flex items-center justify-center w-12 h-12 rounded-xl bg-glass/5 border border-glass/10 text-text-primary ${social.color} transition-all duration-300 transform hover:scale-110`}
                     >
                       {social.icon}
                     </a>
                   ))}
                 </div>
-                <p className="text-sm text-gray-400 text-center mt-4">
+                <p className="text-sm text-text-secondary text-center mt-4">
                   Follow me for updates and connect professionally
                 </p>
               </div>
             </div>
 
             {/* Right Column - Contact Form */}
-            <div className="bg-gray-900/60 backdrop-blur-sm rounded-2xl shadow-xl p-8 border border-white/10 relative overflow-hidden">
+            <div className="bg-surface/60 backdrop-blur-sm rounded-2xl shadow-xl p-8 border border-glass/10 relative overflow-hidden">
               {/* Form Background Pattern */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-secondary/10 to-accent/10 rounded-full -translate-y-16 translate-x-16 opacity-50"></div>
 
               <div className="relative z-10">
                 <div className="text-center mb-6">
                   <h3 className="text-2xl font-bold text-text-primary mb-2">Send Me a Message</h3>
-                  <p className="text-gray-400">I'd love to hear about your project</p>
+                  <p className="text-text-secondary">I'd love to hear about your project</p>
                 </div>
 
                 {submitted ? (
@@ -316,7 +316,7 @@ const Contact = () => {
                       <Send className="h-8 w-8 text-accent" />
                     </div>
                     <h4 className="text-xl font-semibold text-text-primary mb-2">Message Sent! 🎉</h4>
-                    <p className="text-gray-400">Thank you for reaching out. I'll get back to you soon.</p>
+                    <p className="text-text-secondary">Thank you for reaching out. I'll get back to you soon.</p>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-6">
@@ -328,7 +328,7 @@ const Contact = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="relative">
-                        <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                        <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-text-secondary" />
                         <input
                           type="text"
                           name="name"
@@ -336,13 +336,13 @@ const Contact = () => {
                           onChange={handleInputChange}
                           placeholder="Your Name*"
                           required
-                          className="w-full pl-10 pr-4 py-3 border border-white/10 rounded-lg focus:ring-2 focus:ring-secondary/40 focus:border-transparent transition-all duration-300 bg-white/5 focus:bg-white/10 placeholder-gray-500 text-text-primary"
+                          className="w-full pl-10 pr-4 py-3 border border-glass/10 rounded-lg focus:ring-2 focus:ring-secondary/40 focus:border-transparent transition-all duration-300 bg-glass/5 focus:bg-glass/10 placeholder-text-secondary text-text-primary"
                         />
                       </div>
 
                       {/* Email input with validation */}
                       <div className="relative">
-                        <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                        <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-text-secondary" />
                         <input
                           type="email"
                           name="email"
@@ -350,10 +350,10 @@ const Contact = () => {
                           onChange={handleInputChange}
                           placeholder="Your Email*"
                           required
-                          className={`w-full pl-10 pr-12 py-3 border rounded-lg focus:ring-2 focus:border-transparent transition-all duration-300 bg-white/5 focus:bg-white/10 placeholder-gray-500 text-text-primary ${
+                          className={`w-full pl-10 pr-12 py-3 border rounded-lg focus:ring-2 focus:border-transparent transition-all duration-300 bg-glass/5 focus:bg-glass/10 placeholder-text-secondary text-text-primary ${
                             emailValidation.isValid === true ? 'border-accent/50 focus:ring-accent/40' :
                             emailValidation.isValid === false ? 'border-red-500/50 focus:ring-red-500/40' :
-                            'border-white/10 focus:ring-secondary/40'
+                            'border-glass/10 focus:ring-secondary/40'
                           }`}
                         />
 
@@ -388,12 +388,12 @@ const Contact = () => {
                         value={formData.subject}
                         onChange={handleInputChange}
                         placeholder="Subject (optional)"
-                        className="w-full px-4 py-3 border border-white/10 rounded-lg focus:ring-2 focus:ring-secondary/40 focus:border-transparent transition-all duration-300 bg-white/5 focus:bg-white/10 placeholder-gray-500 text-text-primary"
+                        className="w-full px-4 py-3 border border-glass/10 rounded-lg focus:ring-2 focus:ring-secondary/40 focus:border-transparent transition-all duration-300 bg-glass/5 focus:bg-glass/10 placeholder-text-secondary text-text-primary"
                       />
                     </div>
 
                     <div className="relative">
-                      <MessageSquare className="absolute left-3 top-4 h-5 w-5 text-gray-400" />
+                      <MessageSquare className="absolute left-3 top-4 h-5 w-5 text-text-secondary" />
                       <textarea
                         name="message"
                         value={formData.message}
@@ -401,7 +401,7 @@ const Contact = () => {
                         placeholder="Your Message*"
                         rows={5}
                         required
-                        className="w-full pl-10 pr-4 py-3 border border-white/10 rounded-lg focus:ring-2 focus:ring-secondary/40 focus:border-transparent transition-all duration-300 bg-white/5 focus:bg-white/10 placeholder-gray-500 text-text-primary resize-none"
+                        className="w-full pl-10 pr-4 py-3 border border-glass/10 rounded-lg focus:ring-2 focus:ring-secondary/40 focus:border-transparent transition-all duration-300 bg-glass/5 focus:bg-glass/10 placeholder-text-secondary text-text-primary resize-none"
                       />
                     </div>
 
@@ -410,8 +410,8 @@ const Contact = () => {
                       disabled={isSubmitting || !isFormValid}
                       className={`relative group w-full inline-flex items-center justify-center px-8 py-4 text-lg font-semibold transition-all duration-300 rounded-xl transform ${
                         isFormValid && !isSubmitting
-                          ? 'bg-gradient-to-r from-secondary to-accent text-[#0b0c0a] hover:from-accent hover:to-secondary hover:scale-105 hover:shadow-xl'
-                          : 'bg-gray-700 text-gray-300 cursor-not-allowed'
+                          ? 'bg-gradient-to-r from-secondary to-accent text-on-secondary hover:from-accent hover:to-secondary hover:scale-105 hover:shadow-xl'
+                          : 'bg-surface-2 text-text-secondary cursor-not-allowed'
                       }`}>
                       {/* Glowing Effects – only when enabled */}
                       {isFormValid && !isSubmitting && (
@@ -441,7 +441,7 @@ const Contact = () => {
                     </button>
 
 
-                    <p className="text-xs text-gray-400 text-center">
+                    <p className="text-xs text-text-secondary text-center">
                       * Required fields. Email will be validated automatically.
                     </p>
                   </form>
@@ -453,8 +453,8 @@ const Contact = () => {
 
         {/* Bottom CTA */}
         <div className="text-center mt-16">
-          <div className="inline-block bg-gray-900/60 backdrop-blur-sm rounded-2xl px-8 py-4 shadow-lg border border-white/10">
-            <p className="text-gray-400 mb-2">Prefer a quick chat?</p>
+          <div className="inline-block bg-surface/60 backdrop-blur-sm rounded-2xl px-8 py-4 shadow-lg border border-glass/10">
+            <p className="text-text-secondary mb-2">Prefer a quick chat?</p>
             <a
               href="mailto:ni3.singh.r@gmail.com"
               className="text-secondary hover:text-accent font-semibold transition-colors duration-300"

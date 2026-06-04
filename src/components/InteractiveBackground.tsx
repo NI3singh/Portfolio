@@ -80,13 +80,11 @@ const InteractiveBackground: React.FC = () => {
         />
       ))}
 
-      {/* cursor-following glow */}
+      {/* cursor-following glow — colour & blend flip with the theme via .cursor-glow */}
       <div
         ref={glowRef}
-        className="absolute top-0 left-0 w-[640px] h-[640px] rounded-full mix-blend-screen will-change-transform"
+        className="cursor-glow absolute top-0 left-0 w-[640px] h-[640px] rounded-full will-change-transform"
         style={{
-          background:
-            'radial-gradient(circle, rgba(198,244,50,0.13) 0%, rgba(94,234,212,0.07) 38%, transparent 70%)',
           transform: 'translate3d(calc(50vw - 320px), calc(50vh - 320px), 0)',
         }}
       />

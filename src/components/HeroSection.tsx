@@ -116,7 +116,7 @@ const HeroSection: React.FC = () => {
 
               <div className="mb-6">
                 {/* Enhanced Headline with Glitch Effect */}
-                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-accent to-secondary mb-2 animate-fade-in-up delay-400 leading-tight relative group" 
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-text-primary via-accent to-secondary mb-2 animate-fade-in-up delay-400 leading-tight relative group"
                     style={{ fontFamily: 'Inter, system-ui, sans-serif', letterSpacing: '-0.02em' }}>
                   <span className="block relative">
                     {/* Main Text */}
@@ -150,7 +150,7 @@ const HeroSection: React.FC = () => {
               {/* Enhanced Futuristic CTA Buttons */}
               <div className="space-x-0 md:space-x-4 space-y-4 md:space-y-0 flex flex-col sm:flex-row justify-center md:justify-start animate-fade-in-up delay-1000">
                 <div className="text-center md:text-left">
-                  <a href="#projects" className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-[#0b0c0a] transition-all duration-500 bg-gradient-to-r from-secondary to-accent rounded-xl hover:from-accent hover:to-secondary transform hover:scale-105 hover:shadow-2xl overflow-hidden">
+                  <a href="#projects" className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-on-secondary transition-all duration-500 bg-gradient-to-r from-secondary to-accent rounded-xl hover:from-accent hover:to-secondary transform hover:scale-105 hover:shadow-2xl overflow-hidden">
                     {/* Glowing Border Effect */}
                     <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-secondary via-accent to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-pulse"></div>
                     <div className="absolute inset-0.5 rounded-xl bg-gradient-to-r from-secondary to-accent group-hover:from-accent group-hover:to-secondary transition-all duration-500"></div>
@@ -170,7 +170,7 @@ const HeroSection: React.FC = () => {
                 </div>
                 
                 <div className="text-center md:text-left">
-                  <a href="#contact" className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-[#0b0c0a] transition-all duration-500 bg-gradient-to-r from-accent to-secondary rounded-xl hover:from-secondary hover:to-accent transform hover:scale-105 hover:shadow-2xl overflow-hidden">
+                  <a href="#contact" className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-on-secondary transition-all duration-500 bg-gradient-to-r from-accent to-secondary rounded-xl hover:from-secondary hover:to-accent transform hover:scale-105 hover:shadow-2xl overflow-hidden">
                     {/* Glowing Border Effect */}
                     <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-accent via-secondary to-accent opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-pulse"></div>
                     <div className="absolute inset-0.5 rounded-xl bg-gradient-to-r from-accent to-secondary group-hover:from-secondary group-hover:to-accent transition-all duration-500"></div>
@@ -209,14 +209,14 @@ const HeroSection: React.FC = () => {
                   {/* bright light behind the photo */}
                   <div
                     className="absolute w-56 h-56 md:w-72 md:h-72 rounded-full"
-                    style={{ background: 'radial-gradient(circle, rgba(198,244,50,0.38) 0%, rgba(94,234,212,0.18) 42%, transparent 70%)', filter: 'blur(30px)' }}
+                    style={{ background: 'var(--photo-glow)', filter: 'blur(30px)' }}
                   ></div>
                   {/* photo (already circular) */}
                   <img
                     src={NitinImage}
                     alt="Nitin Singh"
                     className={`relative z-20 w-40 h-40 md:w-56 md:h-56 rounded-full object-cover transition-transform duration-500 ${isHovered ? 'scale-[1.04]' : ''}`}
-                    style={{ boxShadow: '0 0 24px rgba(198,244,50,0.4)' }}
+                    style={{ boxShadow: '0 0 24px var(--photo-shadow)' }}
                   />
                 </div>
                 
@@ -243,8 +243,8 @@ const HeroSection: React.FC = () => {
                 <div className={`absolute inset-0 transition-all duration-500 ${isHovered ? 'animate-spin' : 'animate-spin'}`} style={{animationDuration: isHovered ? '15s' : '20s'}}>
                   <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-accent rounded-full shadow-lg animate-pulse"></div>
                   <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-3 h-3 bg-secondary rounded-full shadow-lg animate-pulse"></div>
-                  <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-2 h-2 bg-white rounded-full shadow-lg animate-pulse"></div>
-                  <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-2 h-2 bg-white rounded-full shadow-lg animate-pulse"></div>
+                  <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-2 h-2 bg-text-primary rounded-full shadow-lg animate-pulse"></div>
+                  <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-2 h-2 bg-text-primary rounded-full shadow-lg animate-pulse"></div>
                 </div>
                 
                 {/* Enhanced Counter-rotating rings */}
@@ -258,7 +258,7 @@ const HeroSection: React.FC = () => {
                 <div className={`absolute bottom-8 left-8 text-secondary/60 font-mono text-sm transition-all duration-300 ${isHovered ? 'text-secondary scale-110' : 'animate-bounce'}`} style={{animationDelay: '2s'}}>
                   {'{ML}'}
                 </div>
-                <div className={`absolute top-1/4 left-4 text-white/40 font-mono text-xs transition-all duration-300 ${isHovered ? 'text-white/80 scale-110' : 'animate-bounce'}`} style={{animationDelay: '0.5s'}}>
+                <div className={`absolute top-1/4 left-4 text-text-primary/40 font-mono text-xs transition-all duration-300 ${isHovered ? 'text-text-primary/80 scale-110' : 'animate-bounce'}`} style={{animationDelay: '0.5s'}}>
                   def()
                 </div>
                 <div className={`absolute bottom-1/4 right-4 text-accent/40 font-mono text-xs transition-all duration-300 ${isHovered ? 'text-accent/80 scale-110' : 'animate-bounce'}`} style={{animationDelay: '1.5s'}}>
@@ -268,12 +268,12 @@ const HeroSection: React.FC = () => {
                 {/* Enhanced Glowing Particles */}
                 <div className="absolute top-12 left-12 w-1 h-1 bg-accent rounded-full animate-ping"></div>
                 <div className="absolute top-20 right-16 w-1 h-1 bg-secondary rounded-full animate-ping" style={{animationDelay: '1s'}}></div>
-                <div className="absolute bottom-16 left-20 w-1 h-1 bg-white rounded-full animate-ping" style={{animationDelay: '0.5s'}}></div>
+                <div className="absolute bottom-16 left-20 w-1 h-1 bg-text-primary rounded-full animate-ping" style={{animationDelay: '0.5s'}}></div>
                 <div className="absolute bottom-12 right-12 w-1 h-1 bg-accent rounded-full animate-ping" style={{animationDelay: '2s'}}></div>
                 
                 {/* Interactive Tooltip */}
                 {showTooltip && (
-                  <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-secondary to-accent px-1 py-3 rounded-lg text-[#0b0c0a] text-sm font-medium shadow-xl animate-fade-in-up min-w-48">
+                  <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-secondary to-accent px-1 py-3 rounded-lg text-on-secondary text-sm font-medium shadow-xl animate-fade-in-up min-w-48">
                     <div className="text-center">Welcome to Nitin's space! explore, discover, connect.</div>
                     <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-accent rotate-45"></div>
                   </div>

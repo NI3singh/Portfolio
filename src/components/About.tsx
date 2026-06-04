@@ -41,7 +41,7 @@ const About: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
 
             {/* Bio card */}
-            <div className="relative overflow-hidden md:col-span-2 lg:col-span-2 lg:row-span-2 flex flex-col bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:border-secondary/30 transition-colors duration-300 animate-fade-in-up">
+            <div className="relative overflow-hidden md:col-span-2 lg:col-span-2 lg:row-span-2 flex flex-col bg-glass/5 backdrop-blur-sm border border-glass/10 rounded-2xl p-8 hover:border-secondary/30 transition-colors duration-300 animate-fade-in-up">
               {/* decorative glow */}
               <div className="absolute -top-12 -right-12 w-44 h-44 bg-secondary/10 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -51,7 +51,7 @@ const About: React.FC = () => {
                   Nitin Singh
                 </h3>
                 <p className="text-secondary font-medium mt-1">AI/ML Engineer · Generative AI</p>
-                <div className="flex items-center gap-1.5 mt-2 text-gray-400 text-sm">
+                <div className="flex items-center gap-1.5 mt-2 text-text-secondary text-sm">
                   <svg className="w-4 h-4 text-secondary" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
                   </svg>
@@ -59,10 +59,10 @@ const About: React.FC = () => {
                 </div>
               </div>
 
-              <div className="h-px bg-white/10 my-6"></div>
+              <div className="h-px bg-glass/10 my-6"></div>
 
               {/* Bio */}
-              <div className="relative space-y-4 text-gray-300 leading-relaxed">
+              <div className="relative space-y-4 text-text-primary leading-relaxed">
                 <p className="text-lg">
                   I&apos;m Nitin Singh — an AI/ML Engineer based in Surat, India, with 2+ years of experience designing LLM-powered applications, fine-tuning large models, and building autonomous agentic systems. I hold a B.Tech in Artificial Intelligence &amp; Data Science from Uka Tarsadia University, graduating with a CGPA of 8.68 and a perfect 10.0 SGPA in my final semester.
                 </p>
@@ -76,7 +76,7 @@ const About: React.FC = () => {
 
               {/* CTA */}
               <a href="#contact" className="group/btn relative mt-auto pt-8 inline-flex">
-                <span className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-secondary to-accent text-[#0b0c0a] font-semibold transition-transform duration-300 group-hover/btn:scale-[1.03]">
+                <span className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-secondary to-accent text-on-secondary font-semibold transition-transform duration-300 group-hover/btn:scale-[1.03]">
                   Let&apos;s Connect
                   <svg className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -86,7 +86,7 @@ const About: React.FC = () => {
             </div>
 
             {/* Key Skills card */}
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:border-secondary/30 transition-colors duration-300 animate-fade-in-up" style={{ animationDelay: '0.15s' }}>
+            <div className="bg-glass/5 backdrop-blur-sm border border-glass/10 rounded-2xl p-6 hover:border-secondary/30 transition-colors duration-300 animate-fade-in-up" style={{ animationDelay: '0.15s' }}>
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-9 h-9 rounded-lg bg-secondary/10 border border-secondary/20 flex items-center justify-center">
                   <svg className="w-5 h-5 text-secondary" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
@@ -99,7 +99,7 @@ const About: React.FC = () => {
                 {skills.map((skill) => (
                   <span
                     key={skill}
-                    className="text-xs font-medium px-3 py-1.5 rounded-full bg-secondary/[0.07] border border-secondary/20 text-gray-200 hover:border-secondary/50 hover:text-white transition-colors"
+                    className="text-xs font-medium px-3 py-1.5 rounded-full bg-secondary/[0.07] border border-secondary/20 text-text-secondary hover:border-secondary/50 hover:text-text-primary transition-colors"
                   >
                     {skill}
                   </span>
@@ -108,7 +108,7 @@ const About: React.FC = () => {
             </div>
 
             {/* Interests card */}
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:border-accent/30 transition-colors duration-300 animate-fade-in-up" style={{ animationDelay: '0.25s' }}>
+            <div className="bg-glass/5 backdrop-blur-sm border border-glass/10 rounded-2xl p-6 hover:border-accent/30 transition-colors duration-300 animate-fade-in-up" style={{ animationDelay: '0.25s' }}>
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-9 h-9 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center">
                   <svg className="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
@@ -121,7 +121,7 @@ const About: React.FC = () => {
                 {interests.map((interest) => (
                   <span
                     key={interest}
-                    className="text-xs font-medium px-3 py-1.5 rounded-full bg-accent/[0.07] border border-accent/20 text-gray-200 hover:border-accent/50 hover:text-white transition-colors"
+                    className="text-xs font-medium px-3 py-1.5 rounded-full bg-accent/[0.07] border border-accent/20 text-text-secondary hover:border-accent/50 hover:text-text-primary transition-colors"
                   >
                     {interest}
                   </span>
