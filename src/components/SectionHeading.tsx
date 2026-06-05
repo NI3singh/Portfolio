@@ -37,7 +37,7 @@ const SectionHeading: React.FC<SectionHeadingProps> = ({
       {watermark && (
         <span
           aria-hidden="true"
-          className="font-display pointer-events-none select-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-extrabold uppercase tracking-tighter leading-none whitespace-nowrap text-6xl sm:text-7xl md:text-8xl text-[color:var(--watermark-color)]"
+          className="font-display pointer-events-none select-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-extrabold uppercase tracking-tighter leading-none whitespace-nowrap text-6xl sm:text-7xl md:text-8xl text-white/[0.04]"
         >
           {watermark}
         </span>
@@ -62,7 +62,7 @@ const SectionHeading: React.FC<SectionHeadingProps> = ({
           </Tag>
         </div>
 
-        {subtitle && <p className="text-lg text-text-secondary max-w-2xl mx-auto">{subtitle}</p>}
+        {subtitle && <p className="text-lg text-gray-400 max-w-2xl mx-auto">{subtitle}</p>}
 
         <div className="w-20 h-1 bg-gradient-to-r from-secondary to-accent mx-auto mt-5 rounded-full" />
       </div>

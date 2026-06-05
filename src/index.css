@@ -4,20 +4,13 @@
 @import "tailwindcss";
 
 @theme {
-  /* Night — "Acid Lab" (default). Day values live under [data-theme="day"]. */
   --color-primary: #0b0c0a;     /* charcoal base */
   --color-secondary: #c6f432;   /* acid lime (primary accent) */
   --color-accent: #5eead4;      /* mint (secondary accent) */
   --color-text-primary: #ecece7;
   --color-text-secondary: #ababa2;
   --color-light-gray: #14150f;  /* now a dark surface */
-
-  /* surfaces, hairlines & accessible "text-on-accent" — all flip per theme */
-  --color-surface: #111827;      /* card background (≈ gray-900) */
-  --color-surface-2: #1f2937;    /* elevated / disabled surface (≈ gray-800) */
-  --color-glass: #ffffff;        /* base tint for translucent fills & borders */
-  --color-on-secondary: #0b0c0a; /* readable text placed on accent fills */
-
+  
   --font-family-sans: "DM Sans", "Inter", sans-serif;
   --font-family-mono: "Roboto Mono", monospace;
 }
@@ -120,10 +113,10 @@ a {
     border-radius: 50%;
     background: conic-gradient(
         from 0deg,
-      var(--color-secondary),
-      var(--color-accent),
-      var(--ring-deep),
-      var(--color-secondary)
+      #c6f432,    /* lime */
+      #5eead4,    /* mint */
+      #65a30d,    /* deep lime */
+      #c6f432
     );
     opacity: 0;
     animation: rotate-border 2s linear infinite;
@@ -227,15 +220,15 @@ a {
 }
 
 .experience-title {
-  color: var(--color-secondary) !important;
+  color: #c6f432 !important;
 }
 
 .education-title {
-  color: var(--color-accent) !important;
+  color: #5eead4 !important;
 }
 
 .section-main-heading {
-  background: linear-gradient(135deg, var(--color-secondary), var(--color-accent)) !important;
+  background: linear-gradient(135deg, #c6f432, #5eead4) !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   background-clip: text !important;
@@ -256,59 +249,13 @@ a {
           animation: fade-in-up 0.6s ease-out forwards;
         }
 
-/* ─────────────── Theme layer: non-utility vars + day overrides ─────────────── */
-/* Night (default). @theme above already sets the color tokens on :root;
-   here we add the vars used by hand-written CSS (background, watermark, etc.). */
 :root {
-  color-scheme: dark;
-  --grid-line: rgba(255, 255, 255, 0.04);
-  --glow-blend: screen;
-  --glow-gradient: radial-gradient(circle, rgba(198, 244, 50, 0.13) 0%, rgba(94, 234, 212, 0.07) 38%, transparent 70%);
-  --ring-deep: #65a30d;            /* deep lime in the rotating profile ring */
-  --watermark-color: rgba(255, 255, 255, 0.04);
-  --photo-glow: radial-gradient(circle, rgba(198, 244, 50, 0.38) 0%, rgba(94, 234, 212, 0.18) 42%, transparent 70%);
-  --photo-shadow: rgba(198, 244, 50, 0.40);
-}
-
-/* Day — "Solaris": tangerine + teal on warm white. Higher specificity than
-   :root, so every utility built on these tokens flips automatically. */
-[data-theme="day"] {
-  color-scheme: light;
-  --color-primary: #fbfaf7;        /* soft warm white */
-  --color-secondary: #ea580c;      /* tangerine */
-  --color-accent: #0d9488;         /* deep teal */
-  --color-text-primary: #15201e;   /* deep slate */
-  --color-text-secondary: #5a6360; /* muted */
-  --color-light-gray: #efece4;
-  --color-surface: #ffffff;        /* cards */
-  --color-surface-2: #f0ece3;      /* elevated / disabled */
-  --color-glass: #15201e;          /* dark tint for fills & hairlines on light */
-  --color-on-secondary: #ffffff;   /* white text reads on tangerine/teal */
-
-  --grid-line: rgba(21, 32, 30, 0.05);
-  --glow-blend: multiply;
-  --glow-gradient: radial-gradient(circle, rgba(234, 88, 12, 0.14) 0%, rgba(13, 148, 136, 0.08) 38%, transparent 70%);
-  --ring-deep: #c2410c;            /* deep tangerine */
-  --watermark-color: rgba(21, 32, 30, 0.05);
-  --photo-glow: radial-gradient(circle, rgba(234, 88, 12, 0.34) 0%, rgba(13, 148, 136, 0.16) 42%, transparent 70%);
-  --photo-shadow: rgba(234, 88, 12, 0.32);
-}
-
-/* Cursor-following glow: appearance flips with the theme via CSS vars;
-   only the position (transform) is set imperatively in JS. */
-.cursor-glow {
-  background: var(--glow-gradient);
-  mix-blend-mode: var(--glow-blend);
-}
-
-/* Brief, smooth cross-fade applied only while the theme is switching. */
-.theme-transition,
-.theme-transition *,
-.theme-transition *::before,
-.theme-transition *::after {
-  transition: background-color 0.4s ease, border-color 0.4s ease,
-              color 0.4s ease, fill 0.4s ease, stroke 0.4s ease !important;
-  transition-delay: 0s !important;
+  /* Acid Lab — lime + mint on charcoal */
+  --color-primary: #0B0C0A;
+  --color-secondary: #C6F432;
+  --color-accent: #5EEAD4;
+  --color-text-primary: #ECECE7;
+  --color-text-secondary: #ABABA2;
 }
 
 @keyframes wave {
@@ -330,8 +277,8 @@ a {
 /* ---------- Interactive background (Acid Lab) ---------- */
 .bg-grid-acid {
   background-image:
-    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
   background-size: 60px 60px;
   -webkit-mask-image: radial-gradient(ellipse 75% 60% at 50% 35%, #000 22%, transparent 78%);
           mask-image: radial-gradient(ellipse 75% 60% at 50% 35%, #000 22%, transparent 78%);

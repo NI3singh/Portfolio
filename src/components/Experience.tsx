@@ -232,7 +232,7 @@ const ExperienceEducationSection: React.FC = () => {
 
       {/* Card Content */}
       <div
-        className="flex-1 bg-surface/60 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-2xl p-8 border-l-4 border-secondary transform transition-all duration-500 cursor-pointer relative overflow-hidden group"
+        className="flex-1 bg-gray-900/60 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-2xl p-8 border-l-4 border-secondary transform transition-all duration-500 cursor-pointer relative overflow-hidden group"
         onMouseEnter={() => setHoveredCard(item.id)}
         onMouseLeave={() => setHoveredCard(null)}
       >
@@ -248,12 +248,12 @@ const ExperienceEducationSection: React.FC = () => {
               </h3>
               <div className="text-secondary font-semibold mb-2 flex items-center flex-wrap gap-x-4 gap-y-1">
                 <span>{item.company}</span>
-                <span className="flex items-center text-text-secondary">
+                <span className="flex items-center text-gray-400">
                   <MapPinIcon className="w-4 h-4 mr-1" />
                   {item.location}
                 </span>
               </div>
-              <div className="flex items-center text-text-secondary">
+              <div className="flex items-center text-gray-400">
                 <CalendarIcon className="w-5 h-5 mr-2 text-secondary" />
                 <span className="font-medium">{item.duration}</span>
               </div>
@@ -272,14 +272,14 @@ const ExperienceEducationSection: React.FC = () => {
               >
                 {/* Project Description */}
                 {item.description && (
-                  <div className="bg-glass/5 rounded-lg p-4 mb-6 border-l-4 border-secondary/40">
-                    <p className="text-text-primary font-medium italic">{item.description}</p>
+                  <div className="bg-white/5 rounded-lg p-4 mb-6 border-l-4 border-secondary/40">
+                    <p className="text-gray-300 font-medium italic">{item.description}</p>
                   </div>
                 )}
 
                 {/* Technologies */}
                 <div className="mb-6">
-                  <h4 className="text-sm font-semibold text-text-primary mb-3 uppercase tracking-wide">Technologies Used</h4>
+                  <h4 className="text-sm font-semibold text-gray-300 mb-3 uppercase tracking-wide">Technologies Used</h4>
                   <div className="flex flex-wrap gap-2">
                     {item.technologies.map((tech, idx) => (
                       <TechnologyBadge key={idx} tech={tech} />
@@ -289,10 +289,10 @@ const ExperienceEducationSection: React.FC = () => {
 
                 {/* Responsibilities */}
                 <div>
-                  <h4 className="text-sm font-semibold text-text-primary mb-4 uppercase tracking-wide">Key Achievements</h4>
+                  <h4 className="text-sm font-semibold text-gray-300 mb-4 uppercase tracking-wide">Key Achievements</h4>
                   <ul className="space-y-3">
                     {item.responsibilities.map((resp, idx) => (
-                      <li key={idx} className="flex items-start text-text-primary group/item">
+                      <li key={idx} className="flex items-start text-gray-300 group/item">
                         <span className="w-3 h-3 bg-gradient-to-br from-secondary to-accent rounded-full mr-4 mt-1.5 flex-shrink-0 transform transition-all duration-300 group-hover/item:scale-125"></span>
                         <span className="leading-relaxed">{resp}</span>
                       </li>
@@ -306,7 +306,7 @@ const ExperienceEducationSection: React.FC = () => {
 
         {/* Expand Arrow */}
         <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2">
-          <ChevronDownIcon className={`w-6 h-6 text-text-secondary transition-transform duration-300 ${isHovered ? 'rotate-180' : ''}`} />
+          <ChevronDownIcon className={`w-6 h-6 text-gray-500 transition-transform duration-300 ${isHovered ? 'rotate-180' : ''}`} />
         </div>
       </div>
     </div>
@@ -335,7 +335,7 @@ const ExperienceEducationSection: React.FC = () => {
 
       {/* Card Content */}
       <div
-        className="flex-1 bg-surface/60 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-2xl p-8 border-l-4 border-accent transform transition-all duration-500 cursor-pointer relative overflow-hidden group"
+        className="flex-1 bg-gray-900/60 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-2xl p-8 border-l-4 border-accent transform transition-all duration-500 cursor-pointer relative overflow-hidden group"
         onMouseEnter={() => setHoveredCard(item.id)}
         onMouseLeave={() => setHoveredCard(null)}
       >
@@ -350,13 +350,13 @@ const ExperienceEducationSection: React.FC = () => {
             </h3>
             <div className="text-accent font-semibold mb-2 flex items-center flex-wrap gap-x-4 gap-y-1">
               <span>{item.institution}</span>
-              <span className="flex items-center text-text-secondary">
+              <span className="flex items-center text-gray-400">
                 <MapPinIcon className="w-4 h-4 mr-1" />
                 {item.location}
               </span>
             </div>
             <div className="flex items-center justify-between">
-              <div className="flex items-center text-text-secondary">
+              <div className="flex items-center text-gray-400">
                 <CalendarIcon className="w-5 h-5 mr-2 text-accent" />
                 <span className="font-medium">{item.duration}</span>
               </div>
@@ -387,7 +387,7 @@ const ExperienceEducationSection: React.FC = () => {
                 {/* Subjects */}
                 {item.subjects && (
                   <div className="mb-6">
-                    <h4 className="text-sm font-semibold text-text-primary mb-3 uppercase tracking-wide">Key Subjects</h4>
+                    <h4 className="text-sm font-semibold text-gray-300 mb-3 uppercase tracking-wide">Key Subjects</h4>
                     <div className="flex flex-wrap gap-2">
                       {item.subjects.map((subject, idx) => (
                         <SubjectBadge key={idx} subject={subject} />
@@ -398,17 +398,17 @@ const ExperienceEducationSection: React.FC = () => {
 
                 {/* Description */}
                 {item.description && (
-                  <div className="bg-glass/5 rounded-lg p-4 mb-6 border-l-4 border-accent/40">
-                    <p className="text-text-primary font-medium italic">{item.description}</p>
+                  <div className="bg-white/5 rounded-lg p-4 mb-6 border-l-4 border-accent/40">
+                    <p className="text-gray-300 font-medium italic">{item.description}</p>
                   </div>
                 )}
 
                 {/* Achievements */}
                 <div>
-                  <h4 className="text-sm font-semibold text-text-primary mb-4 uppercase tracking-wide">Achievements & Activities</h4>
+                  <h4 className="text-sm font-semibold text-gray-300 mb-4 uppercase tracking-wide">Achievements & Activities</h4>
                   <ul className="space-y-3">
                     {item.achievements.map((achievement, idx) => (
-                      <li key={idx} className="flex items-start text-text-primary group/item">
+                      <li key={idx} className="flex items-start text-gray-300 group/item">
                         <span className="w-3 h-3 bg-gradient-to-br from-accent to-secondary rounded-full mr-4 mt-1.5 flex-shrink-0 transform transition-all duration-300 group-hover/item:scale-125"></span>
                         <span className="leading-relaxed">{achievement}</span>
                       </li>
@@ -422,7 +422,7 @@ const ExperienceEducationSection: React.FC = () => {
 
         {/* Expand Arrow */}
         <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2">
-          <ChevronDownIcon className={`w-6 h-6 text-text-secondary transition-transform duration-300 ${isHovered ? 'rotate-180' : ''}`} />
+          <ChevronDownIcon className={`w-6 h-6 text-gray-500 transition-transform duration-300 ${isHovered ? 'rotate-180' : ''}`} />
         </div>
       </div>
     </div>
@@ -452,12 +452,12 @@ const ExperienceEducationSection: React.FC = () => {
 
           {/* Enhanced Toggle Switch */}
           <div className="flex justify-center mb-16">
-            <div className="bg-surface/60 rounded-2xl p-3 shadow-2xl border border-glass/10 backdrop-blur-sm relative">
+            <div className="bg-gray-900/60 rounded-2xl p-3 shadow-2xl border border-white/10 backdrop-blur-sm relative">
               <div className="flex relative z-10">
                 <button
                   onClick={() => setActiveTab('experience')}
                   className={`px-8 py-4 rounded-xl font-semibold transition-all duration-500 flex items-center transform ${
-                    activeTab === 'experience' ? 'text-on-secondary' : 'text-text-secondary hover:text-text-primary'
+                    activeTab === 'experience' ? 'text-[#0b0c0a]' : 'text-gray-400 hover:text-text-primary'
                   }`}
                   aria-label="Show Experience"
                 >
@@ -467,7 +467,7 @@ const ExperienceEducationSection: React.FC = () => {
                 <button
                   onClick={() => setActiveTab('education')}
                   className={`px-8 py-4 rounded-xl font-semibold transition-all duration-500 flex items-center transform ${
-                    activeTab === 'education' ? 'text-on-secondary' : 'text-text-secondary hover:text-text-primary'
+                    activeTab === 'education' ? 'text-[#0b0c0a]' : 'text-gray-400 hover:text-text-primary'
                   }`}
                   aria-label="Show Education"
                 >

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Bars3Icon, XMarkIcon, AcademicCapIcon, BriefcaseIcon } from '@heroicons/react/24/outline';
-import ThemeToggle from '@/components/ThemeToggle';
 import nitinlogo from '@/assets/Nitin_Logo.webp';
 
 const Navbar: React.FC = () => {
@@ -108,7 +107,7 @@ const Navbar: React.FC = () => {
   );
 
   return (
-    <nav className="bg-primary/80 backdrop-blur-md sticky top-0 z-50 shadow-lg border-b border-glass/10">
+    <nav className="bg-primary/80 backdrop-blur-md sticky top-0 z-50 shadow-lg border-b border-white/10">
       <div className="container mx-auto px-6 py-3">
         <div className="flex items-center justify-between">
           {/* Name/Logo with enhanced styling */}
@@ -142,16 +141,13 @@ const Navbar: React.FC = () => {
                 </a>
               )
             ))}
-
-            {/* Day / Night toggle */}
-            <ThemeToggle />
-
+            
             {/* Desktop Resume Button */}
             <a
               href="/Nitin_Singh_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-on-secondary transition-all duration-300 bg-gradient-to-r from-secondary to-accent rounded-xl hover:from-accent hover:to-secondary transform hover:scale-105 hover:shadow-xl">
+              className="group relative inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-[#0b0c0a] transition-all duration-300 bg-gradient-to-r from-secondary to-accent rounded-xl hover:from-accent hover:to-secondary transform hover:scale-105 hover:shadow-xl">
               {/* Glowing Border Effect */}
               <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-secondary via-accent to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-pulse"></div>
               <div className="absolute inset-0.5 rounded-xl bg-gradient-to-r from-secondary to-accent group-hover:from-accent group-hover:to-secondary transition-all duration-500"></div>
@@ -170,12 +166,11 @@ const Navbar: React.FC = () => {
             </a>
           </div>
 
-          {/* Mobile: theme toggle + menu button */}
-          <div className="md:hidden flex items-center gap-2">
-            <ThemeToggle />
+          {/* Mobile Menu Button with enhanced styling */}
+          <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="relative p-2 text-text-primary focus:outline-none rounded-lg hover:bg-glass/10 transition-all duration-300"
+              className="relative p-2 text-text-primary focus:outline-none rounded-lg hover:bg-white/10 transition-all duration-300"
               aria-label="Toggle menu"
             >
               <div className="relative w-6 h-6">
@@ -199,7 +194,7 @@ const Navbar: React.FC = () => {
       <div className={`md:hidden overflow-hidden transition-all duration-300 ${
         isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
       }`}>
-        <div className="bg-primary/95 backdrop-blur-md pb-6 border-t border-glass/10">
+        <div className="bg-primary/95 backdrop-blur-md pb-6 border-t border-white/10">
           <div className="flex flex-col items-center space-y-4 pt-4">
             {navLinks.map((link, index) => (
               link.isToggleable ? (
@@ -234,7 +229,7 @@ const Navbar: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setIsOpen(false)}
-              className={`group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-on-secondary transition-all duration-500 bg-gradient-to-r from-secondary to-accent rounded-xl hover:from-accent hover:to-secondary transform hover:scale-105 hover:shadow-xl mt-2 ${
+              className={`group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-[#0b0c0a] transition-all duration-500 bg-gradient-to-r from-secondary to-accent rounded-xl hover:from-accent hover:to-secondary transform hover:scale-105 hover:shadow-xl mt-2 ${
                 isOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
               }`}
               style={{ transitionDelay: `${navLinks.length * 50}ms` }}
