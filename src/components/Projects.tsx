@@ -56,9 +56,9 @@ const ProjectCard: React.FC<Project & { liveLink?: string; index: number; stars:
       onMouseLeave={() => setIsHovered(false)}
     >
       <div className={`
-        relative h-full bg-gray-900/80 backdrop-blur-xl rounded-2xl overflow-hidden
-        border border-white/10 transition-all duration-500 group
-        ${isHovered ? 'border-secondary/50 shadow-[0_0_30px_-5px_rgba(198,244,50,0.3)]' : 'hover:border-white/20'}
+        relative h-full bg-surface-strong backdrop-blur-xl rounded-2xl overflow-hidden
+        border border-border transition-all duration-500 group
+        ${isHovered ? 'border-secondary/50 glow-card' : 'hover:border-border'}
       `}>
         {/* Gradient Glow Effect */}
         <div className={`
@@ -73,12 +73,12 @@ const ProjectCard: React.FC<Project & { liveLink?: string; index: number; stars:
             <div className="flex items-start justify-between gap-3 mb-4">
               <div className="flex items-center gap-3">
                 <div className={`
-                  p-2 rounded-lg bg-secondary/10 text-secondary
-                  transition-all duration-300 group-hover:scale-110 group-hover:bg-secondary/20
+                  p-2 rounded-lg text-secondary
+                  transition-all duration-300 ${isHovered ? 'scale-110 bg-secondary/20' : 'bg-secondary/10'}
                 `}>
                   <CodeBracketIcon className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white group-hover:text-secondary transition-colors">
+                <h3 className={`text-xl font-bold transition-colors ${isHovered ? 'text-secondary' : 'text-text-primary'}`}>
                   {title}
                 </h3>
               </div>
@@ -87,7 +87,7 @@ const ProjectCard: React.FC<Project & { liveLink?: string; index: number; stars:
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`${stars} GitHub stars`}
-                className="flex-shrink-0 inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-semibold text-gray-300 hover:border-secondary/40 hover:text-secondary transition-colors"
+                className="flex-shrink-0 inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-glass border border-border text-xs font-semibold text-text-secondary hover:border-secondary/40 hover:text-secondary transition-colors"
               >
                 <StarIcon className="w-3.5 h-3.5 text-secondary" />
                 {stars}
@@ -99,13 +99,13 @@ const ProjectCard: React.FC<Project & { liveLink?: string; index: number; stars:
               {technologies.slice(0, 4).map((tech) => (
                 <span
                   key={tech}
-                  className="text-xs font-medium px-2.5 py-1 rounded-full bg-white/5 text-gray-300 border border-white/5"
+                  className="text-xs font-medium px-2.5 py-1 rounded-full bg-glass text-text-secondary border border-border"
                 >
                   {tech}
                 </span>
               ))}
               {technologies.length > 4 && (
-                <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-white/5 text-gray-400 border border-white/5">
+                <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-glass text-text-secondary border border-border">
                   +{technologies.length - 4}
                 </span>
               )}
@@ -115,7 +115,7 @@ const ProjectCard: React.FC<Project & { liveLink?: string; index: number; stars:
           {/* Description */}
           <div className="flex-grow space-y-3 mb-6">
             {description.slice(0, 2).map((desc, i) => (
-              <p key={i} className="text-sm text-gray-400 leading-relaxed line-clamp-3" dangerouslySetInnerHTML={{ __html: desc }} />
+              <p key={i} className="text-sm text-text-secondary leading-relaxed line-clamp-3" dangerouslySetInnerHTML={{ __html: desc }} />
             ))}
           </div>
 
@@ -136,12 +136,12 @@ const ProjectCard: React.FC<Project & { liveLink?: string; index: number; stars:
           )}
 
           {/* Footer Actions */}
-          <div className="mt-auto pt-4 border-t border-white/10 flex items-center justify-between gap-4">
+          <div className="mt-auto pt-4 border-t border-border flex items-center justify-between gap-4">
             <a
               href={githubLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-sm font-medium text-gray-400 hover:text-white transition-colors group/link"
+              className="flex items-center gap-2 text-sm font-medium text-text-secondary hover:text-text-primary transition-colors group/link"
             >
               <span>Source Code</span>
               <ArrowTopRightOnSquareIcon className="w-4 h-4 transition-transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
@@ -512,7 +512,7 @@ const Projects: React.FC = () => {
           {/* Navigation Buttons */}
           <button
             onClick={handlePrev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-20 p-3 rounded-full bg-gray-900/80 border border-white/10 text-white hover:bg-secondary hover:border-secondary hover:text-[#0b0c0a] transition-all duration-300 opacity-0 group-hover:opacity-100 focus:opacity-100 shadow-lg backdrop-blur-sm"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-20 p-3 rounded-full bg-surface-strong border border-border text-text-primary hover:bg-secondary hover:border-secondary hover:text-on-accent transition-all duration-300 opacity-0 group-hover:opacity-100 focus:opacity-100 shadow-lg backdrop-blur-sm"
             aria-label="Previous Project"
           >
             <ChevronLeftIcon className="w-6 h-6" />
@@ -520,7 +520,7 @@ const Projects: React.FC = () => {
 
           <button
             onClick={handleNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-20 p-3 rounded-full bg-gray-900/80 border border-white/10 text-white hover:bg-secondary hover:border-secondary hover:text-[#0b0c0a] transition-all duration-300 opacity-0 group-hover:opacity-100 focus:opacity-100 shadow-lg backdrop-blur-sm"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-20 p-3 rounded-full bg-surface-strong border border-border text-text-primary hover:bg-secondary hover:border-secondary hover:text-on-accent transition-all duration-300 opacity-0 group-hover:opacity-100 focus:opacity-100 shadow-lg backdrop-blur-sm"
             aria-label="Next Project"
           >
             <ChevronRightIcon className="w-6 h-6" />
@@ -574,7 +574,7 @@ const Projects: React.FC = () => {
                 }}
                 className={`
                   h-2 rounded-full transition-all duration-300
-                  ${isActive ? 'w-8 bg-secondary' : 'w-2 bg-gray-700 hover:bg-gray-600'}
+                  ${isActive ? 'w-8 bg-secondary' : 'w-2 bg-text-secondary/40 hover:bg-text-secondary/60'}
                 `}
                 aria-label={`Go to project ${index + 1}`}
               />
@@ -593,7 +593,7 @@ const Projects: React.FC = () => {
             href="https://github.com/NI3singh"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-white font-medium transition-all duration-300 hover:scale-105"
+            className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-glass hover:bg-glass-strong border border-border hover:border-secondary/40 hover:text-secondary text-text-primary font-medium transition-colors duration-300"
           >
             <span>View More on GitHub</span>
             <ArrowTopRightOnSquareIcon className="w-5 h-5" />

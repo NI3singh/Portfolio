@@ -10,9 +10,35 @@
   --color-text-primary: #ecece7;
   --color-text-secondary: #ababa2;
   --color-light-gray: #14150f;  /* now a dark surface */
-  
+
+  /* Semantic structure tokens (night defaults; flipped under [data-theme="day"]).
+     Use bg-surface / bg-glass / border-border / text-on-accent etc. */
+  --color-surface: rgba(17, 24, 39, 0.62);        /* card / panel glass */
+  --color-surface-strong: rgba(17, 24, 39, 0.85); /* heavier cards/buttons */
+  --color-glass: rgba(255, 255, 255, 0.05);       /* subtle fills (tags, inputs) */
+  --color-glass-strong: rgba(255, 255, 255, 0.10);/* hover fills */
+  --color-border: rgba(255, 255, 255, 0.10);      /* hairline borders */
+  --color-on-accent: #0b0c0a;                     /* text on lime/red */
+
   --font-family-sans: "DM Sans", "Inter", sans-serif;
   --font-family-mono: "Roboto Mono", monospace;
+}
+
+/* ── Day Mode — "Scarlet Steel" (red + gray). Overrides the tokens above. ── */
+:root[data-theme="day"] {
+  --color-primary: #f4f4f5;        /* cool zinc canvas */
+  --color-secondary: #dc2626;      /* vivid red (primary accent) */
+  --color-accent: #f87171;         /* light coral (2nd accent) */
+  --color-text-primary: #18181b;
+  --color-text-secondary: #52525b;
+  --color-light-gray: #e9e9eb;
+
+  --color-surface: #ffffff;
+  --color-surface-strong: #ffffff;
+  --color-glass: rgba(0, 0, 0, 0.04);
+  --color-glass-strong: rgba(0, 0, 0, 0.06);
+  --color-border: #e4e4e7;
+  --color-on-accent: #ffffff;
 }
 
 /* Global styles */
@@ -26,6 +52,7 @@ body {
   padding: 0;
   box-sizing: border-box;
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease; /* smooth day/night switch */
 }
 
 /* Custom scrollbar */
@@ -51,6 +78,89 @@ body {
 * {
   scrollbar-width: thin;
   scrollbar-color: var(--color-secondary) var(--color-primary); /* Uses CSS vars from @theme */
+}
+
+/* ──────────────────────────────────────────────────────────
+   Button system (Acid Lab)
+   One solid primary + one outline secondary. No gradient fills,
+   no shimmer, no pulse, no scale — hover is a calm colour shift
+   plus a 1px lift, so CTAs read as intentional, not generated.
+   Apply size/width with utilities, e.g. `btn btn-primary px-8 py-4`.
+   Lives in @layer components so utility classes still override it.
+   ────────────────────────────────────────────────────────── */
+@layer components {
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background-color 0.2s ease, border-color 0.2s ease,
+    color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-secondary);
+  outline-offset: 2px;
+}
+
+/* Primary — solid accent, on-accent text. The one bold element. */
+.btn-primary {
+  background-color: var(--color-secondary);
+  color: var(--color-on-accent);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+.btn-primary:hover {
+  background-color: color-mix(in srgb, var(--color-secondary) 88%, white); /* a touch brighter */
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px -8px color-mix(in srgb, var(--color-secondary) 55%, transparent);
+}
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+/* Secondary — transparent with an accent hairline; fills faintly on hover. */
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-secondary);
+  border-color: color-mix(in srgb, var(--color-secondary) 45%, transparent);
+}
+.btn-secondary:hover {
+  background-color: color-mix(in srgb, var(--color-secondary) 10%, transparent);
+  border-color: var(--color-secondary);
+  color: color-mix(in srgb, var(--color-secondary) 88%, white);
+  transform: translateY(-1px);
+}
+.btn-secondary:active {
+  transform: translateY(0);
+}
+
+/* Disabled (e.g. the contact submit before the form is valid) */
+.btn:disabled,
+.btn[aria-disabled="true"] {
+  background-color: var(--color-glass-strong);
+  color: var(--color-text-secondary);
+  border-color: transparent;
+  box-shadow: none;
+  transform: none;
+  cursor: not-allowed;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn,
+  .btn-primary:hover,
+  .btn-secondary:hover,
+  .btn-primary:active,
+  .btn-secondary:active {
+    transform: none;
+  }
+}
 }
 
 /* Global heading styles */
@@ -113,10 +223,10 @@ a {
     border-radius: 50%;
     background: conic-gradient(
         from 0deg,
-      #c6f432,    /* lime */
-      #5eead4,    /* mint */
-      #65a30d,    /* deep lime */
-      #c6f432
+      var(--color-secondary),
+      var(--color-accent),
+      color-mix(in srgb, var(--color-secondary) 70%, black),
+      var(--color-secondary)
     );
     opacity: 0;
     animation: rotate-border 2s linear infinite;
@@ -220,15 +330,15 @@ a {
 }
 
 .experience-title {
-  color: #c6f432 !important;
+  color: var(--color-secondary) !important;
 }
 
 .education-title {
-  color: #5eead4 !important;
+  color: var(--color-accent) !important;
 }
 
 .section-main-heading {
-  background: linear-gradient(135deg, #c6f432, #5eead4) !important;
+  background: linear-gradient(135deg, var(--color-secondary), var(--color-accent)) !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   background-clip: text !important;
@@ -293,4 +403,134 @@ a {
 
 @media (prefers-reduced-motion: reduce) {
   .animate-aurora-1, .animate-aurora-2, .animate-aurora-3 { animation: none; }
+}
+
+/* ──────────────────────────────────────────────────────────
+   Theme-aware accent glows & day-mode overrides
+   These follow the active accent (lime at night, red in day).
+   ────────────────────────────────────────────────────────── */
+.glow-secondary { box-shadow: 0 0 24px -4px color-mix(in srgb, var(--color-secondary) 45%, transparent); }
+.glow-accent    { box-shadow: 0 0 24px -4px color-mix(in srgb, var(--color-accent) 45%, transparent); }
+.glow-card      { box-shadow: 0 0 30px -5px color-mix(in srgb, var(--color-secondary) 30%, transparent); }
+
+/* Navbar brand tile: soft accent glow when the brand link (.group) is hovered.
+   Scoped by .brand-tile, which only exists on that tile, so no false matches. */
+.group:hover .brand-tile {
+  box-shadow: 0 6px 16px -4px color-mix(in srgb, var(--color-secondary) 45%, transparent);
+}
+
+/* Soft light pooled behind the hero photo */
+.hero-aura {
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--color-secondary) 38%, transparent) 0%,
+    color-mix(in srgb, var(--color-accent) 18%, transparent) 42%,
+    transparent 70%
+  );
+}
+
+/* Day mode: grid lines must be dark to register on a light canvas */
+:root[data-theme="day"] .bg-grid-acid {
+  background-image:
+    linear-gradient(to right, rgba(0, 0, 0, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.045) 1px, transparent 1px);
+}
+
+/* Day mode: cursor glow uses screen-blend (perfect on dark, invisible on light) */
+:root[data-theme="day"] .cursor-glow {
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+}
+
+/* Floating navbar glass: frosty-light at night (unchanged), solid white in day */
+.nav-glass {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+}
+:root[data-theme="day"] .nav-glass {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+/* ──────────────────────────────────────────────────────────
+   Animated sun/moon theme orb (navbar). Night = silver crescent
+   + stars; day = amber sun + blooming rays. Morph is pure CSS,
+   driven by :root[data-theme]; the button only flips the theme.
+   ────────────────────────────────────────────────────────── */
+.theme-orb {
+  color: #cbd5e1;                                   /* moon silver (night) */
+  cursor: pointer;
+  line-height: 0;
+  border-radius: 9999px;
+  filter: drop-shadow(0 0 6px rgba(203, 213, 225, 0.45));
+  transition: transform 0.3s ease, filter 0.45s ease, color 0.5s ease;
+}
+.theme-orb:hover { transform: scale(1.08); }
+.theme-orb:active { transform: scale(0.96); }
+.theme-orb:focus-visible { outline: 2px solid var(--color-secondary); outline-offset: 4px; }
+.theme-orb svg { overflow: visible; }
+
+.orb-mask-circle {
+  transform: translate(0, 0);                       /* night: carves the crescent */
+  transition: transform 0.55s cubic-bezier(0.45, 0, 0.25, 1);
+}
+.orb-rays {
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: scale(0.35) rotate(-45deg);            /* night: rays retracted */
+  opacity: 0;
+  transition: transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
+}
+.orb-stars { opacity: 1; transition: opacity 0.5s ease; }   /* night: stars out */
+.orb-star {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: orb-twinkle 2.8s ease-in-out infinite;
+}
+.orb-star:nth-child(2) { animation-delay: 0.8s; }
+.orb-star:nth-child(3) { animation-delay: 1.5s; }
+
+/* Day = sun */
+:root[data-theme="day"] .theme-orb {
+  color: #f59e0b;                                   /* sun amber */
+  filter: drop-shadow(0 0 8px rgba(245, 158, 11, 0.55));
+}
+:root[data-theme="day"] .orb-mask-circle { transform: translate(8px, -8px); } /* slide off → full disc */
+:root[data-theme="day"] .orb-rays { opacity: 1; transform: scale(1) rotate(0deg); }
+:root[data-theme="day"] .orb-stars { opacity: 0; }
+
+@keyframes orb-twinkle { 0%, 100% { opacity: 0.25; } 50% { opacity: 1; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-orb, .orb-mask-circle, .orb-rays, .orb-stars { transition: none; }
+  .orb-star { animation: none; }
+  .theme-orb:hover, .theme-orb:active { transform: none; }
+}
+
+/* ──────────────────────────────────────────────────────────
+   Smooth day/night switch
+   Supported browsers: a circular reveal of the new theme that
+   ripples out from the toggle (View Transitions API).
+   Everywhere else: a brief global colour crossfade.
+   ────────────────────────────────────────────────────────── */
+.theme-animating *,
+.theme-animating *::before,
+.theme-animating *::after {
+  transition: background-color 0.45s ease, border-color 0.45s ease,
+    color 0.45s ease, fill 0.45s ease, stroke 0.45s ease, box-shadow 0.45s ease !important;
+}
+
+::view-transition-old(root) { animation: none; }
+::view-transition-new(root) {
+  animation: theme-reveal 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+@keyframes theme-reveal {
+  from { clip-path: circle(0px at var(--theme-x, 50%) var(--theme-y, 50%)); }
+  to   { clip-path: circle(var(--theme-r, 150%) at var(--theme-x, 50%) var(--theme-y, 50%)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) { animation: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body { transition: none; }
 }

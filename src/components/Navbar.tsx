@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Bars3Icon, XMarkIcon, AcademicCapIcon, BriefcaseIcon } from '@heroicons/react/24/outline';
-import nitinlogo from '@/assets/Nitin_Logo.webp';
+import ThemeToggle from './ThemeToggle';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -80,52 +80,31 @@ const Navbar: React.FC = () => {
   }
 
   const ToggleableNavItem: React.FC<{ link: ToggleableLink; isMobile?: boolean }> = ({ link, isMobile = false }) => (
-    <div className={`relative group ${isMobile ? 'flex flex-col items-center' : ''}`}>
-      <a
-        href={link.href}
-        onClick={(e) => handleNavClick(e, link.href)}
-        className={`relative transition-all duration-300 font-medium group flex items-center ${
-          isMobile 
-            ? 'text-text-secondary hover:text-accent py-2 text-lg' 
-            : 'text-text-secondary hover:text-accent'
-        }`}
-      >
-        <div className="flex items-center space-x-1">
-          <link.icon className="w-4 h-4" />
-          <span>{link.label}</span>
-          <span className="text-xs opacity-60">/</span>
-          <link.subIcon className="w-4 h-4" />
-          <span>{link.subLabel}</span>
-        </div>
-        
-        {/* Animated underline */}
-        <span className={`absolute left-0 w-0 h-0.5 bg-gradient-to-r from-accent to-secondary group-hover:w-full transition-all duration-300 ${
-          isMobile ? '-bottom-1 left-1/2 transform -translate-x-1/2' : '-bottom-1'
-        }`}></span>
-      </a>
-    </div>
+    <a
+      href={link.href}
+      onClick={(e) => handleNavClick(e, link.href)}
+      className={`flex items-center gap-1.5 rounded-lg font-medium text-text-secondary hover:text-text-primary hover:bg-glass-strong transition-colors duration-300 ${
+        isMobile ? 'w-full justify-center px-4 py-2.5 text-lg' : 'px-3 py-1.5 text-sm'
+      }`}
+    >
+      <link.icon className="w-4 h-4" />
+      <span>{link.label}</span>
+      <span className="opacity-40">/</span>
+      <link.subIcon className="w-4 h-4" />
+      <span>{link.subLabel}</span>
+    </a>
   );
 
   return (
-    <nav className="bg-primary/80 backdrop-blur-md sticky top-0 z-50 shadow-lg border-b border-white/10">
-      <div className="container mx-auto px-6 py-3">
-        <div className="flex items-center justify-between">
-          {/* Name/Logo with enhanced styling */}
-          <a 
-            href="#home"
-            onClick={(e) => handleNavClick(e, '#home')}
-            className="block">
-            <div className="w-11 h-11 rounded-full overflow-hidden border border-accent/30 hover:border-accent transition-all duration-300 transform hover:scale-110 hover:shadow-lg hover:shadow-accent/25">
-              <img 
-                src= {nitinlogo}
-                alt="Ni3 Logo"
-                className="w-full h-full object-cover hover:brightness-110 transition-all duration-300"
-              />
-            </div>
-          </a>
+    <nav className="sticky top-0 z-50 px-4 pt-4">
+      <div className="max-w-5xl mx-auto">
+        {/* Floating glass island */}
+        <div className="relative flex items-center justify-between gap-4 rounded-2xl border border-border nav-glass backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.28)] px-4 sm:px-5 py-2.5">
+          {/* Brand spot: animated sun/moon theme switch */}
+          <ThemeToggle className="flex-shrink-0" />
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          {/* Centered nav links (desktop) */}
+          <div className="hidden lg:flex flex-1 items-center justify-center gap-1">
             {navLinks.map((link) => (
               link.isToggleable ? (
                 <ToggleableNavItem key={link.label} link={link} />
@@ -134,68 +113,54 @@ const Navbar: React.FC = () => {
                   key={link.label}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="relative text-text-secondary hover:text-accent transition-all duration-300 font-medium group"
+                  className="px-3 py-1.5 rounded-lg text-sm font-medium text-text-secondary hover:text-text-primary hover:bg-glass-strong transition-colors duration-300"
                 >
                   {link.label}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-accent to-secondary group-hover:w-full transition-all duration-300"></span>
                 </a>
               )
             ))}
-            
-            {/* Desktop Resume Button */}
+          </div>
+
+          {/* Right: resume (desktop) + hamburger (mobile) */}
+          <div className="flex items-center gap-2 flex-shrink-0">
             <a
               href="/Nitin_Singh_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-[#0b0c0a] transition-all duration-300 bg-gradient-to-r from-secondary to-accent rounded-xl hover:from-accent hover:to-secondary transform hover:scale-105 hover:shadow-xl">
-              {/* Glowing Border Effect */}
-              <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-secondary via-accent to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-pulse"></div>
-              <div className="absolute inset-0.5 rounded-xl bg-gradient-to-r from-secondary to-accent group-hover:from-accent group-hover:to-secondary transition-all duration-500"></div>
-              
-              {/* Moving Light Effect */}
-              <div className="absolute inset-0 rounded-xl overflow-hidden">
-                <div className="absolute -top-2 -left-full w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent transform rotate-12 group-hover:translate-x-full transition-transform duration-1000"></div>
-              </div>
-              <span className="relative z-10 flex items-center">
-                Resume
-                <svg className="w-4 h-4 ml-2 transform group-hover:translate-y-0.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-              </span>
-              <div className="absolute inset-0 rounded-xl bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              className="btn btn-primary group hidden lg:inline-flex px-5 py-2.5 text-sm">
+              Resume
+              <svg className="w-4 h-4 transform group-hover:translate-y-0.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
             </a>
-          </div>
 
-          {/* Mobile Menu Button with enhanced styling */}
-          <div className="md:hidden">
+            {/* Mobile hamburger */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="relative p-2 text-text-primary focus:outline-none rounded-lg hover:bg-white/10 transition-all duration-300"
+              className="lg:hidden relative p-2 -mr-1 text-text-primary rounded-lg hover:bg-glass-strong transition-colors duration-300 focus:outline-none"
               aria-label="Toggle menu"
             >
               <div className="relative w-6 h-6">
-                <XMarkIcon 
-                  className={`absolute inset-0 h-6 w-6 text-accent transform transition-all duration-300 ${
+                <XMarkIcon
+                  className={`absolute inset-0 h-6 w-6 text-secondary transition-all duration-300 ${
                     isOpen ? 'rotate-0 opacity-100' : 'rotate-90 opacity-0'
-                  }`} 
+                  }`}
                 />
-                <Bars3Icon 
-                  className={`absolute inset-0 h-6 w-6 text-text-secondary transform transition-all duration-300 ${
+                <Bars3Icon
+                  className={`absolute inset-0 h-6 w-6 text-text-secondary transition-all duration-300 ${
                     isOpen ? '-rotate-90 opacity-0' : 'rotate-0 opacity-100'
-                  }`} 
+                  }`}
                 />
               </div>
             </button>
           </div>
         </div>
-      </div>
 
-      {/* Mobile Navigation Menu with enhanced animations */}
-      <div className={`md:hidden overflow-hidden transition-all duration-300 ${
-        isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-      }`}>
-        <div className="bg-primary/95 backdrop-blur-md pb-6 border-t border-white/10">
-          <div className="flex flex-col items-center space-y-4 pt-4">
+        {/* Mobile dropdown — matching glass panel */}
+        <div className={`lg:hidden overflow-hidden transition-all duration-300 ${
+          isOpen ? 'max-h-[32rem] opacity-100' : 'max-h-0 opacity-0'
+        }`}>
+          <div className="mt-2 rounded-2xl border border-border bg-primary/80 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.28)] p-3 flex flex-col gap-1">
             {navLinks.map((link, index) => (
               link.isToggleable ? (
                 <div
@@ -205,48 +170,38 @@ const Navbar: React.FC = () => {
                   }`}
                   style={{ transitionDelay: `${index * 50}ms` }}
                 >
-                  <ToggleableNavItem link={link} isMobile={true} />
+                  <ToggleableNavItem link={link} isMobile />
                 </div>
               ) : (
                 <a
                   key={link.label}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className={`relative text-text-secondary hover:text-accent transition-all duration-300 py-2 text-lg font-medium group transform ${
+                  className={`px-4 py-2.5 rounded-lg text-center text-lg font-medium text-text-secondary hover:text-text-primary hover:bg-glass-strong transition-all duration-300 transform ${
                     isOpen ? 'translate-y-0 opacity-100' : 'translate-y-2 opacity-0'
                   }`}
                   style={{ transitionDelay: `${index * 50}ms` }}
                 >
                   {link.label}
-                  <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-accent to-secondary group-hover:w-full transition-all duration-300"></span>
                 </a>
               )
             ))}
-            
+
             {/* Mobile Resume Button */}
             <a
               href="/Nitin_Singh_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setIsOpen(false)}
-              className={`group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-[#0b0c0a] transition-all duration-500 bg-gradient-to-r from-secondary to-accent rounded-xl hover:from-accent hover:to-secondary transform hover:scale-105 hover:shadow-xl mt-2 ${
+              className={`btn btn-primary group w-full mt-2 px-6 py-3 text-base transition-all duration-500 ${
                 isOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
               }`}
               style={{ transitionDelay: `${navLinks.length * 50}ms` }}
             >
-              <span className="relative z-10 flex items-center">
-                Resume
-                <svg className="w-5 h-5 ml-2 transform group-hover:translate-y-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-              </span>
-              <div className="absolute inset-0 rounded-xl bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              
-              {/* Animated border */}
-              <div className="absolute inset-0 rounded-xl opacity-75">
-                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-secondary via-accent to-secondary animate-pulse"></div>
-                <div className="absolute inset-0.5 rounded-xl bg-gradient-to-r from-secondary to-accent"></div>
-              </div>
+              Resume
+              <svg className="w-5 h-5 transform group-hover:translate-y-0.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
             </a>
           </div>
         </div>

@@ -31,12 +31,12 @@ const StatCard: React.FC<StatCardProps> = ({
 }) => {
   return (
     <div
-      className="group relative flex flex-col h-full bg-gray-900/60 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden shadow-2xl transition-all duration-500 hover:scale-[1.02] hover:bg-gray-900/80 hover:border-secondary/30 hover:shadow-secondary/10 animate-fade-in-up"
+      className="group relative flex flex-col h-full bg-surface backdrop-blur-xl border border-border rounded-2xl overflow-hidden shadow-2xl transition-all duration-500 hover:scale-[1.02] hover:bg-surface-strong hover:border-secondary/30 hover:shadow-secondary/10 animate-fade-in-up"
       style={{ animationDelay: animationDelay || '0s' }}
     >
       {/* Image Section - Top Half */}
       <div className="relative h-48 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent z-10" />
         {imageUrl ? (
           <img
             src={imageUrl}
@@ -46,13 +46,13 @@ const StatCard: React.FC<StatCardProps> = ({
             decoding="async"
           />
         ) : (
-          <div className="w-full h-full bg-gray-800 flex items-center justify-center">
-            <TrophyIcon className="w-12 h-12 text-gray-600" />
+          <div className="w-full h-full bg-surface-strong flex items-center justify-center">
+            <TrophyIcon className="w-12 h-12 text-text-secondary" />
           </div>
         )}
 
         {/* Floating Icon */}
-        <div className="absolute bottom-4 left-6 z-20 p-3 bg-gray-900/90 backdrop-blur-md border border-white/10 rounded-xl shadow-lg group-hover:scale-110 transition-transform duration-300">
+        <div className="absolute bottom-4 left-6 z-20 p-3 bg-surface-strong backdrop-blur-md border border-border rounded-xl shadow-lg group-hover:scale-110 transition-transform duration-300">
           <div className="text-secondary group-hover:text-accent transition-colors">
             {icon}
           </div>
@@ -62,7 +62,7 @@ const StatCard: React.FC<StatCardProps> = ({
       {/* Content Section - Bottom Half */}
       <div className="flex-grow p-6 pt-2 flex flex-col relative z-10">
         <div className="mb-1">
-          <h3 className="text-lg font-bold text-white group-hover:text-secondary transition-colors duration-300 line-clamp-1">
+          <h3 className="text-lg font-bold text-text-primary group-hover:text-secondary transition-colors duration-300 line-clamp-1">
             {title}
           </h3>
         </div>
@@ -73,7 +73,7 @@ const StatCard: React.FC<StatCardProps> = ({
           </span>
         </div>
 
-        <p className="text-sm text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
+        <p className="text-sm text-text-secondary leading-relaxed group-hover:text-text-primary transition-colors duration-300">
           {description}
         </p>
 
@@ -145,7 +145,7 @@ const Stats: React.FC = () => {
 
   return (
     <>
-      <section id="stats" className="relative bg-transparent text-white py-20 overflow-hidden">
+      <section id="stats" className="relative bg-transparent text-text-primary py-20 overflow-hidden">
         {/* Background decorative elements */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-20 left-10 w-64 h-64 bg-secondary/5 rounded-full blur-[100px]"></div>
@@ -236,8 +236,8 @@ const Stats: React.FC = () => {
                     key={index}
                     className="flex-shrink-0 mx-3 group cursor-pointer"
                   >
-                    <div className="relative px-6 py-3 bg-gray-900/50 backdrop-blur-md border border-white/10 rounded-full shadow-lg transition-all duration-300 hover:scale-110 hover:bg-secondary/10 hover:border-secondary/30">
-                      <span className="relative z-10 text-sm font-medium text-gray-300 group-hover:text-secondary whitespace-nowrap transition-colors">
+                    <div className="relative px-6 py-3 bg-surface backdrop-blur-md border border-border rounded-full shadow-lg transition-all duration-300 hover:scale-110 hover:bg-secondary/10 hover:border-secondary/30">
+                      <span className="relative z-10 text-sm font-medium text-text-secondary group-hover:text-secondary whitespace-nowrap transition-colors">
                         {skill}
                       </span>
                     </div>

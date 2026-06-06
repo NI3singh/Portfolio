@@ -12,6 +12,19 @@
     </script>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/Portfolio-icon.svg" /> <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0b0c0a" />
+    <script>
+      // Apply the saved theme before first paint to avoid a flash. Night is the default.
+      (function () {
+        try {
+          if (localStorage.getItem('theme') === 'day') {
+            document.documentElement.dataset.theme = 'day';
+            var m = document.querySelector('meta[name="theme-color"]');
+            if (m) m.setAttribute('content', '#f4f4f5');
+          }
+        } catch (e) {}
+      })();
+    </script>
     <title>Nitin Singh | AI Developer & Data Analyst</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
