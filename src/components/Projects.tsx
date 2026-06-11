@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { CodeBracketIcon, ArrowTopRightOnSquareIcon, CheckCircleIcon, ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import { StarIcon } from '@heroicons/react/24/solid';
-import { motion, AnimatePresence, useMotionValue } from 'framer-motion';
+import { motion } from 'framer-motion';
 import SectionHeading from '@/components/SectionHeading';
 
 interface Project {
@@ -44,7 +44,6 @@ const ProjectCard: React.FC<Project & { liveLink?: string; index: number; stars:
   achievements,
   githubLink,
   liveLink,
-  index,
   stars,
 }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -225,7 +224,7 @@ const Projects: React.FC = () => {
         'Cloud-synced version control for résumés with instant rollback and continuous autosave',
       ],
       githubLink: 'https://github.com/NI3singh/AI-Resume-Updater',
-      liveLink: 'https://ai-resume-updater-omega.vercel.app'
+      liveLink: 'https://resumetex-frontend.onrender.com'
     },
     {
       id: 5,
