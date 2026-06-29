@@ -25,3 +25,6 @@ dist-ssr
 
 
 *my-portfolio_Documentation.md
+
+.claude/*
+.claude/
