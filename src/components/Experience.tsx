@@ -35,14 +35,15 @@ const experienceData: ExperienceItem[] = [
     title: 'AI/ML Engineer',
     company: 'ELaunch Solution Pvt. Ltd.',
     location: 'Surat, Gujarat',
-    duration: 'Dec 2024 - Present',
-    description: 'Face Recognition Web Application (Find You) | RetinaFace, Facenet',
+    duration: 'Dec 2024 - June 2026',
+    description: 'Crypto-Trading Bot, AML sanctions-check, RAG Chatbots | Python, Docker, AWS, Claude Code, Mongodb',
     responsibilities: [
-      'Engineered a face detection and image search system achieving 92% accuracy using OpenCV and custom CNN architecture.',
-      'Ensuring Proper Security implementation by adding feature "Authorized access only by Password-Protected-Link".',
-      'Orchestrated version control workflows with Git/GitHub, reducing merge conflicts through strategic branching strategies.'
+      'Architected a real-time AML sanctions screening pipeline by manually orchestrating a multi-container infrastructure (Yente & Elasticsearch) using raw Docker CLI commands and a custom user-defined bridge network to enable seamless container-to-container DNS resolution.',
+      'Engineered an end-to-end data pipeline for Solana price analysis, ingesting OHLCV data from Binance API spanning 01-01-2021 to 29092024 (1300+ days) and performing data cleaning, merging, transformation, feature engineering to generate a 44-column feature-rich dataset by adding technical indicators (RSI, MACD, Bollinger Bands, moving averages).',
+      'Trained a Temporal Fusion Transformer (TFT) model using PyTorch with GPU acceleration for Solana price prediction, achieving a validation loss of 0.7376 (epoch 34). Evaluated model performance on test data using MAE, RMSE, and MAPE metrics.',
+      'Built and deployed 3 production-ready Naive RAG and Agentic RAG pipelines, integrating the ElevenLabs Voice API for real-time voiceinteractions, including AI chatbots capable of querying 10,000+ documents and enterprise MongoDB databases using semantic search and LLM-powered retrieval.' 
     ],
-    technologies: ['Python', 'OpenCV', 'TensorFlow', 'RetinaFace', 'Facenet', 'Git', 'GitHub'],
+    technologies: ['Python', 'OpenCV', 'TensorFlow', 'Docker', 'Data Engineering', 'Fine-Tuning', 'Multi-Agent RAG', 'GitHub'],
     thumbnail: '/api/placeholder/300/200'
   },
   {
@@ -51,12 +52,13 @@ const experienceData: ExperienceItem[] = [
     company: 'JBcodeapp',
     location: 'Surat, Gujarat',
     duration: 'May 2024 - June 2024',
-    description: 'Student Performance Analysis | Python, Numpy',
+    description: 'Student Performance Analysis | Data Engineering, MLOps',
     responsibilities: [
       'Applied MLOps concepts to create a robust machine learning pipeline.',
-      'Developed Python backend processing 5,000+ student records with 98.5% data integrity through efficient ETL processes.'
+      'Engineered an automated data pipeline using Python to perform ETL (Extract, Transform, Load) on 5,000+ student records.',
+      'Built a scikit-learn clustering pipeline using Agglomerative Clustering (n=3 clusters) and Linear Regression for trend analysis to categorize students into performance groups (Strong, Average, Weak) based on longitudinal exam scores.'
     ],
-    technologies: ['Python', 'NumPy', 'Pandas', 'MLOps', 'Data Analysis'],
+    technologies: ['Python', 'NumPy', 'Pandas', 'MLOps', 'Data Analysis', 'Scikit-learn', 'Clustering', 'Regression'],
     thumbnail: '/api/placeholder/300/200'
   },
   {
@@ -76,6 +78,19 @@ const experienceData: ExperienceItem[] = [
   },
   {
     id: 4,
+    title: 'Research Community Member',
+    company: ' SVNIT, Swaayan Drone Club',
+    location: 'Surat, Gujarat',
+    duration: 'May 2024 - June 2024',
+    description: 'Research Community Member | Drone Development, Testing, and Bootcamps',
+    responsibilities: [
+      'Built and assisted with drone bootcamps by building and calibrating drones using Betaflight and Mission Planner.'
+    ],
+    technologies: ['Drone Development', 'Testing', 'Bootcamps', 'Betaflight', 'Mission Planner'],
+    thumbnail: '/api/placeholder/300/200'
+  },
+  {
+    id: 5,
     title: 'Google Student Ambassador',
     company: 'Google',
     location: 'Remote',
@@ -90,7 +105,21 @@ const experienceData: ExperienceItem[] = [
     thumbnail: '/api/placeholder/300/200'
   },
   {
-    id: 5,
+    id: 6,
+    title: 'Minimax Ambassador',
+    company: 'Minimax.io',
+    location: 'Surat, Gujarat (Remote)',
+    duration: 'Jan 2026 - Jun 2026',
+    description: 'Selected for Minimax Ambassador to test the model and give feedback.',
+    responsibilities: [
+      'Conducted adversarial testing and capability benchmarking across MiniMax LLM iterations M2.3 through M2.7 to assess reasoning, alignment, and performance boundaries.',
+      'Identified, documented, and reported 15+ critical model vulnerabilities, regressions, and edge-case failures to the engineering team to guide upstream model optimization.',
+    ],
+    technologies: ['Minimax AI', 'Adversarial Testing', 'Model Evaluation', 'Feedback Loop'],
+    thumbnail: '/api/placeholder/300/200'
+  },
+  {
+    id: 7,
     title: 'Gujarat State Lead',
     company: 'Open Source Connect',
     location: 'Surat, Gujarat (Remote)',
@@ -105,7 +134,7 @@ const experienceData: ExperienceItem[] = [
     thumbnail: '/api/placeholder/300/200'
   },
   {
-    id: 6,
+    id: 8,
     title: 'Perplexity AI Business Fellow',
     company: 'Perplexity',
     location: 'Surat, Gujarat (Remote)',
@@ -233,8 +262,7 @@ const ExperienceEducationSection: React.FC = () => {
       {/* Card Content */}
       <div
         className="flex-1 bg-surface backdrop-blur-sm rounded-xl shadow-lg hover:shadow-2xl p-8 border-l-4 border-secondary transform transition-all duration-500 cursor-pointer relative overflow-hidden group"
-        onMouseEnter={() => setHoveredCard(item.id)}
-        onMouseLeave={() => setHoveredCard(null)}
+        onClick={() => setHoveredCard(hoveredCard === item.id ? null : item.id)}
       >
         {/* Background Animation */}
         <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -336,8 +364,7 @@ const ExperienceEducationSection: React.FC = () => {
       {/* Card Content */}
       <div
         className="flex-1 bg-surface backdrop-blur-sm rounded-xl shadow-lg hover:shadow-2xl p-8 border-l-4 border-accent transform transition-all duration-500 cursor-pointer relative overflow-hidden group"
-        onMouseEnter={() => setHoveredCard(item.id)}
-        onMouseLeave={() => setHoveredCard(null)}
+        onClick={() => setHoveredCard(hoveredCard === item.id ? null : item.id)}
       >
         {/* Background Animation */}
         <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>

@@ -8,10 +8,10 @@ const Navbar: React.FC = () => {
   const navLinks = [
     { 
       href: '#experience', 
-      label: 'Education',
-      subLabel: 'Experience',
-      icon: AcademicCapIcon,
-      subIcon: BriefcaseIcon,
+      label: 'Experience',
+      subLabel: 'Education',
+      icon: BriefcaseIcon,
+      subIcon: AcademicCapIcon,
       isToggleable: true
     },
     { href: '#projects', label: 'Projects' },

@@ -163,40 +163,7 @@ const Stats: React.FC = () => {
             My <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-accent">Achievements</span>
           </SectionHeading>
 
-          {/* 3-Column Grid Layout */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-24 max-w-7xl mx-auto">
-            {keyStats.map((stat, index) => (
-              <div
-                key={index}
-                className={`${
-                  // Logic to center the last 2 items on the bottom row in a 3-column layout
-                  index >= 3 ? 'lg:col-span-1.5 lg:w-[calc(100%)] lg:mx-auto' : ''
-                  } ${
-                  // Special handling for the 4th item to push it to center-left
-                  index === 3 ? 'lg:ml-auto' : ''
-                  } ${
-                  // Special handling for the 5th item to push it to center-right
-                  index === 4 ? 'lg:mr-auto' : ''
-                  }`}
-              >
-                {/* 
-                    Note: The above grid logic is a bit complex to get perfect centering for 5 items in 3 cols.
-                    A simpler approach for 5 items in 3 cols is just standard grid flow, 
-                    but centering the last row requires flex or specific grid placement.
-                    Let's try a cleaner Flex wrap approach for the container or just standard grid.
-                    Standard grid is safer. Let's revert to standard grid but use a wrapper for the last row if we want centering.
-                    Actually, standard grid-cols-3 will put 3 on top, 2 on bottom left-aligned.
-                    To center the bottom 2, we can use flex for the container or specific classes.
-                    Let's stick to a clean grid-cols-1 md:grid-cols-2 lg:grid-cols-3.
-                    The 2 items on the bottom will be left-aligned by default.
-                    To center them, we can make the last two items span differently or use flex.
-                    Let's use a Flex container with wrap and justify-center. It handles 5 items perfectly (3 top, 2 bottom centered).
-                 */}
-              </div>
-            ))}
-          </div>
-
-          {/* Re-implementing the list using Flexbox for perfect centering of 5 items */}
+          {/* Achievement cards — flexbox centers the 5 items (3 top, 2 bottom centered) */}
           <div className="flex flex-wrap justify-center gap-6 lg:gap-8 mb-24 max-w-7xl mx-auto">
             {keyStats.map((stat, index) => (
               <div
