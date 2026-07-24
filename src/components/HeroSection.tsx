@@ -53,10 +53,7 @@ const HeroSection: React.FC = () => {
         {/* Enhanced Dynamic Background */}
         <div className="absolute inset-0 overflow-hidden">
           {/* Animated Gradient Blobs */}
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-secondary/20 to-accent/10 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
-          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-accent/20 to-secondary/10 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-2s"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-secondary/5 to-accent/5 rounded-full mix-blend-multiply filter blur-2xl animate-ping duration-4s"></div>
-          
+
           {/* Subtle Particle Effects */}
           <div className="absolute inset-0">
             {[...Array(12)].map((_, i) => (
@@ -72,7 +69,7 @@ const HeroSection: React.FC = () => {
               ></div>
             ))}
           </div>
-          
+
           {/* Flowing Abstract Lines */}
           <div className="absolute inset-0 opacity-10">
             <svg className="w-full h-full" viewBox="0 0 1000 1000">
@@ -113,7 +110,7 @@ const HeroSection: React.FC = () => {
               <div className="mb-6">
                 {/* Ultra-Smooth Typewriter Headline */}
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-3 animate-fade-in-up delay-400 min-h-[1.25em] flex items-center justify-center md:justify-start"
-                    style={{ fontFamily: '"Space Grotesk", "Inter", system-ui, sans-serif', letterSpacing: '-0.03em' }}>
+                  style={{ fontFamily: '"Space Grotesk", "Inter", system-ui, sans-serif', letterSpacing: '-0.03em' }}>
                   <span className="bg-gradient-to-r from-text-primary via-accent to-secondary bg-clip-text text-transparent inline-flex items-center">
                     {displayedText.split('').map((char, index) => (
                       <motion.span
@@ -127,16 +124,16 @@ const HeroSection: React.FC = () => {
                       </motion.span>
                     ))}
                   </span>
-                  <motion.span 
+                  <motion.span
                     animate={{ opacity: [1, 0.2, 1] }}
                     transition={{ duration: 0.8, repeat: Infinity, ease: 'easeInOut' }}
                     className="inline-block w-[3px] sm:w-[4px] h-[0.85em] bg-secondary ml-1.5 rounded-full shadow-[0_0_12px_var(--color-secondary)] align-middle"
                     aria-hidden="true"
                   />
                 </h1>
-                
-                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-text-secondary/80 animate-fade-in-up delay-600" 
-                     style={{ fontFamily: '"Space Grotesk", "Inter", system-ui, sans-serif' }}>
+
+                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-text-secondary/80 animate-fade-in-up delay-600"
+                  style={{ fontFamily: '"Space Grotesk", "Inter", system-ui, sans-serif' }}>
                   Building the Future with Code
                 </div>
               </div>
@@ -169,7 +166,7 @@ const HeroSection: React.FC = () => {
 
             {/* Enhanced Interactive Central Graphic */}
             <div className="md:w-2/5 lg:w-1/2 flex justify-center items-center animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-              <div 
+              <div
                 className="relative w-80 h-80 md:w-96 md:h-96 lg:scale-110 xl:scale-125 cursor-pointer group"
                 onMouseEnter={() => {
                   setIsHovered(true);
@@ -194,7 +191,7 @@ const HeroSection: React.FC = () => {
                     className={`glow-secondary relative z-20 w-40 h-40 md:w-56 md:h-56 rounded-full object-cover transition-transform duration-500 ${isHovered ? 'scale-[1.04]' : ''}`}
                   />
                 </div>
-                
+
                 {/* Data Flow Connection Lines */}
                 <div className={`absolute inset-0 transition-opacity duration-500 ${isHovered ? 'opacity-100' : 'opacity-60'}`}>
                   <svg className="w-full h-full" viewBox="0 0 400 400">
@@ -205,47 +202,47 @@ const HeroSection: React.FC = () => {
                         <stop offset="100%" stopColor="currentColor" className="text-accent" />
                       </linearGradient>
                     </defs>
-                    
+
                     {/* Connection lines to floating elements */}
                     <line x1="200" y1="200" x2="200" y2="50" stroke="url(#connectionGradient)" strokeWidth="1" opacity="0.3" className="animate-pulse" />
-                    <line x1="200" y1="200" x2="200" y2="350" stroke="url(#connectionGradient)" strokeWidth="1" opacity="0.3" className="animate-pulse" style={{animationDelay: '0.5s'}} />
-                    <line x1="200" y1="200" x2="50" y2="200" stroke="url(#connectionGradient)" strokeWidth="1" opacity="0.3" className="animate-pulse" style={{animationDelay: '1s'}} />
-                    <line x1="200" y1="200" x2="350" y2="200" stroke="url(#connectionGradient)" strokeWidth="1" opacity="0.3" className="animate-pulse" style={{animationDelay: '1.5s'}} />
+                    <line x1="200" y1="200" x2="200" y2="350" stroke="url(#connectionGradient)" strokeWidth="1" opacity="0.3" className="animate-pulse" style={{ animationDelay: '0.5s' }} />
+                    <line x1="200" y1="200" x2="50" y2="200" stroke="url(#connectionGradient)" strokeWidth="1" opacity="0.3" className="animate-pulse" style={{ animationDelay: '1s' }} />
+                    <line x1="200" y1="200" x2="350" y2="200" stroke="url(#connectionGradient)" strokeWidth="1" opacity="0.3" className="animate-pulse" style={{ animationDelay: '1.5s' }} />
                   </svg>
                 </div>
-                
+
                 {/* Enhanced Orbiting Elements */}
-                <div className={`absolute inset-0 transition-all duration-500 ${isHovered ? 'animate-spin' : 'animate-spin'}`} style={{animationDuration: isHovered ? '15s' : '20s'}}>
+                <div className={`absolute inset-0 transition-all duration-500 ${isHovered ? 'animate-spin' : 'animate-spin'}`} style={{ animationDuration: isHovered ? '15s' : '20s' }}>
                   <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-accent rounded-full shadow-lg animate-pulse"></div>
                   <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-3 h-3 bg-secondary rounded-full shadow-lg animate-pulse"></div>
                   <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-2 h-2 bg-text-primary rounded-full shadow-lg animate-pulse"></div>
                   <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-2 h-2 bg-text-primary rounded-full shadow-lg animate-pulse"></div>
                 </div>
-                
+
                 {/* Enhanced Counter-rotating rings */}
-                <div className={`absolute inset-8 border-2 border-accent/50 rounded-full transition-all duration-500 ${isHovered ? 'border-accent/70 scale-105' : ''}`} style={{animation: `spin ${isHovered ? '10s' : '15s'} linear infinite reverse`}}></div>
-                <div className={`absolute inset-16 border border-secondary/40 rounded-full transition-all duration-500 ${isHovered ? 'border-secondary/60 scale-95' : ''}`} style={{animation: `spin ${isHovered ? '8s' : '10s'} linear infinite`}}></div>
-                
+                <div className={`absolute inset-8 border-2 border-accent/50 rounded-full transition-all duration-500 ${isHovered ? 'border-accent/70 scale-105' : ''}`} style={{ animation: `spin ${isHovered ? '10s' : '15s'} linear infinite reverse` }}></div>
+                <div className={`absolute inset-16 border border-secondary/40 rounded-full transition-all duration-500 ${isHovered ? 'border-secondary/60 scale-95' : ''}`} style={{ animation: `spin ${isHovered ? '8s' : '10s'} linear infinite` }}></div>
+
                 {/* Enhanced Floating Code Elements */}
-                <div className={`absolute top-8 right-8 text-accent/60 font-mono text-sm transition-all duration-300 ${isHovered ? 'text-accent scale-110' : 'animate-bounce'}`} style={{animationDelay: '1s'}}>
+                <div className={`absolute top-8 right-8 text-accent/60 font-mono text-sm transition-all duration-300 ${isHovered ? 'text-accent scale-110' : 'animate-bounce'}`} style={{ animationDelay: '1s' }}>
                   &lt;AI/&gt;
                 </div>
-                <div className={`absolute bottom-8 left-8 text-secondary/60 font-mono text-sm transition-all duration-300 ${isHovered ? 'text-secondary scale-110' : 'animate-bounce'}`} style={{animationDelay: '2s'}}>
+                <div className={`absolute bottom-8 left-8 text-secondary/60 font-mono text-sm transition-all duration-300 ${isHovered ? 'text-secondary scale-110' : 'animate-bounce'}`} style={{ animationDelay: '2s' }}>
                   {'{ML}'}
                 </div>
-                <div className={`absolute top-1/4 left-4 text-text-primary/40 font-mono text-xs transition-all duration-300 ${isHovered ? 'text-text-primary/80 scale-110' : 'animate-bounce'}`} style={{animationDelay: '0.5s'}}>
+                <div className={`absolute top-1/4 left-4 text-text-primary/40 font-mono text-xs transition-all duration-300 ${isHovered ? 'text-text-primary/80 scale-110' : 'animate-bounce'}`} style={{ animationDelay: '0.5s' }}>
                   def()
                 </div>
-                <div className={`absolute bottom-1/4 right-4 text-accent/40 font-mono text-xs transition-all duration-300 ${isHovered ? 'text-accent/80 scale-110' : 'animate-bounce'}`} style={{animationDelay: '1.5s'}}>
+                <div className={`absolute bottom-1/4 right-4 text-accent/40 font-mono text-xs transition-all duration-300 ${isHovered ? 'text-accent/80 scale-110' : 'animate-bounce'}`} style={{ animationDelay: '1.5s' }}>
                   [Data]
                 </div>
-                
+
                 {/* Enhanced Glowing Particles */}
                 <div className="absolute top-12 left-12 w-1 h-1 bg-accent rounded-full animate-ping"></div>
-                <div className="absolute top-20 right-16 w-1 h-1 bg-secondary rounded-full animate-ping" style={{animationDelay: '1s'}}></div>
-                <div className="absolute bottom-16 left-20 w-1 h-1 bg-text-primary rounded-full animate-ping" style={{animationDelay: '0.5s'}}></div>
-                <div className="absolute bottom-12 right-12 w-1 h-1 bg-accent rounded-full animate-ping" style={{animationDelay: '2s'}}></div>
-                
+                <div className="absolute top-20 right-16 w-1 h-1 bg-secondary rounded-full animate-ping" style={{ animationDelay: '1s' }}></div>
+                <div className="absolute bottom-16 left-20 w-1 h-1 bg-text-primary rounded-full animate-ping" style={{ animationDelay: '0.5s' }}></div>
+                <div className="absolute bottom-12 right-12 w-1 h-1 bg-accent rounded-full animate-ping" style={{ animationDelay: '2s' }}></div>
+
                 {/* Interactive Tooltip */}
                 {showTooltip && (
                   <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-secondary to-accent px-1 py-3 rounded-lg text-on-accent text-sm font-medium shadow-xl animate-fade-in-up min-w-48">
@@ -253,7 +250,7 @@ const HeroSection: React.FC = () => {
                     <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-accent rotate-45"></div>
                   </div>
                 )}
-                
+
                 {/* Hover Glow Effect */}
                 <div className={`absolute inset-0 rounded-full bg-gradient-to-r from-accent/10 to-secondary/10 transition-opacity duration-500 ${isHovered ? 'opacity-100' : 'opacity-0'} animate-pulse`}></div>
               </div>

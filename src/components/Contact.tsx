@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Mail, Phone, MapPin, Send, User, MessageSquare, CheckCircle, XCircle } from 'lucide-react';
 import { FaGithub, FaLinkedin, FaInstagram, FaYoutube} from 'react-icons/fa';
 import { FaXTwitter } from "react-icons/fa6";
 import SectionHeading from '@/components/SectionHeading';
+import Toast from '@/components/Toast';
 
 interface FormData {
   name: string;
@@ -27,6 +28,27 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+
+  const copyToClipboard = useCallback(async (text: string, label: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setToastMessage(`${label} copied to clipboard!`);
+      setTimeout(() => setToastMessage(null), 2500);
+    } catch {
+      // Fallback for older browsers
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+      setToastMessage(`${label} copied to clipboard!`);
+      setTimeout(() => setToastMessage(null), 2500);
+    }
+  }, []);
   const [emailValidation, setEmailValidation] = useState<EmailValidation>({
     isValid: null,
     message: '',
@@ -112,21 +134,24 @@ const Contact = () => {
       label: 'Email',
       value: 'ni3.singh.r@gmail.com',
       href: 'mailto:ni3.singh.r@gmail.com',
-      color: 'from-blue-500 to-cyan-500'
+      color: 'from-blue-500 to-cyan-500',
+      copyable: true
     },
     {
       icon: <Phone className="h-6 w-6" />,
       label: 'Phone',
       value: '+91 7041808600',
       href: 'tel:+917041808600',
-      color: 'from-emerald-500 to-teal-500'
+      color: 'from-emerald-500 to-teal-500',
+      copyable: true
     },
     {
       icon: <MapPin className="h-6 w-6" />,
       label: 'Location',
       value: 'Surat, Gujarat, India',
       href: 'https://www.google.com/maps/search/?api=1&query=Surat+Gujarat+India',
-      color: 'from-purple-500 to-pink-500'
+      color: 'from-purple-500 to-pink-500',
+      copyable: false
     },
   ];
 
@@ -255,25 +280,47 @@ const Contact = () => {
               {/* Contact Cards */}
               <div className="space-y-4">
                 {contactDetails.map((item, index) => (
-                  <a
-                    key={index}
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center p-6 bg-surface backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 group border border-border hover:border-secondary/30"
-                  >
-                    <div className="flex items-center justify-center w-14 h-14 rounded-xl bg-secondary/10 border border-secondary/20 text-secondary mr-5 group-hover:scale-110 transition-transform duration-300">
-                      {item.icon}
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-text-primary mb-1">
-                        {item.label}
-                      </h3>
-                      <p className="text-text-secondary group-hover:text-text-primary break-all">
-                        {item.value}
-                      </p>
-                    </div>
-                  </a>
+                  item.copyable ? (
+                    <button
+                      key={index}
+                      type="button"
+                      onClick={() => copyToClipboard(item.value, item.label)}
+                      className="flex items-center p-6 bg-surface backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 group border border-border hover:border-secondary/30 text-left w-full cursor-pointer"
+                    >
+                      <div className="flex items-center justify-center w-14 h-14 rounded-xl bg-secondary/10 border border-secondary/20 text-secondary mr-5 group-hover:scale-110 transition-transform duration-300">
+                        {item.icon}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-lg font-semibold text-text-primary mb-1">
+                          {item.label}
+                        </h3>
+                        <p className="text-text-secondary group-hover:text-text-primary break-all">
+                          {item.value}
+                        </p>
+                      </div>
+                      <span className="text-xs text-text-secondary/60 group-hover:text-secondary transition-colors ml-2 flex-shrink-0">Click to copy</span>
+                    </button>
+                  ) : (
+                    <a
+                      key={index}
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center p-6 bg-surface backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 group border border-border hover:border-secondary/30"
+                    >
+                      <div className="flex items-center justify-center w-14 h-14 rounded-xl bg-secondary/10 border border-secondary/20 text-secondary mr-5 group-hover:scale-110 transition-transform duration-300">
+                        {item.icon}
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-semibold text-text-primary mb-1">
+                          {item.label}
+                        </h3>
+                        <p className="text-text-secondary group-hover:text-text-primary break-all">
+                          {item.value}
+                        </p>
+                      </div>
+                    </a>
+                  )
                 ))}
               </div>
 
@@ -437,14 +484,18 @@ const Contact = () => {
         <div className="text-center mt-16">
           <div className="inline-block bg-surface backdrop-blur-sm rounded-2xl px-8 py-4 shadow-lg border border-border">
             <p className="text-text-secondary mb-2">Prefer a quick chat?</p>
-            <a
-              href="mailto:ni3.singh.r@gmail.com"
-              className="text-secondary hover:text-accent font-semibold transition-colors duration-300"
+            <button
+              type="button"
+              onClick={() => copyToClipboard('ni3.singh.r@gmail.com', 'Email')}
+              className="text-secondary hover:text-accent font-semibold transition-colors duration-300 cursor-pointer"
             >
               Drop me an email directly →
-            </a>
+            </button>
           </div>
         </div>
+
+        {/* Toast notification */}
+        <Toast message={toastMessage} onClose={() => setToastMessage(null)} />
       </div>
     </section>
   );

@@ -486,11 +486,7 @@ const Projects: React.FC = () => {
 
   return (
     <section id="projects" className="relative bg-transparent py-20 overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-[100px]" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-[100px]" />
-      </div>
+
 
       <div className="container mx-auto px-6 relative z-10">
         <SectionHeading
