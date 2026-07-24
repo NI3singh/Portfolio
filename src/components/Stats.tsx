@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { TrophyIcon, PencilSquareIcon, CodeBracketIcon, LightBulbIcon } from '@heroicons/react/24/outline';
 import SectionSeparator from '@/components/SectionSeparator';
 import SectionHeading from '@/components/SectionHeading';
@@ -31,8 +32,7 @@ const StatCard: React.FC<StatCardProps> = ({
 }) => {
   return (
     <div
-      className="group relative flex flex-col h-full bg-surface backdrop-blur-xl border border-border rounded-2xl overflow-hidden shadow-2xl transition-all duration-500 hover:scale-[1.02] hover:bg-surface-strong hover:border-secondary/30 hover:shadow-secondary/10 animate-fade-in-up"
-      style={{ animationDelay: animationDelay || '0s' }}
+      className="group relative flex flex-col h-full bg-surface backdrop-blur-xl border border-border rounded-2xl overflow-hidden shadow-2xl transition-all duration-500 hover:scale-[1.02] hover:bg-surface-strong hover:border-secondary/30 hover:shadow-secondary/10"
     >
       {/* Image Section - Top Half */}
       <div className="relative h-48 overflow-hidden">
@@ -164,25 +164,46 @@ const Stats: React.FC = () => {
           </SectionHeading>
 
           {/* Achievement cards — flexbox centers the 5 items (3 top, 2 bottom centered) */}
-          <div className="flex flex-wrap justify-center gap-6 lg:gap-8 mb-24 max-w-7xl mx-auto">
+          <motion.div 
+            className="flex flex-wrap justify-center gap-6 lg:gap-8 mb-24 max-w-7xl mx-auto"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.1,
+                },
+              },
+            }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+          >
             {keyStats.map((stat, index) => (
-              <div
+              <motion.div
                 key={index}
                 className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] max-w-md"
+                variants={{
+                  hidden: { opacity: 0, y: 30 },
+                  visible: { 
+                    opacity: 1, 
+                    y: 0, 
+                    transition: { type: 'spring', stiffness: 300, damping: 24 } 
+                  },
+                }}
               >
                 <StatCard
                   icon={stat.icon}
                   title={stat.title}
                   value={stat.value}
                   description={stat.description}
-                  animationDelay={stat.animationDelay}
                   imageUrl={stat.imageUrl}
                   imageAlt={stat.imageAlt}
                   showWinnerTag={stat.showWinnerTag}
                 />
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           {/* Core Technical Skills Section */}
           <div className="mt-20 text-center animate-fade-in-up" style={{ animationDelay: '0.5s' }}>

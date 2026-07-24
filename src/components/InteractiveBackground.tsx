@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 /**
  * Global animated backdrop for the Acid Lab theme.
@@ -10,6 +11,11 @@ import React, { useEffect, useMemo, useRef } from 'react';
  */
 const InteractiveBackground: React.FC = () => {
   const glowRef = useRef<HTMLDivElement>(null);
+  
+  const { scrollY } = useScroll();
+  const y1 = useTransform(scrollY, [0, 3000], [0, -300]);
+  const y2 = useTransform(scrollY, [0, 3000], [0, 200]);
+  const y3 = useTransform(scrollY, [0, 3000], [0, -150]);
 
   const particles = useMemo(
     () =>
@@ -61,10 +67,10 @@ const InteractiveBackground: React.FC = () => {
       {/* faint graph-paper grid */}
       <div className="absolute inset-0 bg-grid-acid" />
 
-      {/* drifting aurora blobs */}
-      <div className="absolute -top-48 -left-48 w-[42rem] h-[42rem] rounded-full bg-secondary/[0.08] blur-[120px] animate-aurora-1" />
-      <div className="absolute top-1/3 -right-48 w-[38rem] h-[38rem] rounded-full bg-accent/[0.07] blur-[120px] animate-aurora-2" />
-      <div className="absolute -bottom-48 left-1/4 w-[36rem] h-[36rem] rounded-full bg-secondary/[0.05] blur-[120px] animate-aurora-3" />
+      {/* drifting aurora blobs with parallax */}
+      <motion.div style={{ y: y1 }} className="absolute -top-48 -left-48 w-[42rem] h-[42rem] rounded-full bg-secondary/[0.08] blur-[120px] animate-aurora-1" />
+      <motion.div style={{ y: y2 }} className="absolute top-1/3 -right-48 w-[38rem] h-[38rem] rounded-full bg-accent/[0.07] blur-[120px] animate-aurora-2" />
+      <motion.div style={{ y: y3 }} className="absolute -bottom-48 left-1/4 w-[36rem] h-[36rem] rounded-full bg-secondary/[0.05] blur-[120px] animate-aurora-3" />
 
       {/* floating particles */}
       {particles.map((p, i) => (

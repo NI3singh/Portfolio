@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import SectionSeparator from '@/components/SectionSeparator';
 import NitinImage from '@/assets/Nitin-Portfolio-Image.webp';
 
@@ -16,6 +16,9 @@ const HeroSection: React.FC = () => {
   const [isDeleting, setIsDeleting] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
+
+  const { scrollY } = useScroll();
+  const svgParallax = useTransform(scrollY, [0, 1000], [0, 150]);
 
   useEffect(() => {
     const currentTitle = titles[titleIndex];
@@ -71,7 +74,7 @@ const HeroSection: React.FC = () => {
           </div>
 
           {/* Flowing Abstract Lines */}
-          <div className="absolute inset-0 opacity-10">
+          <motion.div style={{ y: svgParallax }} className="absolute inset-0 opacity-10">
             <svg className="w-full h-full" viewBox="0 0 1000 1000">
               <defs>
                 <linearGradient id="flowGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -97,7 +100,7 @@ const HeroSection: React.FC = () => {
                 style={{ animationDuration: '6s', animationDelay: '2s' }}
               />
             </svg>
-          </div>
+          </motion.div>
         </div>
 
         <div className="container mx-auto px-6 text-center md:text-left relative z-10">
