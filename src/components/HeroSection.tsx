@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import SectionSeparator from '@/components/SectionSeparator';
 import NitinImage from '@/assets/Nitin-Portfolio-Image.webp';
 
@@ -11,45 +12,40 @@ const titles = [
 
 const HeroSection: React.FC = () => {
   const [displayedText, setDisplayedText] = useState('');
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
   const [titleIndex, setTitleIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
-  const isMounted = useRef(true);
 
   useEffect(() => {
-    isMounted.current = true;
     const currentTitle = titles[titleIndex];
+    let timer: NodeJS.Timeout;
 
-    const timeout = setTimeout(() => {
-      if (!isMounted.current) return;
-
-      if (!isDeleting) {
-        if (currentIndex < currentTitle.length) {
-          setDisplayedText(currentTitle.substring(0, currentIndex + 1));
-          setCurrentIndex(currentIndex + 1);
-        } else {
-          setTimeout(() => {
-            if (isMounted.current) setIsDeleting(true);
-          }, 2000);
-        }
+    if (!isDeleting) {
+      if (displayedText.length < currentTitle.length) {
+        timer = setTimeout(() => {
+          setDisplayedText(currentTitle.slice(0, displayedText.length + 1));
+        }, 80);
       } else {
-        if (currentIndex > 0) {
-          setDisplayedText(currentTitle.substring(0, currentIndex - 1));
-          setCurrentIndex(currentIndex - 1);
-        } else {
-          setIsDeleting(false);
-          setTitleIndex((titleIndex + 1) % titles.length);
-        }
+        timer = setTimeout(() => {
+          setIsDeleting(true);
+        }, 2200);
       }
-    }, isDeleting ? 100 : 150);
+    } else {
+      if (displayedText.length > 0) {
+        timer = setTimeout(() => {
+          setDisplayedText(currentTitle.slice(0, displayedText.length - 1));
+        }, 40);
+      } else {
+        timer = setTimeout(() => {
+          setIsDeleting(false);
+          setTitleIndex((prev) => (prev + 1) % titles.length);
+        }, 300);
+      }
+    }
 
-    return () => {
-      isMounted.current = false;
-      clearTimeout(timeout);
-    };
-  }, [currentIndex, isDeleting, titleIndex]);
+    return () => clearTimeout(timer);
+  }, [displayedText, isDeleting, titleIndex]);
 
   return (
     <>
@@ -115,30 +111,32 @@ const HeroSection: React.FC = () => {
               </span>
 
               <div className="mb-6">
-                {/* Enhanced Headline with Glitch Effect */}
-                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-text-primary via-accent to-secondary mb-2 animate-fade-in-up delay-400 leading-tight relative group"
-                    style={{ fontFamily: 'Inter, system-ui, sans-serif', letterSpacing: '-0.02em' }}>
-                  <span className="block relative">
-                    {/* Main Text */}
-                    <span className="relative z-10">
-                      {displayedText}
-                    </span>
-                    
-                    {/* Glitch Effect Overlay */}
-                    <span className="absolute inset-0 text-transparent bg-clip-text bg-gradient-to-r from-accent to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-pulse">
-                      {displayedText}
-                    </span>
-                    
-                    {/* Digital Scan Line Effect */}
-                    <span className="absolute inset-0 bg-gradient-to-r from-transparent via-accent/20 to-transparent h-full w-0 group-hover:w-full transition-all duration-1000 transform skew-x-12"></span>
-                    
-                    {/* Cursor */}
-                    <span className="inline-block w-1 h-16 md:h-20 lg:h-24 bg-accent ml-2 animate-pulse"></span>
+                {/* Ultra-Smooth Typewriter Headline */}
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-3 animate-fade-in-up delay-400 min-h-[1.25em] flex items-center justify-center md:justify-start"
+                    style={{ fontFamily: '"Space Grotesk", "Inter", system-ui, sans-serif', letterSpacing: '-0.03em' }}>
+                  <span className="bg-gradient-to-r from-text-primary via-accent to-secondary bg-clip-text text-transparent inline-flex items-center">
+                    {displayedText.split('').map((char, index) => (
+                      <motion.span
+                        key={`${titleIndex}-${index}-${char}`}
+                        initial={{ opacity: 0, y: 3, filter: 'blur(2px)' }}
+                        animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                        transition={{ duration: 0.1, ease: 'easeOut' }}
+                        style={{ display: 'inline-block', whiteSpace: 'pre' }}
+                      >
+                        {char}
+                      </motion.span>
+                    ))}
                   </span>
+                  <motion.span 
+                    animate={{ opacity: [1, 0.2, 1] }}
+                    transition={{ duration: 0.8, repeat: Infinity, ease: 'easeInOut' }}
+                    className="inline-block w-[3px] sm:w-[4px] h-[0.85em] bg-secondary ml-1.5 rounded-full shadow-[0_0_12px_var(--color-secondary)] align-middle"
+                    aria-hidden="true"
+                  />
                 </h1>
                 
                 <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-text-secondary/80 animate-fade-in-up delay-600" 
-                     style={{ fontFamily: 'Inter, system-ui, sans-serif' }}>
+                     style={{ fontFamily: '"Space Grotesk", "Inter", system-ui, sans-serif' }}>
                   Building the Future with Code
                 </div>
               </div>
